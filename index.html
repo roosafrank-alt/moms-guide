@@ -256,6 +256,10 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
 .pe .pa { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; align-items: center; }
 .pe .pa a.mp { display: inline-block; padding: 7px 14px; }
 .pe button { border: 2px solid var(--green); background: #fff; color: var(--green); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 11pt; font-family: inherit; min-height: 40px; } .pe button.rmv { border-color: #9a2a1c; color: #9a2a1c; }
+.sgl { display: flex; gap: 10px; align-items: flex-start; } .sgl input { width: 24px; height: 24px; margin-top: 3px; flex: none; }
+.tx { width: 100%; font: inherit; font-size: 13pt; padding: 10px; border: 2px solid var(--rule); border-radius: 12px; min-height: 46px; }
+.rp { display: block; margin-top: 14px; font-size: 13pt; font-weight: 700; } .rp input { width: 22px; height: 22px; vertical-align: -4px; margin-right: 8px; }
+table.t tr .addbtn { display: block; }
 #nt { width: 100%; font: inherit; font-size: 13pt; padding: 10px; border: 2px solid var(--rule); border-radius: 12px; }
 
 @media (max-width: 640px) {
@@ -889,7 +893,7 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
   var qs = new URLSearchParams(location.search);
   var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone;
   var APP = qs.get('app') === '1' || (qs.get('app') !== '0' && (window.innerWidth <= 820 || standalone || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)));
-  if (!APP) { var tg = document.createElement('a'); tg.id = 'togg'; tg.href = '?app=1'; tg.textContent = 'Phone view'; document.body.appendChild(tg); }
+  if (!APP) { var tg = document.createElement('a'); tg.id = 'togg'; tg.href = '?app=1'; tg.textContent = 'Phone view: plan my week'; document.body.appendChild(tg); }
   if (APP) {
     document.body.classList.add('app');
     var DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'], DN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -975,6 +979,7 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
       if (!rg && !rec.dates.length && (hasDate || (cls === 'd' && dayK >= 0))) rec.dates = parseDates(hasDate ? whenText : whenText + ' ' + rd);
       if (!rec.dates.length && !rec.weekly.length && dayK >= 0) rec.weekly = [dayK];
       else if (!rec.dates.length && !rec.weekly.length && cls === 'w') { var dd = dowIn(whenText); if (dd >= 0) rec.weekly = [dd]; }
+      var bdg = h4.querySelector('.b'); rec.badge = bdg ? bdg.textContent : '';
       rec.sortT = timeKey(hasDate ? (whenText + ' ' + where) : whenText);
       if (rec.sortT === 9999) rec.sortT = timeKey(where);
       rec.timeTxt = hasDate ? (where.split(' · ')[0].match(/\d{1,2}(:\d{2})?\s*(am|pm)?(\s*(to|-)\s*\d{1,2}(:\d{2})?\s*(am|pm))?/i) || [''])[0] : whenText;
@@ -982,6 +987,22 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
       CAT.push(rec); CATBY[rec.id] = rec; it.setAttribute('data-cid', rec.id);
       var b = document.createElement('button'); b.className = 'addbtn'; b.type = 'button'; b.setAttribute('data-cid', rec.id);
       (it.querySelector('.what') || it).appendChild(b);
+    });
+    /* table rows: walks, ideas, volunteering, Encore classes */
+    var TM = /\d{1,2}(?::\d{2})?\s*(?:am|pm)(?:\s*(?:to|-|–)\s*\d{1,2}(?::\d{2})?\s*(?:am|pm))?/i, DWR = /\b(Sun|Mon|Tue|Wed|Thu|Fri|Sat)(?:day|s|sday|nesday|rsday|urday)?\b/i;
+    ['walk', 'ideas', 'vol', 'enc'].forEach(function (k) {
+      [].forEach.call(book.querySelectorAll('.sheet[data-k="' + k + '"]:not(.printonly) table.t tr'), function (tr) {
+        var tds = tr.querySelectorAll('td'); if (!tds.length) return;
+        var t0 = tds[0], b = t0.querySelector('b'), sp = t0.querySelector('span'), name, dateTxt = '', timeTxt = '';
+        if (k === 'enc') { name = tds[2].textContent.replace(/\s+/g, ' ').trim(); dateTxt = t0.textContent; timeTxt = tds[1].textContent.trim(); }
+        else { name = (b || t0).textContent.replace(/\s+/g, ' ').trim(); dateTxt = sp ? sp.textContent : ''; var m = tr.textContent.replace(t0.textContent, '').match(TM); timeTxt = m ? m[0] : ''; }
+        var mpA = tr.querySelector('a.mp'), tlA = tr.querySelector('a.tl');
+        var rec = { id: k + '|' + name + '|' + dateTxt.trim(), k: k, name: name, when: dateTxt, where: mpA ? mpA.textContent.trim() : '', tel: tlA ? tlA.getAttribute('href') : '', telTxt: tlA ? tlA.textContent : '', map: mpA ? mpA.getAttribute('href') : '', dates: [], weekly: [], cls: '', timeTxt: timeTxt, sortT: timeKey(timeTxt) };
+        if (/\b(Jan|Feb|Mar|Apr|Oct|Nov|Dec)[a-z]*\s+\d/.test(dateTxt)) rec.dates = parseDates(dateTxt);
+        else if (k !== 'ideas' && k !== 'vol' && DWR.test(dateTxt)) { var dm = dateTxt.match(DWR)[1]; rec.weekly = [DS.indexOf(dm.charAt(0).toUpperCase() + dm.slice(1, 3).toLowerCase())]; }
+        CAT.push(rec); CATBY[rec.id] = rec; tr.setAttribute('data-cid', rec.id);
+        var bt = document.createElement('button'); bt.className = 'addbtn'; bt.type = 'button'; bt.setAttribute('data-cid', rec.id); t0.appendChild(bt);
+      });
     });
     function planOf(id) { return S.plan.filter(function (p) { return p.id === id; })[0]; }
     function refreshBtns() {
@@ -1029,6 +1050,57 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
       openModal('<div class="body"></div>', draw);
     }
     book.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.addbtn'); if (b) { e.preventDefault(); chooser(b.getAttribute('data-cid')); } });
+    function customModal(d0) {
+      openModal('<h3 class="mt">Add my own</h3><p class="lab">What is it?</p><input type="text" id="cn" class="tx" placeholder="Coffee with Pat, craft fair, doctor...">' +
+        '<p class="lab">Date</p><input type="date" id="cd" class="tx" value="' + d0 + '"><p class="lab">Time (optional)</p><input type="text" id="ct" class="tx" placeholder="2pm, or 10 to 11:30am">' +
+        '<p class="lab">Where (optional)</p><input type="text" id="cw" class="tx" placeholder="Place or address"><label class="rp"><input type="checkbox" id="cr"> Repeat every week</label>' +
+        '<div class="row rowend"><button type="button" class="btn1" id="cs">Save</button></div>', function (card) {
+        card.querySelector('#cs').onclick = function () {
+          var nm = card.querySelector('#cn').value.trim(), dv = card.querySelector('#cd').value, tt = card.querySelector('#ct').value.trim(), wh = card.querySelector('#cw').value.trim(), rp = card.querySelector('#cr').checked;
+          if (!nm || !dv) { card.querySelector('#cn').style.borderColor = '#9a2a1c'; return; }
+          S.plan.push({ id: 'my|' + Date.now(), name: nm, timeTxt: tt, where: wh, tel: '', telTxt: '', map: wh ? 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(wh) : '', k: 'my', sortT: timeKey(tt), from: rp ? dv : '', until: '', dates: rp ? [] : [dv], weekly: rp ? [fromIso(dv).getDay()] : [], custom: true });
+          save(); closeModal(); route();
+        };
+      });
+    }
+    /* suggest a week */
+    var CATS = [['craft', /knit|crochet|stitch|embroider|craft|fiber|art |paint|pottery|quilt/i], ['move', /yoga|tai chi|qi gong|qigong|pilates|walk|hike|exercise|balance|stretch|zumba|dance|fitness/i], ['social', /mahjong|game|cards|bingo|book club|writers|club|group|coffee|lunch|class/i], ['garden', /garden|bulb|plant|seed|farm/i]];
+    function catOf(r) { for (var i = 0; i < CATS.length; i++) if (CATS[i][1].test(r.name)) return CATS[i][0]; return 'other'; }
+    function driveOf(r) { var m = (r.where || '').match(/~\s*(\d+)/); return m ? +m[1] : 30; }
+    function suggestWeek(ws) {
+      var days = [], used = { craft: 0, move: 0, social: 0, garden: 0, other: 0 }, todayIso = iso(new Date()), picked = [];
+      for (var j = 0; j < 7; j++) { var d = new Date(ws.getFullYear(), ws.getMonth(), ws.getDate() + j), di3 = iso(d); if (di3 >= todayIso) days.push(di3); }
+      var have = {}; S.plan.forEach(function (p) { have[p.id] = 1; });
+      var best = days.map(function (di3) {
+        var w = fromIso(di3).getDay();
+        var cand = CAT.filter(function (r) { return !have[r.id] && r.cls !== 'q' && r.k !== 'ideas' && r.k !== 'vol' && r.k !== 'plan' && !/FULL|wait list/i.test(r.name + r.when) && (r.dates.indexOf(di3) >= 0 || (!r.dates.length && wkOn(r, di3, w))) && r.sortT !== 9999 && r.sortT >= 8 * 60 && r.sortT <= 18 * 60; });
+        return { d: di3, cand: cand };
+      });
+      var order = best.slice().sort(function (a, b) { return a.cand.length - b.cand.length; });
+      order.forEach(function (day) {
+        if (picked.length >= 5 || !day.cand.length) return;
+        var sc = day.cand.map(function (r) { var c = catOf(r); return { r: r, s: (3 - Math.min(used[c], 3)) * 3 + (driveOf(r) <= 30 ? 4 : driveOf(r) <= 40 ? 1 : -2) + (r.cls === 'w' ? 2 : 0) + (r.k === 'ev' || r.k === 'walk' ? 1 : 0) + (c === 'other' ? -3 : 0) + (c === 'move' ? 1 : 0) + (r.tel ? 0.5 : 0) - (/call first/i.test(r.badge || '') ? 2 : 0) - (/no description|unknown/i.test(r.name) ? 4 : 0) - (r.sortT >= 17 * 60 ? 3 : 0) }; }).sort(function (a, b) { return b.s - a.s; });
+        var top = sc[0]; used[catOf(top.r)]++; picked.push({ d: day.d, r: top.r });
+      });
+      return picked.sort(function (a, b) { return a.d < b.d ? -1 : 1; });
+    }
+    function suggestModal(ws) {
+      var picks = suggestWeek(ws), on = picks.map(function () { return true; });
+      openModal('<h3 class="mt">Suggested week</h3><p class="mw">A mix of crafts, moving, friends and getting out. Close to home, about 1 thing a day, with rest days. Untick what you do not want.</p><div id="sg"></div><div class="row rowend"><button type="button" class="btn1" id="sga">Add to my plan</button></div>', function (card) {
+        var box = card.querySelector('#sg');
+        function draw() {
+          box.innerHTML = picks.length ? picks.map(function (x, i) {
+            return '<label class="pe sgl"><input type="checkbox" data-i="' + i + '"' + (on[i] ? ' checked' : '') + '><div><div class="pt">' + fmt(x.d) + ' · ' + esc(x.r.timeTxt || '') + '</div><div class="pn">' + esc(x.r.name) + '</div><div class="pw">' + esc(x.r.where || '') + '</div></div></label>';
+          }).join('') : '<p class="none2">Nothing new to suggest for the rest of this week. Try the next week with ›.</p>';
+          [].forEach.call(box.querySelectorAll('input'), function (c) { c.onchange = function () { on[+c.getAttribute('data-i')] = c.checked; }; });
+        }
+        draw();
+        card.querySelector('#sga').onclick = function () {
+          picks.forEach(function (x, i) { if (!on[i]) return; var p = planOf(x.r.id); if (!p) { p = mk(x.r, [], []); S.plan.push(p); } if (p.dates.indexOf(x.d) < 0) p.dates.push(x.d); });
+          save(); closeModal(); refreshBtns(); route();
+        };
+      });
+    }
     /* My Plan screens */
     var mine = document.createElement('div'); mine.id = 'mine'; document.body.insertBefore(mine, book);
     var mv = { mode: 'week', wk: null, mo: null };
@@ -1046,13 +1118,14 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
         html += '<p class="lab">Note for this day</p><textarea id="nt" rows="3" placeholder="Lunch with a friend, bring yarn...">' + esc(S.notes[di2] || '') + '</textarea>';
         var have = {}; es.forEach(function (p) { have[p.id] = 1; });
         var cand = CAT.filter(function (r) { return !have[r.id] && (r.dates.indexOf(di2) >= 0 || (!r.dates.length && wkOn(r, di2, d.getDay()))); }).sort(function (a, b) { return a.sortT - b.sortT; });
-        html += '<p class="lab">Add something for this day</p>' + (cand.length ? cand.map(function (r) {
+        html += '<p class="lab">Add something for this day</p><button type="button" class="btn2" id="own">＋ Add my own</button>' + (cand.length ? cand.map(function (r) {
           return '<div class="pe"><div class="pt">' + esc(r.timeTxt || '') + '</div><div class="pn">' + esc(r.name) + '</div>' + (r.where ? '<div class="pw">' + esc(r.where) + '</div>' : '') + '<div class="pa"><button type="button" class="addday" data-cid="' + esc(r.id) + '" data-d="' + di2 + '">＋ Add to this day</button>' + (r.weekly.length ? '<button type="button" class="addwk" data-cid="' + esc(r.id) + '">＋ Every ' + DS[d.getDay()] + '</button>' : '') + '</div></div>';
         }).join('') : '<p class="none2">No listings with a set time that day. Try <a href="#t-' + DOW[d.getDay()] + '" style="text-decoration:underline">' + DN[d.getDay()] + ' listings</a>.</p>');
       } else if (mv.mode === 'month') {
         var m0 = mv.mo || new Date(Math.max(Date.now(), new Date(2026, 9, 1)));
         var first = new Date(m0.getFullYear(), m0.getMonth(), 1), dim = new Date(m0.getFullYear(), m0.getMonth() + 1, 0).getDate();
         html += '<div class="seg"><button type="button" data-m="week">Week</button><button type="button" class="on" data-m="month">Month</button></div>';
+        html += '<button type="button" class="btn2" id="own" style="margin-bottom:8px">＋ Add my own</button>';
         html += '<div class="mnav"><button type="button" id="pm">‹</button><b>' + MN[first.getMonth()] + ' ' + first.getFullYear() + '</b><button type="button" id="nm">›</button></div><div class="mg">' + DS.map(function (x) { return '<i class="hd">' + x.charAt(0) + '</i>'; }).join('');
         for (var i = 0; i < first.getDay(); i++) html += '<i></i>';
         for (var dn = 1; dn <= dim; dn++) { var ii = first.getFullYear() + '-' + pad(first.getMonth() + 1) + '-' + pad(dn), c = entriesOn(ii).length, nt = S.notes[ii];
@@ -1061,6 +1134,7 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
       } else {
         var ws = mv.wk || monday(new Date(Math.max(Date.now(), new Date(2026, 9, 21))));
         html += '<div class="seg"><button type="button" class="on" data-m="week">Week</button><button type="button" data-m="month">Month</button></div>';
+        html += '<p class="tip2" style="margin-top:0">Tap ＋ Add to my plan on any event, walk or idea. Or add your own.</p><button type="button" class="btn2" id="own" style="margin-bottom:8px">＋ Add my own</button> <button type="button" class="btn1" id="sug" style="margin-bottom:8px">✨ Suggest my week</button>';
         var we2 = new Date(ws.getFullYear(), ws.getMonth(), ws.getDate() + 6);
         html += '<div class="mnav"><button type="button" id="pw">‹</button><b>' + MN[ws.getMonth()].slice(0, 3) + ' ' + ws.getDate() + ' – ' + MN[we2.getMonth()].slice(0, 3) + ' ' + we2.getDate() + '</b><button type="button" id="nw">›</button></div>';
         for (var j = 0; j < 7; j++) { var dd = new Date(ws.getFullYear(), ws.getMonth(), ws.getDate() + j), ii2 = iso(dd), es2 = entriesOn(ii2);
@@ -1070,6 +1144,8 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
       mine.innerHTML = html;
       [].forEach.call(mine.querySelectorAll('[data-m]'), function (b) { b.onclick = function () { mv.mode = b.getAttribute('data-m'); route(); }; });
       var q = function (id, fn) { var el = mine.querySelector('#' + id); if (el) el.onclick = fn; };
+      q('sug', function () { suggestModal(mv.wk || monday(new Date())); });
+      q('own', function () { customModal(/^day-/.test(h) ? h.slice(4) : iso(new Date())); });
       q('pw', function () { var w = mv.wk || monday(new Date()); mv.wk = new Date(w.getFullYear(), w.getMonth(), w.getDate() - 7); route(); });
       q('nw', function () { var w = mv.wk || monday(new Date()); mv.wk = new Date(w.getFullYear(), w.getMonth(), w.getDate() + 7); route(); });
       q('pm', function () { var m = mv.mo || new Date(); mv.mo = new Date(m.getFullYear(), m.getMonth() - 1, 1); route(); });
