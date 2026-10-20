@@ -152,6 +152,8 @@ a.tl, a.ml, a.ul, a.mp { border-bottom: 1px dotted currentColor; }
 .foot a { color: inherit; border-bottom: 1px dotted currentColor; }
 @media print { a.tl, a.ml, a.ul, a.mp, .foot a { border-bottom: 0 !important; } }
 
+#togg { position: fixed; right: 14px; bottom: 14px; z-index: 50; background: #2f6b4f; color: #fff; font-weight: 700; padding: 10px 16px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.3); font-size: 11pt; }
+@media print { #togg { display: none !important; } }
 /* App mode (phone) */
 #home, #bar, #nav { display: none; }
 body.app { background: #eef0ea; padding: 0 0 84px; font-size: 16px; line-height: 1.4; padding-left: 0; padding-right: 0; }
@@ -838,7 +840,8 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
   [].forEach.call(book.querySelectorAll('table.cal'), function (c) { var w = document.createElement('div'); w.className = 'calwrap'; c.parentNode.insertBefore(w, c); w.appendChild(c); });
   var qs = new URLSearchParams(location.search);
   var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone;
-  var APP = qs.get('app') === '1' || (qs.get('app') !== '0' && (window.innerWidth <= 820 || standalone));
+  var APP = qs.get('app') === '1' || (qs.get('app') !== '0' && (window.innerWidth <= 820 || standalone || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)));
+  if (!APP) { var tg = document.createElement('a'); tg.id = 'togg'; tg.href = '?app=1'; tg.textContent = 'Phone view'; document.body.appendChild(tg); }
   if (APP) {
     document.body.classList.add('app');
     var DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'], DN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -851,7 +854,7 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
     var home = document.createElement('div'); home.id = 'home';
     home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.</p>' +
       '<a class="today" href="#t-' + DOW[di] + '">Today: ' + DN[di] + '<small>See what is on today</small></a><div class="grid">' + tiles + '</div>' +
-      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Updated Oct 20, 2026.</p>';
+      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Updated Oct 20, 2026 (app view v3). <a href="?app=0" style="text-decoration:underline">Show full packet view</a></p>';
     var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span>';
     var nav = document.createElement('div'); nav.id = 'nav';
     nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#t-' + DOW[di] + '" data-n="today">Today</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#t-plan" data-n="plan">Plan</a>';
