@@ -2,9 +2,11 @@
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#2f6b4f">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Mom's Guide">
 <link rel="apple-touch-icon" href="icon-192.png">
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@700;800&display=swap">
 <style>
@@ -141,6 +143,72 @@ table.t td:first-child { font-weight: 700; }
 .toc span.d { color: var(--soft); font-size: 10.5pt; }
 .toc span.pg { font-weight: 700; font-size: 10.5pt; }
 
+
+/* Links */
+a { color: inherit; text-decoration: none; }
+a.tab { text-decoration: none; }
+a.tl, a.ml, a.ul, a.mp { border-bottom: 1px dotted currentColor; }
+.toc a { display: contents; color: inherit; }
+.foot a { color: inherit; border-bottom: 1px dotted currentColor; }
+@media print { a.tl, a.ml, a.ul, a.mp, .foot a { border-bottom: 0 !important; } }
+
+/* App mode (phone) */
+#home, #bar, #nav { display: none; }
+body.app { background: #eef0ea; padding: 0 0 84px; font-size: 16px; line-height: 1.4; padding-left: 0; padding-right: 0; }
+body.app #book { padding: 0 12px; }
+body.app .tabs, body.app .holes, body.app .foot, body.app .printonly, body.app .cover-sheet { display: none !important; }
+body.app .sheet { width: 100%; min-height: 0; margin: 0 0 14px; padding: 18px 16px; border-radius: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.14); overflow: visible; }
+body.app .sheet h1 { font-size: 26pt; }
+body.app .lead { max-width: none; font-size: 11.5pt; }
+body.app .item { grid-template-columns: 1fr; gap: 4px; padding: 12px; margin-top: 10px; border: 1px solid var(--rule); border-radius: 14px; background: #fff; }
+body.app .item.r-w, body.app .item.r-d, body.app .item.r-m, body.app .item.r-q { padding-left: 12px; }
+body.app .item.r-w { border-left: 6px solid var(--green); }
+body.app .item.r-d, body.app .item.r-m { border-left: 6px solid #9a2a1c; }
+body.app .item.r-q { border-left: 6px dashed #8a8f94; }
+body.app .item .chk { display: none; }
+body.app .when { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+body.app .when em { display: inline; }
+body.app .when br { display: none; }
+body.app .what h4 { font-size: 14pt; }
+body.app .where, body.app .meta { font-size: 11.5pt; }
+body.app .lk { display: block; font-size: 11pt; word-break: normal; overflow-wrap: anywhere; margin-top: 2px; }
+body.app .meta > span + span::before { content: none; }
+body.app .meta > span + .tel { margin-left: 8px; }
+body.app a.tl { display: inline-block; background: var(--green); color: #fff; border: 0; padding: 7px 14px; border-radius: 999px; font-weight: 700; margin: 3px 4px 3px 0; white-space: nowrap; }
+body.app a.ml, body.app a.ul { color: #1f5fa8; border-bottom: 1px solid #1f5fa8; }
+body.app a.mp { color: #1f5fa8; border-bottom: 1px solid #1f5fa8; }
+body.app .meta .tel { display: inline-block; }
+body.app table.t, body.app table.t tbody { display: block; width: 100%; }
+body.app table.t tr:first-child:has(th) { display: none; }
+body.app table.t tr { display: block; border: 1px solid var(--rule); border-radius: 14px; padding: 10px 12px; margin-top: 10px; background: #fff; }
+body.app table.t td { display: block; border: 0; padding: 3px 0; font-size: 11.5pt; }
+body.app table.t td[data-label]::before { content: attr(data-label); display: block; font-size: 8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+body.app table.t td:first-child { font-size: 13pt; }
+body.app table.t td:first-child::before { display: none; }
+body.app .calwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+body.app .cal { width: 640px; table-layout: fixed; }
+body.app .lines { display: none; }
+body.app .flyer img { max-height: none; }
+body.app .box { border-radius: 12px; }
+body.app #home { display: block; padding: calc(env(safe-area-inset-top, 0px) + 22px) 14px 8px; }
+body.app.view-tab #home { display: none; }
+body.app:not(.view-tab) #book { display: none; }
+body.app.view-tab #bar { display: flex; position: sticky; top: 0; z-index: 20; align-items: center; gap: 10px; padding: calc(env(safe-area-inset-top, 0px) + 10px) 12px 10px; background: var(--tcbar, #2f6b4f); color: #fff; }
+body.app #bar a { color: #fff; font-weight: 700; font-size: 14pt; }
+body.app #bar .ttl { font-weight: 800; font-size: 15pt; font-family: var(--font-d); }
+body.app #nav { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: #fff; border-top: 1px solid var(--rule); padding: 6px 4px calc(env(safe-area-inset-bottom, 0px) + 6px); justify-content: space-around; }
+body.app #nav a { flex: 1; text-align: center; font-size: 10pt; font-weight: 700; padding: 8px 2px; border-radius: 10px; color: var(--soft); }
+body.app #nav a.on { color: var(--green); background: #e6efe9; }
+#home h1 { font-size: 30pt; }
+#home .sub { color: var(--soft); margin: 6px 0 14px; font-size: 12pt; }
+#home .today { display: block; background: var(--green); color: #fff !important; border-radius: 18px; padding: 16px; margin-bottom: 14px; font-weight: 700; }
+#home .today small { display: block; font-weight: 400; opacity: .9; font-size: 11pt; margin-top: 2px; }
+#home .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#home .tile { display: block; background: #fff; border-radius: 16px; padding: 12px 12px 12px 14px; border-left: 8px solid var(--tc); box-shadow: 0 1px 3px rgba(0,0,0,.12); min-height: 84px; }
+#home .tile b { display: block; font-size: 13pt; line-height: 1.15; }
+#home .tile span { display: block; color: var(--soft); font-size: 10pt; margin-top: 4px; line-height: 1.25; }
+#home .tip { margin: 16px 2px; color: var(--soft); font-size: 11pt; }
+
 @media (max-width: 640px) {
   .sheet { padding: 28px 58px 56px 22px; min-height: 0; }
   .item { grid-template-columns: 82px 1fr 34px; gap: 8px; }
@@ -192,10 +260,17 @@ table.t td:first-child { font-weight: 700; }
   function pill(r) { return r ? '<br><span class="rc ' + PL[r[0]][0] + '">' + PL[r[0]][1] + '</span>' + (r[1] ? '<span class="rd">' + r[1] + '</span>' : '') : ''; }
   function dol(c) { return /\$/.test(c || '') ? '<span class="dol">$</span>' : ''; }
   var LK = [[/YMCA/, 'middletownymca.org'], [/planetfitness|Planet Fitness|Gibbs/, 'planetfitness.com'], [/Taylor \+ Ace/, 'sullivancatskills.com/series/sunday-morning-knitting-circle'], [/MEEC/, 'pjschools.org/about/community-corner/mamakating-environmental-education-center-monthly-events'], [/Bashakill/, 'bashakillvineyards.com/livemusic'], [/Trudy Resnick|Wawarsing/, 'ulstercountyny.gov/Facilities/Trudy-Center/Events/Wawarsing-Senior-Program'], [/Bethel Woods/, 'bethelwoodscenter.org'], [/Zane Grey|eagle/, 'delawarehighlands.org/events'], [/62 Main St|Florida NY|Millpond|Government Center|Farm to Go|South St lot/, 'pickocny.com'], [/3405 NY-97|10 Jefferson St/, 'sullivancatskillsfarmersmarkets.com'], [/Cornell|CCE /, 'pub.cce.cornell.edu/event_registration/main/events.cfm?dept=248'], [/Crawford/, 'ebcpl.libcal.com'], [/Mamakating Library/, 'calendar.mamakatinglibrary.org'], [/Liberty Public Library/, 'libertypubliclibrary.libcal.com'], [/Ellenville Library/, 'eplm.org/calendar-2'], [/Thrall/, 'thrall.libcal.com/calendar?cid=18395'], [/Pine Bush Library/, 'pinebusharealibrary.org/programs-events/month'], [/Montgomery Senior/, 'villageofmontgomeryny.gov/our-community/senior-information/senior-services'], [/Rosendale/, 'townofrosendaleny.gov'], [/SUNY Orange/, 'sunyorange.edu'], [/SUNY Sullivan/, 'sunysullivan.edu'], [/Port Jervis/, 'pjschools.org'], [/73 Sullivan St|Art Alliance/, 'waagallery.org'], [/Catskill Art Space/, 'catskillartspace.org'], [/Delaware Highlands/, 'delawarehighlands.org/events']];
-  function lk(t) { for (var i = 0; i < LK.length; i++) if (LK[i][0].test(t)) return '<span class="lk">' + LK[i][1].split('/')[0] + '</span>'; return '<span class="lk nolink">no website found</span>'; }
+  function lk(t) { for (var i = 0; i < LK.length; i++) if (LK[i][0].test(t)) return '<span class="lk"><a class="ul" href="https://' + LK[i][1] + '">' + LK[i][1].split('/')[0] + '</a></span>'; return '<span class="lk nolink">no website found</span>'; }
+  function mp(w) {
+    var t = String(w).replace(/<[^>]*>/g, '').replace(/&amp;/g, '&');
+    if (/^(online|zoom|phone|various|call|ask)/i.test(t) || !/[,\d]/.test(t)) return w;
+    var q = t.replace(/\s*[·(].*$/, '');
+    if (!/\b(NY|PA|NJ)\b/.test(q)) q += ', NY';
+    return '<a class="mp" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q) + '">' + w + '</a>';
+  }
   function item(o) {
     return '<div class="item' + (o.r ? ' r-' + o.r[0] : '') + '"><div class="when">' + o.t + pill(o.r) + '</div><div class="what"><h4>' + o.n + dol(o.c) + badge(o.s) + '</h4>' +
-      (o.w ? '<p class="where">' + o.w + (o.d ? ' · ' + o.d + ' drive' : '') + '</p>' : '') +
+      (o.w ? '<p class="where">' + mp(o.w) + (o.d ? ' · ' + o.d + ' drive' : '') + '</p>' : '') +
       '<p class="meta">' + (o.c ? '<span>' + o.c + '</span>' : '') + (o.p ? '<span class="tel">' + o.p + '</span>' : '') + lk(o.w + ' ' + o.n) + '</p>' +
       (o.x ? '<p class="note' + (o.s === 'a' ? ' warn' : '') + '">' + o.x + '</p>' : '') +
       '</div><div class="chk"><i></i>' + (o.s === 's' ? 'going' : 'I called') + '</div></div>';
@@ -450,7 +525,7 @@ table.t td:first-child { font-weight: 700; }
     if (/^Jan to/.test(date)) rt = ['q', '2027 dates not posted yet'];
     if (/^Daily/.test(date)) rt = ['w', 'Open daily'];
     var isM = /market|Ends|Season/i.test(last + ' ' + date);
-    return '<div class="item r-' + rt[0] + '"><div class="when">' + date + pill(rt) + '</div><div class="what"><h4>' + name + dol(cost) + '</h4><p class="where">' + (time ? time + ' · ' : '') + where + (drive ? ' · ' + drive + ' drive' : '') + '</p>' +
+    return '<div class="item r-' + rt[0] + '"><div class="when">' + date + pill(rt) + '</div><div class="what"><h4>' + name + dol(cost) + '</h4><p class="where">' + (time ? time + ' · ' : '') + mp(where) + (drive ? ' · ' + drive + ' drive' : '') + '</p>' +
       '<p class="meta">' + (cost ? '<span>' + cost + '</span>' : '') + ((phone && !(isM && /^Phone not/.test(phone))) ? '<span class="tel">' + phone + '</span>' : '') + (isM ? lk(where + ' ' + name).replace('<span class="lk nolink">no website found</span>', '') : lk(where + ' ' + name)) + '</p>' +
       (x ? '<p class="note warn">' + x + '</p>' : '') + '<span class="end">' + last + '</span></div><div class="chk"><i></i>going</div></div>';
   }
@@ -682,23 +757,116 @@ table.t td:first-child { font-weight: 700; }
   sheets.forEach(function (s, i) { if (!(s.k in pageOf)) pageOf[s.k] = i + 2; });
   var cover = '<div class="cover"><p class="kicker">Wurtsboro, NY and up to 45 minutes around</p><h1>Mom\'s Activity Packet</h1><p class="sub">Fall 2026 – Winter 2027. Things to do, every day of the week.</p>' +
     '<div class="toc">' + TABS.map(function (t) {
-      return '<div style="--tc:' + t.c + '"><span class="sw"></span><b>' + t.name + '</b><span class="d">' + t.d + '</span><span class="pg">p. ' + pageOf[t.k] + '</span></div>';
+      return '<a href="#t-' + t.k + '"><div style="--tc:' + t.c + '"><span class="sw"></span><b>' + t.name + '</b><span class="d">' + t.d + '</span><span class="pg">p. ' + pageOf[t.k] + '</span></div></a>';
     }).join('') + '</div>' +
     '<div class="box" style="margin-top:.18in"><b>How to use it</b><ul class="plain"><li>Turn to the tab for the day. Each day lists morning, afternoon and evening.</li>' +
     '<li>Pick what sounds fun, then call the number to confirm the time.</li>' +
-    '<li>Write your choices on the My Week sheet in the Plan tab.</li>' +
+    '<li>Write your choices on the <a href="#t-plan" style="border-bottom:1px dotted">My Week sheet in the Plan tab</a>.</li>' +
     '<li>Phone version, always up to date: <b>roosafrank-alt.github.io/moms-guide</b>. Open it, then tap Add to Home Screen.</li></ul></div></div>';
   sheets.unshift({ k: null, html: cover });
 
   var out = '';
+  var seenK = {};
   sheets.forEach(function (s, i) {
     var tabs = TABS.map(function (t) {
-      return '<div class="tab' + (t.k === s.k ? ' on' : '') + '" style="--tc:' + t.c + '">' + t.l + '</div>';
+      return '<a class="tab' + (t.k === s.k ? ' on' : '') + '" href="#t-' + t.k + '" style="--tc:' + t.c + '">' + t.l + '</a>';
     }).join('');
     var cur = TABS.filter(function (t) { return t.k === s.k; })[0];
-    out += '<section class="sheet"><div class="holes"><i></i><i></i><i></i></div><div class="tabs">' + tabs + '</div>' + s.html +
-      '<div class="foot"><span>Mom\'s Activity Packet · updated Oct 20, 2026' + (cur ? ' · ' + cur.name : '') + '</span><span>' + (i + 1) + ' of ' + sheets.length + '</span></div></section>';
+    var idAttr = '';
+    if (s.k === null) idAttr = ' id="top"'; else if (!seenK[s.k]) { seenK[s.k] = 1; idAttr = ' id="t-' + s.k + '"'; }
+    out += '<section class="sheet' + (s.k === null ? ' cover-sheet' : '') + '"' + idAttr + ' data-k="' + (s.k || '') + '"><div class="holes"><i></i><i></i><i></i></div><div class="tabs">' + tabs + '</div>' + s.html +
+      '<div class="foot"><span>Mom\'s Activity Packet · updated Oct 20, 2026' + (cur ? ' · ' + cur.name + ' · <a href="#top">Contents</a>' : '') + '</span><span>' + (i + 1) + ' of ' + sheets.length + '</span></div></section>';
   });
   document.getElementById('book').innerHTML = out;
+  var book = document.getElementById('book');
+
+  /* ---- Links: phone, email, web, map ---- */
+  (function linkify(root) {
+    var re = /([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})|((?<!\d)(?:\(\d{3}\)\s?|\d{3}[-.])\d{3}-\d{4})|((?:https?:\/\/)?(?:[a-z0-9-]+\.)+(?:org|com|gov|edu|net|art|fitness|info|us|io)(?:\/[^\s·,;)<]*)?)/gi;
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), nodes = [], n;
+    while ((n = w.nextNode())) {
+      var p = n.parentNode, bad = false;
+      while (p && p !== root) { if (/^(A|SCRIPT|STYLE)$/.test(p.nodeName) || (p.classList && p.classList.contains('tabs'))) { bad = true; break; } p = p.parentNode; }
+      if (!bad && re.test(n.nodeValue)) nodes.push(n);
+      re.lastIndex = 0;
+    }
+    nodes.forEach(function (node) {
+      var txt = node.nodeValue, frag = document.createDocumentFragment(), last = 0, m;
+      re.lastIndex = 0;
+      while ((m = re.exec(txt))) {
+        var t = m[0], tail = '';
+        while (/[.)]$/.test(t)) { tail = t.slice(-1) + tail; t = t.slice(0, -1); }
+        if (m[3] && !m[1] && !m[2] && !/[a-z]{2}\.[a-z]/i.test(t)) { continue; }
+        var a = document.createElement('a'), href, cls;
+        if (m[1]) { href = 'mailto:' + t; cls = 'ml'; }
+        else if (m[2]) { href = 'tel:+1' + t.replace(/\D/g, ''); cls = 'tl'; }
+        else { href = /^https?:/i.test(t) ? t : 'https://' + t; cls = 'ul'; }
+        a.href = href; a.className = cls; a.textContent = t;
+        frag.appendChild(document.createTextNode(txt.slice(last, m.index)));
+        frag.appendChild(a);
+        last = m.index + t.length;
+        re.lastIndex = last;
+      }
+      frag.appendChild(document.createTextNode(txt.slice(last)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  })(book);
+
+  /* ---- Map links in table address columns, and card labels ---- */
+  [].forEach.call(book.querySelectorAll('table.t'), function (tb) {
+    var hs = [].map.call(tb.querySelectorAll('tr:first-child th'), function (h) { return h.textContent.trim(); });
+    [].forEach.call(tb.querySelectorAll('tr'), function (tr) {
+      [].forEach.call(tr.querySelectorAll('td'), function (td, ci) {
+        if (hs[ci]) td.setAttribute('data-label', hs[ci]);
+        if (!/address|where/i.test(hs[ci] || '') || td.querySelector('a.mp')) return;
+        var tn = [].filter.call(td.childNodes, function (c) { return c.nodeType === 3 && c.nodeValue.trim(); })[0];
+        if (!tn) return;
+        var v = tn.nodeValue, seg = v.split(' · ')[0].trim();
+        if (!/\d|,/.test(seg) || /not posted|^ask|varies|emailed|phone app|meets at|between|trailhead|same office|^phone/i.test(seg)) return;
+        var q = seg.replace(/\s*\(.*$/, ''); if (!/\b(NY|PA|NJ)\b/.test(q)) q += ', NY';
+        var a = document.createElement('a'); a.className = 'mp'; a.textContent = seg;
+        a.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+        var i0 = v.indexOf(seg), f = document.createDocumentFragment();
+        f.appendChild(document.createTextNode(v.slice(0, i0))); f.appendChild(a); f.appendChild(document.createTextNode(v.slice(i0 + seg.length)));
+        tn.parentNode.replaceChild(f, tn);
+      });
+    });
+  });
+
+  /* ---- Phone app view ---- */
+  [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { if (sh.querySelector('.lines, table.plan') && !sh.querySelector('.item, table.t, .flyer, .cal')) sh.classList.add('printonly'); });
+  [].forEach.call(book.querySelectorAll('table.cal'), function (c) { var w = document.createElement('div'); w.className = 'calwrap'; c.parentNode.insertBefore(w, c); w.appendChild(c); });
+  var qs = new URLSearchParams(location.search);
+  var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone;
+  var APP = qs.get('app') === '1' || (qs.get('app') !== '0' && (window.innerWidth <= 820 || standalone));
+  if (APP) {
+    document.body.classList.add('app');
+    var DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'], DN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var di = new Date().getDay();
+    var live = {};
+    [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { if (!sh.classList.contains('printonly') && sh.dataset.k) live[sh.dataset.k] = 1; });
+    var tiles = TABS.filter(function (t) { return live[t.k]; }).map(function (t) {
+      return '<a class="tile" href="#t-' + t.k + '" style="--tc:' + t.c + '"><b>' + t.name + '</b><span>' + t.d + '</span></a>';
+    }).join('');
+    var home = document.createElement('div'); home.id = 'home';
+    home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.</p>' +
+      '<a class="today" href="#t-' + DOW[di] + '">Today: ' + DN[di] + '<small>See what is on today</small></a><div class="grid">' + tiles + '</div>' +
+      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Updated Oct 20, 2026.</p>';
+    var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span>';
+    var nav = document.createElement('div'); nav.id = 'nav';
+    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#t-' + DOW[di] + '" data-n="today">Today</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#t-plan" data-n="plan">Plan</a>';
+    document.body.insertBefore(home, book); document.body.insertBefore(bar, home); document.body.appendChild(nav);
+    var route = function () {
+      var h = location.hash.replace('#', ''), k = h.indexOf('t-') === 0 ? h.slice(2) : '';
+      var t = TABS.filter(function (x) { return x.k === k; })[0];
+      document.body.classList.toggle('view-tab', !!t);
+      [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { sh.style.display = (t && sh.dataset.k === k) ? '' : 'none'; });
+      if (t) { bar.style.setProperty('--tcbar', t.c); bar.querySelector('.ttl').textContent = t.name; }
+      [].forEach.call(nav.querySelectorAll('a'), function (a) { var n = a.getAttribute('data-n'); a.classList.toggle('on', t ? (n === k || (n === 'today' && k === DOW[di])) : n === 'home'); });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', route);
+    route();
+  }
 })();
 </script>
