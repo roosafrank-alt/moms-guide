@@ -262,6 +262,9 @@ body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
 table.t tr .addbtn { display: block; }
 #nt { width: 100%; font: inherit; font-size: 13pt; padding: 10px; border: 2px solid var(--rule); border-radius: 12px; }
 
+#home .newbox { background: #fff; border-left: 8px solid #c8892b; border-radius: 16px; padding: 12px 14px 8px; margin: 0 0 14px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+#home .newbox b { font-size: 13pt; } #home .newbox small { display: block; color: var(--soft); font-size: 10pt; margin: 2px 0 6px; }
+#home .newbox a { display: block; padding: 7px 0; border-top: 1px solid var(--rule); font-size: 11.5pt; } #home .newbox a i { font-style: normal; font-weight: 800; color: #8a5a10; margin-right: 6px; }
 @media (max-width: 640px) {
   .sheet { padding: 28px 58px 56px 22px; min-height: 0; }
   .item { grid-template-columns: 82px 1fr 34px; gap: 8px; }
@@ -582,7 +585,7 @@ table.t tr .addbtn { display: block; }
       '<p class="meta">' + (cost ? '<span>' + cost + '</span>' : '') + ((phone && !(isM && /^Phone not/.test(phone))) ? '<span class="tel">' + phone + '</span>' : '') + (isM ? lk(where + ' ' + name).replace('<span class="lk nolink">no website found</span>', '') : lk(where + ' ' + name)) + '</p>' +
       (x ? '<p class="note warn">' + x + '</p>' : '') + '<span class="end">' + last + '</span></div><div class="chk"><i></i>going</div></div>';
   }
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', '', '<p class="lead">One-day events and short runs. The red box on each one is the last date. Drive times are estimates from Wurtsboro.</p>') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', '', '<p class="lead">One-day events and short runs. The red box on each one is the last date. Drive times are estimates from Wurtsboro.</p>') +
     '<h3>One-day and short-run events</h3>' + [
       EV('Wed Oct 21', 'Bag Ladies (adult group; no description posted)', '10:30 to 11:30am', 'Pine Bush Library, 223-227 Maple Ave, Pine Bush', '~30 min', 'Cost not listed', '845-744-3375', 'Last day: Oct 21', 'Ask what the group does and if it meets weekly.'),
       EV('Thu Oct 22', 'Adult Craft', '6pm', 'Pine Bush Library, 223-227 Maple Ave, Pine Bush', '~30 min', 'Cost not listed', '845-744-3375', 'Last day: Oct 22', 'No description posted. Ask what the craft is, if it is monthly, and if you need a library card.'),
@@ -591,13 +594,13 @@ table.t tr .addbtn { display: block; }
       EV('Sat Oct 24', 'Weird Organisms: Active Camouflage', '1pm', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', '$5', '845-644-5014', 'Last day: Oct 24', 'Call to register: 845-644-5014.'),
       EV('Mon Oct 26', 'Non-Fiction Book Club (register)', '2 to 3:30pm', 'Mamakating Library, 128 Sullivan St, Wurtsboro', '~5 min', 'Free', '845-888-8004', 'Last day: Oct 26', 'Book: The Best Minds by Jonathan Rosen.'),
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
       EV('Wed Oct 28', 'Bulb Planting Garden Workshop (signed up)', '5 to 6pm', 'Cornell Extension, 64 Ferndale-Loomis Rd, Liberty', '~25 min', 'Free', '845-292-6180', 'Last day: Oct 28', 'Registration required. Sign up: pub.cce.cornell.edu/event_registration/main/events.cfm?dept=248'),
       EV('Thu Oct 29', 'Open Mic Night, Scary Edition (register, audience welcome)', '5 to 7pm', 'Mamakating Library, 128 Sullivan St, Wurtsboro', '~5 min', 'Free', '845-888-8004', 'Last day: Oct 29', 'Register at mamakatinglibrary.org/registrations.'),
       EV('Thu Oct 29', 'D.I.Y. Energy Savings Session (free energy kit, register)', '5:30 to 7pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Free', '845-292-6180', 'Last day: Oct 29', 'Register for the free energy kit: ebcpl.libcal.com/event/17664867'),
       EV('Sat Nov 7', 'MEEC Fall Festival', '10am to 3pm', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', '$5 a person', '845-644-5014', 'Last day: Nov 7', 'Their biggest fall event: vendors, face painting, pumpkin carving demo, crafts, fall garden tour, bake sale, campfire. friendsofmeec.org'),
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
       EV('Tue Nov 10', 'Fall Wreath Workshop with Jessica Williams', '6pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'Last day: Nov 10', 'Ask about cost, sign-up and a library card.'),
       EV('Wed Nov 18', 'Chair Zumba for All Abilities', '1pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'Last day: Nov 18', 'Ask about cost and sign-up.'),
       EV('Thu Nov 5', 'Fisher and Kean, live music duo (register)', '6:30 to 7:30pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Free', '845-794-4660', 'Last day: Nov 5', ''),
@@ -618,7 +621,7 @@ table.t tr .addbtn { display: block; }
     '<li>Wurtsboro Art Alliance holiday gift show, 73 Sullivan St. Last year: mid-November to mid-December, Sat and Sun 12 to 4pm. info.waagallery@gmail.com.</li>' +
     '<li>Goshen Holiday Experience, tree lightings, church fairs: no 2026 dates found. Check again in mid-November.</li></ul></div>' +
     '');
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'Liberty Public Library', '<p class="lead">Adult programs from the Liberty library calendar (read Oct 20).</p>') + [
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'Liberty Public Library', '<p class="lead">Adult programs from the Liberty library calendar (read Oct 20).</p>') + [
       EV('Thu Oct 22', 'Memoir Writing Workshop (register, 4 seats left; also Nov 5 and Dec 3)', '4:30 to 6:30pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Oct 22', ''),
       EV('Sat Oct 24', 'Jewelry Making Workshop with Sue Petry (register)', '1 to 3pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Oct 24', 'Materials provided.'),
       EV('Thu Oct 29', 'Book Discussion: The Correspondent by Virginia Evans', '1 to 2pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Oct 29', 'Books at the circulation desk.'),
@@ -626,17 +629,17 @@ table.t tr .addbtn { display: block; }
       EV('Fri Nov 6', 'Chair Yoga (register; also Dec 4)', '1 to 2pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Nov 6', ''),
       EV('Thu Dec 10', 'Intro to Tai Chi with Nancy McGraw', '1 to 2pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Dec 10', 'Ask how to register.')
   ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'more, through March', '<p class="lead">Almost nothing is posted for January, February and March yet.</p>') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'more, through March', '<p class="lead">Almost nothing is posted for January, February and March yet.</p>') +
     '<h3>More dated events</h3>' + [
       EV('Sun Nov 1', 'MEEC artist residency: "Sky Stitching" (Audrey Bartow)', '10am', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', 'Cost not listed', 'MEEC 845-644-5014', 'Last day: Nov 1', 'Posted on Patch only. Call to confirm.'),
       EV('Sat Nov 7', 'Catskill Art Space gallery (Livingston Manor)', 'Fri, Sat 11am to 5pm; Sun 11am to 3pm', 'Catskill Art Space, Livingston Manor', '~45 to 50 min (estimate)', 'Cost not listed, likely free', 'info@catskillartspace.org', 'Murray show ends: Dec 27', 'Nov 7 opening not confirmed. Call before going.'),
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'more, continued', '') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'more, continued', '') +
     '<h3>More dated events</h3>' + [
       EV('Sat Nov 21', 'SUNY Sullivan Holiday Craft Fair', '11am to 3pm', 'Paul Gerry Fieldhouse, 112 College Rd, Loch Sheldrake', '~35 min', 'Free admission and parking', 'events@sunysullivan.edu; 845-434-5750', 'Last day: Nov 21', 'Date confirmed on the college page.'),
       EV('Daily to Dec 31', 'Bethel Woods Museum (Woodstock history)', '10am to 5pm, may vary', 'Bethel Woods, Bethel', '~35 min', 'See notes', '845-583-2000', 'Open daily to Dec 31', 'Adult $19.69 advance, $22.69 at the door; 65+ $18 advance. Closed Jan to Mar.'),
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'farmers markets', '<p class="lead">The red box is the last market date of the 2026 season.</p>') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'farmers markets', '<p class="lead">The red box is the last market date of the 2026 season.</p>') +
     '<h3>Farmers markets: last date of the 2026 season</h3>' + [
       EV('Sat Oct 24', 'Pine Bush', 'Sat 9am to 1pm', '62 Main St at New St', '~30 min', '', '845-978-0298', 'Last market: Oct 24', ''),
       EV('Tue Oct 27', 'Florida', 'Tue 10am to 4pm', 'Rt 17A and Rt 94, Florida NY (across from Quick Chek)', '~35 to 40 min', '', '845-651-8310', 'Last market: Oct 27', ''),
@@ -644,7 +647,7 @@ table.t tr .addbtn { display: block; }
       EV('Fri Oct 30', 'Goshen', 'Fri 9am to 3pm', 'Orange County Government Center, 255 Main St', '~40 min', '', '845-294-7741', 'Last: Oct 30, plus one special market Wed Nov 25', ''),
       EV('Fri Oct 30', 'Wawayanda (Slate Hill)', 'Fri 12 to 6pm', 'Farm to Go, 2580 US-6', '', '', '845-636-8755', 'Last market: Oct 30', '')
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'markets, continued', '') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'markets, continued', '') +
     '<h3>Farmers markets, continued</h3>' + [
       EV('Sun Nov 22', 'Warwick Valley', 'Sun 9am to 2pm', 'South St parking lot at Bank St, Warwick', '~50 min, borderline distance', '', '845-987-9990', 'Last market: Nov 22', ''),
       EV('End of Oct', 'Barryville', 'Sat 10am to 1pm', '3405 NY-97', '~40 to 50 min', '', 'Phone not posted', 'Last market: Sat Oct 31', ''),
@@ -653,7 +656,7 @@ table.t tr .addbtn { display: block; }
     ].join('') +
     '<p class="legend">Confirmed dates come from the Orange County farmers market list at pickocny.com (seen Oct 19). Sullivan County dates are from last year\'s guide; check sullivancatskillsfarmersmarkets.com before going.</p>' +
     '');
-  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'winter markets', '') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'winter markets', '') +
     '<h3>Winter markets</h3><table class="t"><tr><th>Market</th><th>When and where</th><th>Dates</th><th>Note</th></tr>' +
     '<tr><td>Callicoon indoor market</td><td>Sun 11am to 2pm, Delaware Youth Center · ~50 min</td><td>December to March</td><td>Last year\'s info; confirm</td></tr>' +
     '<tr><td>New Paltz winter markets</td><td>Sat mornings, Robins Market on Rt 32 and Deyo Hall · ~35 to 40 min</td><td>Listed Dec to Feb (3rd and 4th Sat; 2nd Sat)</td><td>Year not stated; confirm</td></tr>' +
@@ -695,7 +698,7 @@ table.t tr .addbtn { display: block; }
     P.forEach(function (p) { if (/^(not stated|ask|likely)/i.test(p[1])) miss++; else known.push('<b>' + p[0] + ':</b> ' + p[1]); });
     return known.join(' · ') + (miss ? (known.length ? ' · ' : '') + 'Ask about the rest.' : '');
   }
-  add('fit', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Fitness', 'Planet Fitness', '<p class="lead">Gym: Planet Fitness, Middletown. Activities included with membership.</p>') +
+  add('fit', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Fitness', 'Planet Fitness', '<p class="lead">Gym: Planet Fitness, Middletown. Activities included with membership.</p>') +
     '<h3>At the gym</h3>' + [
       F('Free equipment orientation', 'Included', 'A certified trainer shows how to use the machines.', 'Ask at the front desk for a time.', '845-343-9800 · 30 Gibbs Court, Middletown', '~25 to 30 min', 'Good first stop.', ''),
       F('Small-group training sessions', 'Included', 'Certified trainers run small-group sessions for members.', 'Ask for the schedule and how to join.', '845-343-9800', '~25 to 30 min', 'Fitness level does not matter.', ''),
@@ -703,13 +706,13 @@ table.t tr .addbtn { display: block; }
       F('PE@PF class', 'Included', 'Class open to all fitness levels.', 'Schedule: planetfitness.com/gyms/middletown-ny', '845-343-9800', '~25 to 30 min', 'Check the class schedule on the club page.', '')
     ].join('') +
     '<p class="legend">Hours: open 24 hours Mon to Thu; Fri 12am to 10pm; Sat and Sun 6am to 9pm. Fees: ask the club.</p>');
-  add('fit', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Fitness', 'YMCA special events', '<p class="lead">Middletown YMCA, 81 Highland Ave, Middletown. 845-344-9622. middletownymca.org/events</p>') +
+  add('fit', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Fitness', 'YMCA special events', '<p class="lead">Middletown YMCA, 81 Highland Ave, Middletown. 845-344-9622. middletownymca.org/events</p>') +
     '<h3>Upcoming</h3>' + [
       EV('Fri Oct 30', 'YMCA 6th Annual Gala (evening of food and cocktails)', 'Time not shown', 'YMCA of Middletown, 81 Highland Ave', '~25 to 30 min', 'Cost not shown', '845-344-9622', 'Last day: Oct 30', 'Details: middletownymca.org/gala'),
       EV('Halloween', 'YMCA Halloween event (spooky games)', 'Date not shown', 'YMCA of Middletown, 81 Highland Ave', '~25 to 30 min', 'Cost not shown', '845-344-9622', 'Last day: Oct 31', 'Details and sign-up: middletownymca.org/halloween')
     ].join('') +
     '<h3>My fitness notes</h3><div class="lines"><i></i><i></i><i></i><i></i><i></i></div>');
-  add('fit', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Fitness', 'local trainers', '<p class="lead">Plan: one session a week with a trainer, plus her own workouts at Planet Fitness the other days. Ask each trainer: can you coach weekly, and do you work with women 55+ and weight loss?</p>') +
+  add('fit', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Fitness', 'local trainers', '<p class="lead">Plan: one session a week with a trainer, plus her own workouts at Planet Fitness the other days. Ask each trainer: can you coach weekly, and do you work with women 55+ and weight loss?</p>') +
     [
       F('Cynthia Pfeifer (Sgt. Cyndi), Body Physics', 'Price not listed', 'Personal training, boot camp, nutrition, online coaching. Focus: weight loss, muscle tone, core, posture. Has a "Fit and Fabulous 50s Project." Serves Wurtsboro, Ellenville, Middletown.', 'Text 914-805-0590 to set up a call.', '914-805-0590 · 358 Cox Rd, Pine Bush · sgtcyndi.com', '~35 to 45 min', '', 'k'),
       F('Alexandra Tomson, Hidden Charm Performance Training', '$50 one session; $180 for 4 a month', 'Woman, NASM trainer. Trains beginners, women, weight loss, active older adults.', 'Town not posted. Ask where.', '845-492-9417 · hidden-charm-performance-training.com', '', '', 'k'),
@@ -770,7 +773,16 @@ table.t tr .addbtn { display: block; }
 
   /* Cover */
   /* Merge dated events into one date-ordered list */
-  var UPDATED = 'Oct 20, 2026';
+  /* ===== UPDATE LOG: newest first. The Monday update adds entries at the TOP. {d: date, t: short text, k: tab key or 'my'} ===== */
+var UPDATES = [
+  { d: '2026-10-20', t: 'My Plan: pick events, build a day, suggest a week', k: 'my' },
+  { d: '2026-10-20', t: 'New Walks and Runs tab: 5Ks and walking groups', k: 'walk' },
+  { d: '2026-10-20', t: 'New Ideas tab: arts, crafts and gardening classes', k: 'ideas' },
+  { d: '2026-10-20', t: 'Added Walk to End Alzheimer\'s, We Can Be Heroes 5K and more', k: 'walk' },
+  { d: '2026-10-20', t: 'MEEC Fall Festival, Sat Nov 7, $5', k: 'ev' },
+  { d: '2026-10-20', t: 'Sunday knitting circle at Taylor + Ace, Roscoe', k: 'sun' }
+];
+var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+p[1] - 1] + ' ' + (+p[2]) + ', ' + p[0]; })();
 (function () {
     var isMk = function (h) { return /<small>(farmers markets|markets, continued|winter markets)<\/small>/.test(h); };
     var keep = [], items = [], extras = [], first = true, MO = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
@@ -788,7 +800,7 @@ table.t tr .addbtn { display: block; }
       d.querySelectorAll('.box').forEach(function (b) { extras.push(b.outerHTML); });
     });
     items.sort(function (a, b) { return (a.k - b.k) || (a.i - b.i); });
-    var html = head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'by date', '<p class="lead">One-day events and short runs, in date order. The red box on each one is the last date. Drive times are estimates from Wurtsboro.</p>'), cur = null;
+    var html = head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'by date', '<p class="lead">One-day events and short runs, in date order. The red box on each one is the last date. Drive times are estimates from Wurtsboro.</p>'), cur = null;
     items.forEach(function (x) {
       if (x.g !== cur) { cur = x.g; html += '<h3>' + (x.g < 0 ? 'Open now' : MN[x.g % 12] + (x.g >= 12 ? ' 2027' : ' 2026')) + '</h3>'; }
       html += x.h;
@@ -903,10 +915,19 @@ table.t tr .addbtn { display: block; }
     var tiles = TABS.filter(function (t) { return live[t.k]; }).map(function (t) {
       return '<a class="tile" href="#t-' + t.k + '" style="--tc:' + t.c + '"><b>' + t.name + '</b><span>' + t.d + '</span></a>';
     }).join('');
+    function newBox() {
+      var E = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+      var top = new Date(UPDATES[0].d + 'T00:00:00'), keep = UPDATES.filter(function (u) { return (top - new Date(u.d + 'T00:00:00')) / 864e5 <= 13; }).slice(0, 7);
+      var MO = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return '<div class="newbox"><b>Recently updated</b><small>Last updated ' + UPDATED + '</small>' + keep.map(function (u) {
+        var p = u.d.split('-'), href = u.k === 'my' ? '#my' : (u.k ? '#t-' + u.k : '#');
+        return '<a href="' + href + '"><i>' + MO[+p[1] - 1] + ' ' + (+p[2]) + '</i> ' + E(u.t) + '</a>';
+      }).join('') + '</div>';
+    }
     var home = document.createElement('div'); home.id = 'home';
     home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.</p>' +
-      '<a class="today" href="#t-' + DOW[di] + '">Today: ' + DN[di] + '<small>See what is on today</small></a><a class="today mypl" href="#my">My Plan<small>Pick events and build your week</small></a><div class="grid">' + tiles + '</div>' +
-      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Last updated ' + UPDATED + '. <a href="?app=0" style="text-decoration:underline">Show full packet view</a></p>';
+      '<a class="today" href="#t-' + DOW[di] + '">Today: ' + DN[di] + '<small>See what is on today</small></a><a class="today mypl" href="#my">My Plan<small>Pick events and build your week</small></a>' + newBox() + '<div class="grid">' + tiles + '</div>' +
+      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Last updated ' + UPDATED + '. <a href="?app=0" style="text-decoration:underline">Show full packet view</a>' + (/github\.io$/.test(location.hostname) ? ' · <a href="Moms_Activity_Packet.pdf" style="text-decoration:underline">Printable PDF</a>' : '') + '</p>';
     var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span>';
     var nav = document.createElement('div'); nav.id = 'nav';
     nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#t-' + DOW[di] + '" data-n="today">Today</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
