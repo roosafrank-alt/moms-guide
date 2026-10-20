@@ -211,6 +211,53 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
 #home .tile span { display: block; color: var(--soft); font-size: 10pt; margin-top: 4px; line-height: 1.25; }
 #home .tip { margin: 16px 2px; color: var(--soft); font-size: 11pt; }
 
+
+body.app.view-my #home { display: none; }
+body.app.view-my #bar { display: flex; position: sticky; top: 0; z-index: 20; align-items: center; gap: 10px; padding: calc(env(safe-area-inset-top, 0px) + 10px) 12px 10px; background: #2f6b4f; color: #fff; }
+#mine { display: none; }
+body.app.view-my #mine { display: block; padding: 12px 14px 20px; }
+.upd { font-size: 9.5pt; color: var(--soft); margin: -2px 0 8px; }
+#home .today.mypl { background: #fff; color: var(--green) !important; border: 2px solid var(--green); }
+.addbtn { margin-top: 8px; background: #fff; color: var(--green); border: 2px solid var(--green); border-radius: 999px; padding: 9px 16px; font-weight: 700; font-size: 12pt; font-family: inherit; min-height: 44px; }
+.addbtn.in { background: var(--green); color: #fff; }
+#modal { display: none; position: fixed; inset: 0; z-index: 100; }
+#modal.on { display: block; }
+#modal .bk { position: absolute; inset: 0; background: rgba(0,0,0,.45); }
+#modal .card { position: absolute; left: 0; right: 0; bottom: 0; max-height: 86vh; overflow-y: auto; background: #fff; border-radius: 22px 22px 0 0; padding: 14px 16px calc(env(safe-area-inset-bottom, 0px) + 20px); }
+#modal .grab { width: 44px; height: 5px; border-radius: 3px; background: #c9ccc8; margin: 0 auto 8px; }
+#modal .x { position: absolute; top: 10px; right: 12px; width: 44px; height: 44px; border: 0; border-radius: 22px; background: #eef0ea; font-size: 16pt; }
+#modal .mt { font-size: 15pt; margin: 6px 52px 2px 0; text-transform: none; letter-spacing: 0; border: 0; padding: 0; } #modal .mw { color: var(--soft); font-size: 11pt; margin-bottom: 6px; }
+.lab { font-weight: 800; font-size: 11pt; margin: 14px 0 6px; text-transform: uppercase; letter-spacing: .05em; color: var(--soft); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 2px solid var(--rule); background: #fff; border-radius: 999px; padding: 10px 14px; font-weight: 700; font-size: 12pt; font-family: inherit; min-height: 44px; }
+.chip.on { background: var(--green); color: #fff; border-color: var(--green); }
+.row { display: flex; gap: 8px; align-items: center; margin-top: 8px; } .row.rowend { justify-content: flex-end; margin-top: 18px; }
+.row input[type=date] { flex: 1; min-height: 44px; font-size: 14pt; padding: 4px 8px; }
+.btn1, .btn2 { border-radius: 999px; padding: 11px 20px; font-weight: 700; font-size: 13pt; font-family: inherit; min-height: 46px; border: 2px solid var(--green); }
+.btn1 { background: var(--green); color: #fff; } .btn2 { background: #fff; color: var(--green); } .btn2.red { color: #9a2a1c; border-color: #9a2a1c; }
+.none2, .tip2 { color: var(--soft); font-size: 11.5pt; margin: 8px 0; }
+.seg { display: flex; background: #dfe3dc; border-radius: 999px; padding: 3px; margin-bottom: 10px; }
+.seg button { flex: 1; border: 0; background: transparent; border-radius: 999px; padding: 10px; font-weight: 700; font-size: 12pt; font-family: inherit; min-height: 44px; } .seg button.on { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.mnav { display: flex; justify-content: space-between; align-items: center; margin: 6px 0 10px; font-size: 14pt; }
+.mnav button { width: 48px; height: 44px; border: 0; background: #fff; border-radius: 12px; font-size: 18pt; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+.mg { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.mg .hd { text-align: center; font-style: normal; font-weight: 800; color: var(--soft); font-size: 10pt; }
+.mg .dc { position: relative; background: #fff; border-radius: 10px; min-height: 52px; padding: 4px 5px; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.mg .dc span { font-weight: 700; font-size: 11pt; } .mg .dc em { position: absolute; right: 4px; bottom: 4px; background: var(--green); color: #fff; font-style: normal; font-weight: 800; font-size: 9pt; border-radius: 9px; padding: 1px 6px; }
+.mg .dc u { position: absolute; left: 5px; bottom: 6px; width: 8px; height: 8px; border-radius: 4px; background: #c8892b; }
+.mg .dc.td, .wd.td { outline: 3px solid var(--green); }
+.wd { display: block; background: #fff; border-radius: 14px; padding: 10px 12px; margin-top: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.wd b { display: block; font-size: 12.5pt; margin-bottom: 3px; }
+.wi { display: block; font-size: 11.5pt; padding: 2px 0; } .wi i { font-style: normal; font-weight: 700; color: var(--green); }
+.we { color: var(--soft); font-size: 11pt; } .wn { display: block; margin-top: 4px; font-size: 10.5pt; color: #8a5a10; }
+.mh { margin: 2px 0 8px; } .back { font-weight: 800; font-size: 14pt; color: var(--green); } .dh { font-size: 22pt; margin: 4px 0; }
+.pe { background: #fff; border-radius: 14px; padding: 10px 12px; margin-top: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.pe .pt { font-weight: 800; color: var(--green); font-size: 11pt; } .pe .pn { font-weight: 700; font-size: 13pt; } .pe .pw { color: var(--soft); font-size: 11pt; }
+.pe .pa { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; align-items: center; }
+.pe .pa a.mp { display: inline-block; padding: 7px 14px; }
+.pe button { border: 2px solid var(--green); background: #fff; color: var(--green); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 11pt; font-family: inherit; min-height: 40px; } .pe button.rmv { border-color: #9a2a1c; color: #9a2a1c; }
+#nt { width: 100%; font: inherit; font-size: 13pt; padding: 10px; border: 2px solid var(--rule); border-radius: 12px; }
+
 @media (max-width: 640px) {
   .sheet { padding: 28px 58px 56px 22px; min-height: 0; }
   .item { grid-template-columns: 82px 1fr 34px; gap: 8px; }
@@ -531,7 +578,7 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
       '<p class="meta">' + (cost ? '<span>' + cost + '</span>' : '') + ((phone && !(isM && /^Phone not/.test(phone))) ? '<span class="tel">' + phone + '</span>' : '') + (isM ? lk(where + ' ' + name).replace('<span class="lk nolink">no website found</span>', '') : lk(where + ' ' + name)) + '</p>' +
       (x ? '<p class="note warn">' + x + '</p>' : '') + '<span class="end">' + last + '</span></div><div class="chk"><i></i>going</div></div>';
   }
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', '', '<p class="lead">One-day events and short runs. The red box on each one is the last date. Drive times are estimates from Wurtsboro.</p>') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', '', '<p class="lead">One-day events and short runs. The red box on each one is the last date. Drive times are estimates from Wurtsboro.</p>') +
     '<h3>One-day and short-run events</h3>' + [
       EV('Wed Oct 21', 'Bag Ladies (adult group; no description posted)', '10:30 to 11:30am', 'Pine Bush Library, 223-227 Maple Ave, Pine Bush', '~30 min', 'Cost not listed', '845-744-3375', 'Last day: Oct 21', 'Ask what the group does and if it meets weekly.'),
       EV('Thu Oct 22', 'Adult Craft', '6pm', 'Pine Bush Library, 223-227 Maple Ave, Pine Bush', '~30 min', 'Cost not listed', '845-744-3375', 'Last day: Oct 22', 'No description posted. Ask what the craft is, if it is monthly, and if you need a library card.'),
@@ -540,13 +587,13 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
       EV('Sat Oct 24', 'Weird Organisms: Active Camouflage', '1pm', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', '$5', '845-644-5014', 'Last day: Oct 24', 'Call to register: 845-644-5014.'),
       EV('Mon Oct 26', 'Non-Fiction Book Club (register)', '2 to 3:30pm', 'Mamakating Library, 128 Sullivan St, Wurtsboro', '~5 min', 'Free', '845-888-8004', 'Last day: Oct 26', 'Book: The Best Minds by Jonathan Rosen.'),
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
       EV('Wed Oct 28', 'Bulb Planting Garden Workshop (signed up)', '5 to 6pm', 'Cornell Extension, 64 Ferndale-Loomis Rd, Liberty', '~25 min', 'Free', '845-292-6180', 'Last day: Oct 28', 'Registration required. Sign up: pub.cce.cornell.edu/event_registration/main/events.cfm?dept=248'),
       EV('Thu Oct 29', 'Open Mic Night, Scary Edition (register, audience welcome)', '5 to 7pm', 'Mamakating Library, 128 Sullivan St, Wurtsboro', '~5 min', 'Free', '845-888-8004', 'Last day: Oct 29', 'Register at mamakatinglibrary.org/registrations.'),
       EV('Thu Oct 29', 'D.I.Y. Energy Savings Session (free energy kit, register)', '5:30 to 7pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Free', '845-292-6180', 'Last day: Oct 29', 'Register for the free energy kit: ebcpl.libcal.com/event/17664867'),
       EV('Sat Nov 7', 'MEEC Fall Festival', '10am to 3pm', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', '$5 a person', '845-644-5014', 'Last day: Nov 7', 'Their biggest fall event: vendors, face painting, pumpkin carving demo, crafts, fall garden tour, bake sale, campfire. friendsofmeec.org'),
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
       EV('Tue Nov 10', 'Fall Wreath Workshop with Jessica Williams', '6pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'Last day: Nov 10', 'Ask about cost, sign-up and a library card.'),
       EV('Wed Nov 18', 'Chair Zumba for All Abilities', '1pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'Last day: Nov 18', 'Ask about cost and sign-up.'),
       EV('Thu Nov 5', 'Fisher and Kean, live music duo (register)', '6:30 to 7:30pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Free', '845-794-4660', 'Last day: Nov 5', ''),
@@ -567,7 +614,7 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
     '<li>Wurtsboro Art Alliance holiday gift show, 73 Sullivan St. Last year: mid-November to mid-December, Sat and Sun 12 to 4pm. info.waagallery@gmail.com.</li>' +
     '<li>Goshen Holiday Experience, tree lightings, church fairs: no 2026 dates found. Check again in mid-November.</li></ul></div>' +
     '');
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'Liberty Public Library', '<p class="lead">Adult programs from the Liberty library calendar (read Oct 20).</p>') + [
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'Liberty Public Library', '<p class="lead">Adult programs from the Liberty library calendar (read Oct 20).</p>') + [
       EV('Thu Oct 22', 'Memoir Writing Workshop (register, 4 seats left; also Nov 5 and Dec 3)', '4:30 to 6:30pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Oct 22', ''),
       EV('Sat Oct 24', 'Jewelry Making Workshop with Sue Petry (register)', '1 to 3pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Oct 24', 'Materials provided.'),
       EV('Thu Oct 29', 'Book Discussion: The Correspondent by Virginia Evans', '1 to 2pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Oct 29', 'Books at the circulation desk.'),
@@ -575,17 +622,17 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
       EV('Fri Nov 6', 'Chair Yoga (register; also Dec 4)', '1 to 2pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Nov 6', ''),
       EV('Thu Dec 10', 'Intro to Tai Chi with Nancy McGraw', '1 to 2pm', 'Liberty Public Library, 189 N Main St, Liberty', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'Last day: Dec 10', 'Ask how to register.')
   ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'more, through March', '<p class="lead">Almost nothing is posted for January, February and March yet.</p>') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'more, through March', '<p class="lead">Almost nothing is posted for January, February and March yet.</p>') +
     '<h3>More dated events</h3>' + [
       EV('Sun Nov 1', 'MEEC artist residency: "Sky Stitching" (Audrey Bartow)', '10am', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', 'Cost not listed', 'MEEC 845-644-5014', 'Last day: Nov 1', 'Posted on Patch only. Call to confirm.'),
       EV('Sat Nov 7', 'Catskill Art Space gallery (Livingston Manor)', 'Fri, Sat 11am to 5pm; Sun 11am to 3pm', 'Catskill Art Space, Livingston Manor', '~45 to 50 min (estimate)', 'Cost not listed, likely free', 'info@catskillartspace.org', 'Murray show ends: Dec 27', 'Nov 7 opening not confirmed. Call before going.'),
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'more, continued', '') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'more, continued', '') +
     '<h3>More dated events</h3>' + [
       EV('Sat Nov 21', 'SUNY Sullivan Holiday Craft Fair', '11am to 3pm', 'Paul Gerry Fieldhouse, 112 College Rd, Loch Sheldrake', '~35 min', 'Free admission and parking', 'events@sunysullivan.edu; 845-434-5750', 'Last day: Nov 21', 'Date confirmed on the college page.'),
       EV('Daily to Dec 31', 'Bethel Woods Museum (Woodstock history)', '10am to 5pm, may vary', 'Bethel Woods, Bethel', '~35 min', 'See notes', '845-583-2000', 'Open daily to Dec 31', 'Adult $19.69 advance, $22.69 at the door; 65+ $18 advance. Closed Jan to Mar.'),
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'farmers markets', '<p class="lead">The red box is the last market date of the 2026 season.</p>') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'farmers markets', '<p class="lead">The red box is the last market date of the 2026 season.</p>') +
     '<h3>Farmers markets: last date of the 2026 season</h3>' + [
       EV('Sat Oct 24', 'Pine Bush', 'Sat 9am to 1pm', '62 Main St at New St', '~30 min', '', '845-978-0298', 'Last market: Oct 24', ''),
       EV('Tue Oct 27', 'Florida', 'Tue 10am to 4pm', 'Rt 17A and Rt 94, Florida NY (across from Quick Chek)', '~35 to 40 min', '', '845-651-8310', 'Last market: Oct 27', ''),
@@ -593,7 +640,7 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
       EV('Fri Oct 30', 'Goshen', 'Fri 9am to 3pm', 'Orange County Government Center, 255 Main St', '~40 min', '', '845-294-7741', 'Last: Oct 30, plus one special market Wed Nov 25', ''),
       EV('Fri Oct 30', 'Wawayanda (Slate Hill)', 'Fri 12 to 6pm', 'Farm to Go, 2580 US-6', '', '', '845-636-8755', 'Last market: Oct 30', '')
     ].join(''));
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'markets, continued', '') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'markets, continued', '') +
     '<h3>Farmers markets, continued</h3>' + [
       EV('Sun Nov 22', 'Warwick Valley', 'Sun 9am to 2pm', 'South St parking lot at Bank St, Warwick', '~50 min, borderline distance', '', '845-987-9990', 'Last market: Nov 22', ''),
       EV('End of Oct', 'Barryville', 'Sat 10am to 1pm', '3405 NY-97', '~40 to 50 min', '', 'Phone not posted', 'Last market: Sat Oct 31', ''),
@@ -602,7 +649,7 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
     ].join('') +
     '<p class="legend">Confirmed dates come from the Orange County farmers market list at pickocny.com (seen Oct 19). Sullivan County dates are from last year\'s guide; check sullivancatskillsfarmersmarkets.com before going.</p>' +
     '');
-  add('ev', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'winter markets', '') +
+  add('ev', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'winter markets', '') +
     '<h3>Winter markets</h3><table class="t"><tr><th>Market</th><th>When and where</th><th>Dates</th><th>Note</th></tr>' +
     '<tr><td>Callicoon indoor market</td><td>Sun 11am to 2pm, Delaware Youth Center · ~50 min</td><td>December to March</td><td>Last year\'s info; confirm</td></tr>' +
     '<tr><td>New Paltz winter markets</td><td>Sat mornings, Robins Market on Rt 32 and Deyo Hall · ~35 to 40 min</td><td>Listed Dec to Feb (3rd and 4th Sat; 2nd Sat)</td><td>Year not stated; confirm</td></tr>' +
@@ -644,7 +691,7 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
     P.forEach(function (p) { if (/^(not stated|ask|likely)/i.test(p[1])) miss++; else known.push('<b>' + p[0] + ':</b> ' + p[1]); });
     return known.join(' · ') + (miss ? (known.length ? ' · ' : '') + 'Ask about the rest.' : '');
   }
-  add('fit', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Fitness', 'Planet Fitness', '<p class="lead">Gym: Planet Fitness, Middletown. Activities included with membership.</p>') +
+  add('fit', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Fitness', 'Planet Fitness', '<p class="lead">Gym: Planet Fitness, Middletown. Activities included with membership.</p>') +
     '<h3>At the gym</h3>' + [
       F('Free equipment orientation', 'Included', 'A certified trainer shows how to use the machines.', 'Ask at the front desk for a time.', '845-343-9800 · 30 Gibbs Court, Middletown', '~25 to 30 min', 'Good first stop.', ''),
       F('Small-group training sessions', 'Included', 'Certified trainers run small-group sessions for members.', 'Ask for the schedule and how to join.', '845-343-9800', '~25 to 30 min', 'Fitness level does not matter.', ''),
@@ -652,13 +699,13 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
       F('PE@PF class', 'Included', 'Class open to all fitness levels.', 'Schedule: planetfitness.com/gyms/middletown-ny', '845-343-9800', '~25 to 30 min', 'Check the class schedule on the club page.', '')
     ].join('') +
     '<p class="legend">Hours: open 24 hours Mon to Thu; Fri 12am to 10pm; Sat and Sun 6am to 9pm. Fees: ask the club.</p>');
-  add('fit', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Fitness', 'YMCA special events', '<p class="lead">Middletown YMCA, 81 Highland Ave, Middletown. 845-344-9622. middletownymca.org/events</p>') +
+  add('fit', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Fitness', 'YMCA special events', '<p class="lead">Middletown YMCA, 81 Highland Ave, Middletown. 845-344-9622. middletownymca.org/events</p>') +
     '<h3>Upcoming</h3>' + [
       EV('Fri Oct 30', 'YMCA 6th Annual Gala (evening of food and cocktails)', 'Time not shown', 'YMCA of Middletown, 81 Highland Ave', '~25 to 30 min', 'Cost not shown', '845-344-9622', 'Last day: Oct 30', 'Details: middletownymca.org/gala'),
       EV('Halloween', 'YMCA Halloween event (spooky games)', 'Date not shown', 'YMCA of Middletown, 81 Highland Ave', '~25 to 30 min', 'Cost not shown', '845-344-9622', 'Last day: Oct 31', 'Details and sign-up: middletownymca.org/halloween')
     ].join('') +
     '<h3>My fitness notes</h3><div class="lines"><i></i><i></i><i></i><i></i><i></i></div>');
-  add('fit', head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Fitness', 'local trainers', '<p class="lead">Plan: one session a week with a trainer, plus her own workouts at Planet Fitness the other days. Ask each trainer: can you coach weekly, and do you work with women 55+ and weight loss?</p>') +
+  add('fit', head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Fitness', 'local trainers', '<p class="lead">Plan: one session a week with a trainer, plus her own workouts at Planet Fitness the other days. Ask each trainer: can you coach weekly, and do you work with women 55+ and weight loss?</p>') +
     [
       F('Cynthia Pfeifer (Sgt. Cyndi), Body Physics', 'Price not listed', 'Personal training, boot camp, nutrition, online coaching. Focus: weight loss, muscle tone, core, posture. Has a "Fit and Fabulous 50s Project." Serves Wurtsboro, Ellenville, Middletown.', 'Text 914-805-0590 to set up a call.', '914-805-0590 · 358 Cox Rd, Pine Bush · sgtcyndi.com', '~35 to 45 min', '', 'k'),
       F('Alexandra Tomson, Hidden Charm Performance Training', '$50 one session; $180 for 4 a month', 'Woman, NASM trainer. Trains beginners, women, weight loss, active older adults.', 'Town not posted. Ask where.', '845-492-9417 · hidden-charm-performance-training.com', '', '', 'k'),
@@ -719,7 +766,8 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
 
   /* Cover */
   /* Merge dated events into one date-ordered list */
-  (function () {
+  var UPDATED = 'Oct 20, 2026';
+(function () {
     var isMk = function (h) { return /<small>(farmers markets|markets, continued|winter markets)<\/small>/.test(h); };
     var keep = [], items = [], extras = [], first = true, MO = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
     var MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -736,7 +784,7 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
       d.querySelectorAll('.box').forEach(function (b) { extras.push(b.outerHTML); });
     });
     items.sort(function (a, b) { return (a.k - b.k) || (a.i - b.i); });
-    var html = head('Fall 2026 – Winter 2027 · Updated Oct 20, 2026', 'Events and Markets', 'by date', '<p class="lead">One-day events and short runs, in date order. The red box on each one is the last date. Drive times are estimates from Wurtsboro.</p>'), cur = null;
+    var html = head('Fall 2026 – Winter 2027 · Last updated Oct 20, 2026', 'Events and Markets', 'by date', '<p class="lead">One-day events and short runs, in date order. The red box on each one is the last date. Drive times are estimates from Wurtsboro.</p>'), cur = null;
     items.forEach(function (x) {
       if (x.g !== cur) { cur = x.g; html += '<h3>' + (x.g < 0 ? 'Open now' : MN[x.g % 12] + (x.g >= 12 ? ' 2027' : ' 2026')) + '</h3>'; }
       html += x.h;
@@ -777,7 +825,7 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
     var idAttr = '';
     if (s.k === null) idAttr = ' id="top"'; else if (!seenK[s.k]) { seenK[s.k] = 1; idAttr = ' id="t-' + s.k + '"'; }
     out += '<section class="sheet' + (s.k === null ? ' cover-sheet' : '') + '"' + idAttr + ' data-k="' + (s.k || '') + '"><div class="holes"><i></i><i></i><i></i></div><div class="tabs">' + tabs + '</div>' + s.html +
-      '<div class="foot"><span>Mom\'s Activity Packet · updated Oct 20, 2026' + (cur ? ' · ' + cur.name + ' · <a href="#top">Contents</a>' : '') + '</span><span>' + (i + 1) + ' of ' + sheets.length + '</span></div></section>';
+      '<div class="foot"><span>Mom\'s Activity Packet · last updated ' + UPDATED + (cur ? ' · ' + cur.name + ' · <a href="#top">Contents</a>' : '') + '</span><span>' + (i + 1) + ' of ' + sheets.length + '</span></div></section>';
   });
   document.getElementById('book').innerHTML = out;
   var book = document.getElementById('book');
@@ -853,11 +901,11 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
     }).join('');
     var home = document.createElement('div'); home.id = 'home';
     home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.</p>' +
-      '<a class="today" href="#t-' + DOW[di] + '">Today: ' + DN[di] + '<small>See what is on today</small></a><div class="grid">' + tiles + '</div>' +
-      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Updated Oct 20, 2026 (app view v3). <a href="?app=0" style="text-decoration:underline">Show full packet view</a></p>';
+      '<a class="today" href="#t-' + DOW[di] + '">Today: ' + DN[di] + '<small>See what is on today</small></a><a class="today mypl" href="#my">My Plan<small>Pick events and build your week</small></a><div class="grid">' + tiles + '</div>' +
+      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Last updated ' + UPDATED + '. <a href="?app=0" style="text-decoration:underline">Show full packet view</a></p>';
     var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span>';
     var nav = document.createElement('div'); nav.id = 'nav';
-    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#t-' + DOW[di] + '" data-n="today">Today</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#t-plan" data-n="plan">Plan</a>';
+    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#t-' + DOW[di] + '" data-n="today">Today</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
     document.body.insertBefore(home, book); document.body.insertBefore(bar, home); document.body.appendChild(nav);
     var route = function () {
       var h = location.hash.replace('#', ''), k = h.indexOf('t-') === 0 ? h.slice(2) : '';
@@ -868,7 +916,196 @@ body.app #nav a.on { color: var(--green); background: #e6efe9; }
       [].forEach.call(nav.querySelectorAll('a'), function (a) { var n = a.getAttribute('data-n'); a.classList.toggle('on', t ? (n === k || (n === 'today' && k === DOW[di])) : n === 'home'); });
       window.scrollTo(0, 0);
     };
-    window.addEventListener('hashchange', route);
+    /* ================= Planner (phone app) ================= */
+    var MON = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+    var MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var DS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var KEY = 'momsguide.v1', S = { plan: [], notes: {} };
+    try { var raw = localStorage.getItem(KEY); if (raw) S = JSON.parse(raw) || S; } catch (e) {}
+    if (!S.plan) S.plan = []; if (!S.notes) S.notes = {};
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function iso(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+    function fromIso(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+    function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    function fmt(s) { var d = fromIso(s); return DS[d.getDay()] + ' ' + MN[d.getMonth()].slice(0, 3) + ' ' + d.getDate(); }
+    function parseDates(text) {
+      var out = [], mo = -1, re = /\b(jan|feb|mar|apr|oct|nov|dec)[a-z]*\b|\b(\d{1,2})\b(?!\s*(?:am|pm|:))/gi, m;
+      while ((m = re.exec(text))) {
+        if (m[1]) mo = MON[m[1].toLowerCase()];
+        else if (mo >= 0) { var day = +m[2]; if (day >= 1 && day <= 31) { var yr = mo >= 9 ? 2026 : 2027; out.push(yr + '-' + pad(mo + 1) + '-' + pad(day)); } }
+      }
+      return out.filter(function (x, i) { return out.indexOf(x) === i; });
+    }
+    function timeKey(text) {
+      var m = String(text).match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?(?:\s*(?:to|-|–)\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm))?/i);
+      if (!m || !(m[3] || m[6])) return 9999;
+      var h = +m[1], mi = m[2] ? +m[2] : 0, suf = (m[3] || m[6] || '').toLowerCase();
+      if (!m[3] && m[6]) { var h2 = +m[4]; if (suf === 'pm' && h < 12 && h > h2) suf = 'am'; }
+      if (suf === 'pm' && h < 12) h += 12; if (suf === 'am' && h === 12) h = 0;
+      return h * 60 + mi;
+    }
+    function dowIn(text) {
+      var m = String(text).match(/\b(Sun|Mon|Tue|Wed|Thu|Fri|Sat)[a-z]*/i);
+      return m ? DS.indexOf(m[1].charAt(0).toUpperCase() + m[1].slice(1, 3).toLowerCase()) : -1;
+    }
+    /* catalog of listings */
+    var CAT = [], CATBY = {};
+    [].forEach.call(book.querySelectorAll('.sheet:not(.printonly) .item'), function (it) {
+      var sh = it.closest('.sheet'), k = sh.dataset.k, h4 = it.querySelector('h4'); if (!h4) return;
+      var c = h4.cloneNode(true); [].forEach.call(c.querySelectorAll('.b,.dol'), function (x) { x.remove(); });
+      var name = c.textContent.replace(/\s+/g, ' ').trim();
+      var we = it.querySelector('.when'), wc = we.cloneNode(true);
+      [].forEach.call(wc.querySelectorAll('.rc,.rd,br'), function (x) { x.remove(); });
+      [].forEach.call(wc.querySelectorAll('em'), function (x) { x.insertAdjacentText('beforebegin', ' '); });
+      var whenText = wc.textContent.replace(/\s+/g, ' ').trim(), rd = (we.querySelector('.rd') || {}).textContent || '';
+      var wh = it.querySelector('.where'), where = wh ? wh.textContent.replace(/\s+/g, ' ').trim() : '';
+      var tl = it.querySelector('a.tl'), mp = it.querySelector('a.mp');
+      var cls = (it.className.match(/r-(\w)/) || [])[1] || '';
+      var dayK = DOW.indexOf(k);
+      var rec = { id: k + '|' + name + '|' + whenText, k: k, name: name, when: whenText, where: where, tel: tl ? tl.getAttribute('href') : '', telTxt: tl ? tl.textContent : '', map: mp ? mp.getAttribute('href') : '', dates: [], weekly: [], cls: cls };
+      var hasDate = /\b(Jan|Feb|Mar|Apr|Oct|Nov|Dec)[a-z]*\s+\d/.test(whenText), rg = whenText.match(/^(.*?)\bto\s+(Jan|Feb|Mar|Apr|Oct|Nov|Dec)[a-z]*\s+(\d{1,2})\b/i);
+      if (rg) {
+        var wk = /Daily/i.test(whenText) ? [0, 1, 2, 3, 4, 5, 6] : /Weekends/i.test(whenText) ? [0, 6] : (whenText.match(/\b(Sun|Mon|Tue|Wed|Thu|Fri|Sat)[a-z]*/gi) || []).map(function (x) { return DS.indexOf(x.charAt(0).toUpperCase() + x.slice(1, 3).toLowerCase()); });
+        var um = MON[rg[2].toLowerCase()]; rec.until = (um >= 9 ? 2026 : 2027) + '-' + pad(um + 1) + '-' + pad(+rg[3]);
+        var fm = rg[1].match(/(Jan|Feb|Mar|Apr|Oct|Nov|Dec)[a-z]*\s+(\d{1,2})/i);
+        if (fm) { var fo = MON[fm[1].toLowerCase()]; rec.from = (fo >= 9 ? 2026 : 2027) + '-' + pad(fo + 1) + '-' + pad(+fm[2]); }
+        rec.weekly = wk; hasDate = true;
+      } else if (/^Halloween/i.test(whenText)) { rec.dates = ['2026-10-31']; hasDate = true; }
+      if (!rg && !rec.dates.length && (hasDate || (cls === 'd' && dayK >= 0))) rec.dates = parseDates(hasDate ? whenText : whenText + ' ' + rd);
+      if (!rec.dates.length && !rec.weekly.length && dayK >= 0) rec.weekly = [dayK];
+      else if (!rec.dates.length && !rec.weekly.length && cls === 'w') { var dd = dowIn(whenText); if (dd >= 0) rec.weekly = [dd]; }
+      rec.sortT = timeKey(hasDate ? (whenText + ' ' + where) : whenText);
+      if (rec.sortT === 9999) rec.sortT = timeKey(where);
+      rec.timeTxt = hasDate ? (where.split(' · ')[0].match(/\d{1,2}(:\d{2})?\s*(am|pm)?(\s*(to|-)\s*\d{1,2}(:\d{2})?\s*(am|pm))?/i) || [''])[0] : whenText;
+      if (hasDate && rec.where.indexOf(' · ') > 0 && /^\d{1,2}(:\d{2})?\s*(am|pm|to)/i.test(rec.where)) rec.where = rec.where.slice(rec.where.indexOf(' · ') + 3);
+      CAT.push(rec); CATBY[rec.id] = rec; it.setAttribute('data-cid', rec.id);
+      var b = document.createElement('button'); b.className = 'addbtn'; b.type = 'button'; b.setAttribute('data-cid', rec.id);
+      (it.querySelector('.what') || it).appendChild(b);
+    });
+    function planOf(id) { return S.plan.filter(function (p) { return p.id === id; })[0]; }
+    function refreshBtns() {
+      [].forEach.call(book.querySelectorAll('.addbtn'), function (b) {
+        var p = planOf(b.getAttribute('data-cid')); b.textContent = p ? '✓ In my plan · change' : '＋ Add to my plan'; b.classList.toggle('in', !!p);
+      });
+    }
+    function mk(r, dates, weekly) { return { id: r.id, name: r.name, timeTxt: r.timeTxt, where: r.where, tel: r.tel, telTxt: r.telTxt, map: r.map, k: r.k, sortT: r.sortT, from: r.from || '', until: r.until || '', dates: dates, weekly: weekly }; }
+    function wkOn(p, isoD, w) { return (p.weekly || []).indexOf(w) >= 0 && isoD >= '2026-10-19' && (!p.from || isoD >= p.from) && (!p.until || isoD <= p.until); }
+    function entriesOn(isoD) {
+      var d = fromIso(isoD), w = d.getDay();
+      return S.plan.filter(function (p) { return (p.dates || []).indexOf(isoD) >= 0 || wkOn(p, isoD, w); }).sort(function (a, b) { return a.sortT - b.sortT; });
+    }
+    /* modal */
+    var modal = document.createElement('div'); modal.id = 'modal'; document.body.appendChild(modal);
+    function closeModal() { modal.className = ''; modal.innerHTML = ''; }
+    function openModal(html, onReady) {
+      modal.innerHTML = '<div class="bk"></div><div class="card"><div class="grab"></div><button class="x" type="button" aria-label="Close">✕</button>' + html + '</div>'; modal.className = 'on';
+      modal.querySelector('.bk').onclick = closeModal; modal.querySelector('.x').onclick = closeModal;
+      var card = modal.querySelector('.card'), y0 = null;
+      card.addEventListener('touchstart', function (e) { y0 = e.touches[0].clientY; }, { passive: true });
+      card.addEventListener('touchend', function (e) { if (y0 !== null && e.changedTouches[0].clientY - y0 > 70 && card.scrollTop <= 0) closeModal(); y0 = null; }, { passive: true });
+      if (onReady) onReady(card);
+    }
+    function chooser(id) {
+      var r = CATBY[id], ex = planOf(id), dates = (ex ? ex.dates : r.dates).slice(), weekly = (ex ? ex.weekly : r.weekly).slice();
+      function draw(card) {
+        var h = '<h3 class="mt">' + esc(r.name) + '</h3><p class="mw">' + esc(r.timeTxt || '') + ' ' + esc(r.where || '') + '</p>';
+        var all = r.dates.concat(dates.filter(function (x) { return r.dates.indexOf(x) < 0; }));
+        h += '<p class="lab">Which days?</p><div class="chips">' + (all.length ? all.map(function (x) { return '<button type="button" class="chip' + (dates.indexOf(x) >= 0 ? ' on' : '') + '" data-d="' + x + '">' + fmt(x) + '</button>'; }).join('') : '<span class="none2">No set dates. Pick below.</span>') + '</div>';
+        h += '<p class="lab">Every week on' + (r.until ? ' <small style="text-transform:none;letter-spacing:0">(through ' + fmt(r.until) + ')</small>' : '') + '</p><div class="chips">' + DS.map(function (n, i) { return '<button type="button" class="chip' + (weekly.indexOf(i) >= 0 ? ' on' : '') + '" data-w="' + i + '">' + n + '</button>'; }).join('') + '</div>';
+        h += '<p class="lab">Or add a date</p><div class="row"><input type="date" id="pd" min="2026-10-21" max="2027-03-31"><button type="button" class="btn2" id="pdb">Add date</button></div>';
+        h += '<div class="row rowend">' + (ex ? '<button type="button" class="btn2 red" id="rm">Remove</button>' : '') + '<button type="button" class="btn1" id="sv">Save</button></div>';
+        card.querySelector('.body').innerHTML = h;
+        [].forEach.call(card.querySelectorAll('[data-d]'), function (c) { c.onclick = function () { var x = c.getAttribute('data-d'), i = dates.indexOf(x); if (i >= 0) dates.splice(i, 1); else dates.push(x); draw(card); }; });
+        [].forEach.call(card.querySelectorAll('[data-w]'), function (c) { c.onclick = function () { var x = +c.getAttribute('data-w'), i = weekly.indexOf(x); if (i >= 0) weekly.splice(i, 1); else weekly.push(x); draw(card); }; });
+        card.querySelector('#pdb').onclick = function () { var v = card.querySelector('#pd').value; if (v && dates.indexOf(v) < 0) { dates.push(v); draw(card); } };
+        card.querySelector('#sv').onclick = function () {
+          S.plan = S.plan.filter(function (p) { return p.id !== id; });
+          if (dates.length || weekly.length) S.plan.push(mk(r, dates, weekly));
+          save(); closeModal(); refreshBtns(); route();
+        };
+        if (ex) card.querySelector('#rm').onclick = function () { S.plan = S.plan.filter(function (p) { return p.id !== id; }); save(); closeModal(); refreshBtns(); route(); };
+      }
+      openModal('<div class="body"></div>', draw);
+    }
+    book.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.addbtn'); if (b) { e.preventDefault(); chooser(b.getAttribute('data-cid')); } });
+    /* My Plan screens */
+    var mine = document.createElement('div'); mine.id = 'mine'; document.body.insertBefore(mine, book);
+    var mv = { mode: 'week', wk: null, mo: null };
+    function monday(d) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); var k = (x.getDay() + 6) % 7; x.setDate(x.getDate() - k); return x; }
+    function entryHtml(p, withX) {
+      return '<div class="pe"><div class="pt">' + esc(p.timeTxt || 'Any time') + '</div><div class="pn">' + esc(p.name) + '</div>' + (p.where ? '<div class="pw">' + esc(p.where) + '</div>' : '') +
+        '<div class="pa">' + (p.tel ? '<a class="tl" href="' + p.tel + '">' + esc(p.telTxt || 'Call') + '</a>' : '') + (p.map ? '<a class="mp" href="' + p.map + '">Map</a>' : '') + (withX ? '<button type="button" class="rmv" data-rid="' + esc(p.id) + '">Remove</button>' : '') + '</div></div>';
+    }
+    function renderMine(h) {
+      var today = iso(new Date()), html = '';
+      if (/^day-/.test(h)) {
+        var di2 = h.slice(4), d = fromIso(di2), es = entriesOn(di2);
+        html += '<div class="mh"><a class="back" href="#my">‹ My Plan</a></div><h2 class="dh">' + DN[d.getDay()] + ', ' + MN[d.getMonth()] + ' ' + d.getDate() + '</h2>';
+        html += '<p class="lab">My day</p>' + (es.length ? es.map(function (p) { return entryHtml(p, true); }).join('') : '<p class="none2">Nothing yet. Add something below.</p>');
+        html += '<p class="lab">Note for this day</p><textarea id="nt" rows="3" placeholder="Lunch with a friend, bring yarn...">' + esc(S.notes[di2] || '') + '</textarea>';
+        var have = {}; es.forEach(function (p) { have[p.id] = 1; });
+        var cand = CAT.filter(function (r) { return !have[r.id] && (r.dates.indexOf(di2) >= 0 || (!r.dates.length && wkOn(r, di2, d.getDay()))); }).sort(function (a, b) { return a.sortT - b.sortT; });
+        html += '<p class="lab">Add something for this day</p>' + (cand.length ? cand.map(function (r) {
+          return '<div class="pe"><div class="pt">' + esc(r.timeTxt || '') + '</div><div class="pn">' + esc(r.name) + '</div>' + (r.where ? '<div class="pw">' + esc(r.where) + '</div>' : '') + '<div class="pa"><button type="button" class="addday" data-cid="' + esc(r.id) + '" data-d="' + di2 + '">＋ Add to this day</button>' + (r.weekly.length ? '<button type="button" class="addwk" data-cid="' + esc(r.id) + '">＋ Every ' + DS[d.getDay()] + '</button>' : '') + '</div></div>';
+        }).join('') : '<p class="none2">No listings with a set time that day. Try <a href="#t-' + DOW[d.getDay()] + '" style="text-decoration:underline">' + DN[d.getDay()] + ' listings</a>.</p>');
+      } else if (mv.mode === 'month') {
+        var m0 = mv.mo || new Date(Math.max(Date.now(), new Date(2026, 9, 1)));
+        var first = new Date(m0.getFullYear(), m0.getMonth(), 1), dim = new Date(m0.getFullYear(), m0.getMonth() + 1, 0).getDate();
+        html += '<div class="seg"><button type="button" data-m="week">Week</button><button type="button" class="on" data-m="month">Month</button></div>';
+        html += '<div class="mnav"><button type="button" id="pm">‹</button><b>' + MN[first.getMonth()] + ' ' + first.getFullYear() + '</b><button type="button" id="nm">›</button></div><div class="mg">' + DS.map(function (x) { return '<i class="hd">' + x.charAt(0) + '</i>'; }).join('');
+        for (var i = 0; i < first.getDay(); i++) html += '<i></i>';
+        for (var dn = 1; dn <= dim; dn++) { var ii = first.getFullYear() + '-' + pad(first.getMonth() + 1) + '-' + pad(dn), c = entriesOn(ii).length, nt = S.notes[ii];
+          html += '<a href="#day-' + ii + '" class="dc' + (ii === today ? ' td' : '') + '"><span>' + dn + '</span>' + (c ? '<em>' + c + '</em>' : '') + (nt ? '<u></u>' : '') + '</a>'; }
+        html += '</div><p class="tip2">Green number = things in your plan. Tap a day to build it.</p>';
+      } else {
+        var ws = mv.wk || monday(new Date(Math.max(Date.now(), new Date(2026, 9, 21))));
+        html += '<div class="seg"><button type="button" class="on" data-m="week">Week</button><button type="button" data-m="month">Month</button></div>';
+        var we2 = new Date(ws.getFullYear(), ws.getMonth(), ws.getDate() + 6);
+        html += '<div class="mnav"><button type="button" id="pw">‹</button><b>' + MN[ws.getMonth()].slice(0, 3) + ' ' + ws.getDate() + ' – ' + MN[we2.getMonth()].slice(0, 3) + ' ' + we2.getDate() + '</b><button type="button" id="nw">›</button></div>';
+        for (var j = 0; j < 7; j++) { var dd = new Date(ws.getFullYear(), ws.getMonth(), ws.getDate() + j), ii2 = iso(dd), es2 = entriesOn(ii2);
+          html += '<a class="wd' + (ii2 === today ? ' td' : '') + '" href="#day-' + ii2 + '"><b>' + DN[dd.getDay()] + ' ' + MN[dd.getMonth()].slice(0, 3) + ' ' + dd.getDate() + '</b>' +
+            (es2.length ? es2.map(function (p) { return '<span class="wi"><i>' + esc(p.timeTxt || '') + '</i> ' + esc(p.name) + '</span>'; }).join('') : '<span class="we">Tap to plan this day</span>') + (S.notes[ii2] ? '<span class="wn">' + esc(S.notes[ii2]) + '</span>' : '') + '</a>'; }
+      }
+      mine.innerHTML = html;
+      [].forEach.call(mine.querySelectorAll('[data-m]'), function (b) { b.onclick = function () { mv.mode = b.getAttribute('data-m'); route(); }; });
+      var q = function (id, fn) { var el = mine.querySelector('#' + id); if (el) el.onclick = fn; };
+      q('pw', function () { var w = mv.wk || monday(new Date()); mv.wk = new Date(w.getFullYear(), w.getMonth(), w.getDate() - 7); route(); });
+      q('nw', function () { var w = mv.wk || monday(new Date()); mv.wk = new Date(w.getFullYear(), w.getMonth(), w.getDate() + 7); route(); });
+      q('pm', function () { var m = mv.mo || new Date(); mv.mo = new Date(m.getFullYear(), m.getMonth() - 1, 1); route(); });
+      q('nm', function () { var m = mv.mo || new Date(); mv.mo = new Date(m.getFullYear(), m.getMonth() + 1, 1); route(); });
+      var nt2 = mine.querySelector('#nt'); if (nt2) nt2.oninput = function () { var di3 = h.slice(4); if (nt2.value.trim()) S.notes[di3] = nt2.value; else delete S.notes[di3]; save(); };
+      [].forEach.call(mine.querySelectorAll('.rmv'), function (b) { b.onclick = function () {
+        var id = b.getAttribute('data-rid'), p = planOf(id), di3 = h.slice(4); if (!p) return;
+        if ((p.dates || []).indexOf(di3) >= 0) p.dates = p.dates.filter(function (x) { return x !== di3; }); else p.weekly = [];
+        if (!p.dates.length && !p.weekly.length) S.plan = S.plan.filter(function (x) { return x.id !== id; });
+        save(); refreshBtns(); route(); }; });
+      [].forEach.call(mine.querySelectorAll('.addday'), function (b) { b.onclick = function () {
+        var r = CATBY[b.getAttribute('data-cid')], dd = b.getAttribute('data-d'), p = planOf(r.id);
+        if (!p) { p = mk(r, [], []); S.plan.push(p); }
+        if (p.dates.indexOf(dd) < 0) p.dates.push(dd); save(); refreshBtns(); route(); }; });
+      [].forEach.call(mine.querySelectorAll('.addwk'), function (b) { b.onclick = function () {
+        var r = CATBY[b.getAttribute('data-cid')], w = fromIso(h.slice(4)).getDay(), p = planOf(r.id);
+        if (!p) { p = mk(r, [], []); S.plan.push(p); }
+        if (p.weekly.indexOf(w) < 0) p.weekly.push(w); save(); refreshBtns(); route(); }; });
+    }
+    /* last-updated note on each page */
+    [].forEach.call(book.querySelectorAll('.sheet:not(.printonly)'), function (sh) {
+      var k = sh.querySelector('.kicker'); if (k && !/Last updated/.test(k.textContent) && !sh.classList.contains('cover-sheet')) { var u = document.createElement('p'); u.className = 'upd'; u.textContent = 'Last updated ' + UPDATED; k.parentNode.insertBefore(u, k.nextSibling); }
+    });
+    var baseRoute = route;
+    route = function () {
+      var h = location.hash.replace('#', '');
+      if (h === 'my' || /^day-\d{4}-\d{2}-\d{2}$/.test(h)) {
+        document.body.classList.remove('view-tab'); document.body.classList.add('view-my');
+        [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { sh.style.display = 'none'; });
+        bar.style.setProperty('--tcbar', '#2f6b4f'); bar.querySelector('.ttl').textContent = h === 'my' ? 'My Plan' : 'Build a day';
+        [].forEach.call(nav.querySelectorAll('a'), function (a) { a.classList.toggle('on', a.getAttribute('data-n') === 'my'); });
+        renderMine(h); window.scrollTo(0, 0);
+      } else { document.body.classList.remove('view-my'); mine.innerHTML = ''; baseRoute(); }
+    };
+    refreshBtns();
+    window.addEventListener('hashchange', function () { route(); });
     route();
   }
 })();
