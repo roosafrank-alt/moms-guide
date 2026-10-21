@@ -265,6 +265,67 @@ table.t tr .addbtn { display: block; }
 #home .newbox { background: #fff; border-left: 8px solid #c8892b; border-radius: 16px; padding: 12px 14px 8px; margin: 0 0 14px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
 #home .newbox b { font-size: 13pt; } #home .newbox small { display: block; color: var(--soft); font-size: 10pt; margin: 2px 0 6px; }
 #home .newbox a { display: block; padding: 7px 0; border-top: 1px solid var(--rule); font-size: 11.5pt; } #home .newbox a i { font-style: normal; font-weight: 800; color: #8a5a10; margin-right: 6px; }
+
+/* SEARCH BEGIN css */
+#home .sbox { position: relative; margin: 0 0 10px; }
+#home #q { width: 100%; font: inherit; font-size: 15pt; padding: 14px 48px 14px 16px; border: 2px solid var(--green); border-radius: 16px; background: #fff; min-height: 54px; -webkit-appearance: none; appearance: none; }
+#home #qx { position: absolute; right: 4px; top: 5px; width: 46px; height: 44px; border: 0; background: transparent; font-size: 16pt; color: var(--soft); display: none; }
+#home .sbox.has #qx { display: block; }
+#home .tchips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+#home .tchips button { border: 2px solid var(--rule); background: #fff; border-radius: 999px; padding: 9px 13px; font-weight: 700; font-size: 11.5pt; font-family: inherit; min-height: 44px; color: var(--ink, #222); }
+#home .tchips button.on { background: var(--green); color: #fff; border-color: var(--green); }
+#home .lab2 { font-weight: 800; font-size: 11pt; text-transform: uppercase; letter-spacing: .05em; color: var(--soft); margin: 16px 2px 8px; }
+#home .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+#home .days a { display: block; text-align: center; background: #fff; border-radius: 12px; border-bottom: 6px solid var(--tc); padding: 12px 0 8px; font-weight: 800; font-size: 12pt; box-shadow: 0 1px 3px rgba(0,0,0,.12); min-height: 48px; }
+#sres { display: none; }
+#sres .rh { font-size: 12.5pt; font-weight: 700; margin: 4px 2px 10px; }
+#sres .res { display: block; background: #fff; border-radius: 14px; border-left: 8px solid var(--tc); padding: 11px 13px; margin-bottom: 9px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+#sres .res b { display: block; font-size: 13pt; line-height: 1.2; }
+#sres .res small { display: block; font-size: 10pt; font-weight: 800; color: var(--tc); text-transform: uppercase; letter-spacing: .04em; margin: 3px 0 2px; }
+#sres .res span { display: block; color: var(--soft); font-size: 11pt; line-height: 1.3; }
+#sres mark { background: #ffe9a8; color: inherit; border-radius: 3px; padding: 0 1px; }
+#sres .no { background: #fff; border-radius: 14px; padding: 14px; font-size: 12pt; }
+body.app #bar #bsr { margin-left: auto; font-size: 12pt; border: 2px solid #fff; border-radius: 999px; padding: 6px 14px; }
+.flash, .flash td { background: #fff1bf !important; transition: background .4s; }
+
+#dm { display: none; position: fixed; inset: 0; z-index: 120; }
+#dm.on { display: block; }
+#dm .bk { position: absolute; inset: 0; background: rgba(0,0,0,.45); }
+#dm .card { position: absolute; left: 0; right: 0; bottom: 0; max-height: 88vh; overflow-y: auto; background: #fff; border-radius: 22px 22px 0 0; padding: 12px 16px calc(env(safe-area-inset-bottom, 0px) + 22px); transition: transform .18s; }
+#dm .grab { width: 48px; height: 6px; border-radius: 3px; background: #c9ccc8; margin: 0 auto 8px; }
+#dm .x { position: absolute; top: 10px; right: 12px; width: 46px; height: 46px; border: 0; border-radius: 23px; background: #eef0ea; font-size: 16pt; }
+#dm .dt { font-size: 17pt; margin: 6px 54px 2px 0; line-height: 1.2; font-weight: 800; font-family: var(--font-d); }
+#dm .dk { display: inline-block; font-size: 10pt; font-weight: 800; color: #fff; background: var(--tc); border-radius: 999px; padding: 3px 10px; margin: 4px 0 8px; }
+#dm .dr { font-size: 12pt; margin: 6px 0; line-height: 1.35; } #dm .dr b { color: var(--soft); font-size: 10pt; text-transform: uppercase; letter-spacing: .04em; display: block; }
+#dm .db { display: flex; flex-direction: column; gap: 9px; margin: 14px 0 4px; }
+#dm .db a, #dm .db button { display: block; text-align: center; border-radius: 14px; padding: 14px 12px; font-weight: 800; font-size: 13pt; font-family: inherit; min-height: 52px; border: 2px solid var(--green); background: #fff; color: var(--green); }
+#dm .db a.pri { background: var(--green); color: #fff; }
+#dm .db small { display: block; font-weight: 400; font-size: 10pt; opacity: .85; word-break: break-all; }
+.more { display: block; margin-top: 6px; font-size: 10.5pt; font-weight: 800; color: var(--green); }
+body.app .item, body.app table.t tr:has(td) { cursor: pointer; }
+body:not(.app) .more { display: none; }
+@media print { .more { display: none !important; } }
+#dm .dr, #dm .dt, #dm .db small, #sres .res span { overflow-wrap: anywhere; }
+#home #q::-webkit-search-cancel-button { display: none; }
+/* SEARCH END css */
+/* REMIND BEGIN css */
+#home .up { background: #fff; border-left: 8px solid var(--green); border-radius: 16px; padding: 12px 14px 10px; margin: 0 0 14px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+#home .up > b { font-size: 13pt; display: block; margin-bottom: 4px; }
+#home .up a.ue { display: block; padding: 8px 0; border-top: 1px solid var(--rule); font-size: 12pt; line-height: 1.25; }
+#home .up a.ue i { font-style: normal; font-weight: 800; color: var(--green); display: block; font-size: 10pt; text-transform: uppercase; letter-spacing: .04em; }
+#home .up .upn { color: var(--soft); font-size: 11pt; margin: 4px 0 2px; }
+#home .up .upa { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+#home .up select, #dcalbox select { font: inherit; font-size: 12pt; padding: 8px; border: 2px solid var(--rule); border-radius: 10px; background: #fff; min-height: 44px; }
+#home .up button { border: 2px solid var(--green); background: var(--green); color: #fff; border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 12pt; font-family: inherit; min-height: 44px; }
+#dcalbox { margin-top: 10px; background: #f3f6f1; border-radius: 14px; padding: 12px; }
+#dcalbox .lab { margin: 0 0 6px; }
+#dcalbox .chips { margin-bottom: 10px; }
+#dcalbox input[type=date] { font: inherit; font-size: 13pt; padding: 8px; border: 2px solid var(--rule); border-radius: 10px; min-height: 44px; margin-bottom: 10px; width: 100%; }
+#dcalbox .go { display: block; width: 100%; background: var(--green); color: #fff; border: 0; border-radius: 14px; padding: 14px; font-weight: 800; font-size: 13pt; font-family: inherit; min-height: 52px; }
+#dcalbox .hint { color: var(--soft); font-size: 10.5pt; margin: 8px 0 0; }
+body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
+/* REMIND END css */
+
 @media (max-width: 640px) {
   .sheet { padding: 28px 58px 56px 22px; min-height: 0; }
   .item { grid-template-columns: 82px 1fr 34px; gap: 8px; }
@@ -775,6 +836,8 @@ table.t tr .addbtn { display: block; }
   /* Merge dated events into one date-ordered list */
   /* ===== UPDATE LOG: newest first. The Monday update adds entries at the TOP. {d: date, t: short text, k: tab key or 'my'} ===== */
 var UPDATES = [
+  { d: '2026-10-21', t: 'Tap any listing for website, sign-up, call and map. Add to Calendar with a reminder', k: '' },
+  { d: '2026-10-21', t: 'New search box and topic buttons on the home screen (try “crochet”)', k: '' },
   { d: '2026-10-20', t: 'My Plan: pick events, build a day, suggest a week', k: 'my' },
   { d: '2026-10-20', t: 'New Walks and Runs tab: 5Ks and walking groups', k: 'walk' },
   { d: '2026-10-20', t: 'New Ideas tab: arts, crafts and gardening classes', k: 'ideas' },
@@ -928,10 +991,334 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
     home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.</p>' +
       '<a class="today" href="#t-' + DOW[di] + '">Today: ' + DN[di] + '<small>See what is on today</small></a><a class="today mypl" href="#my">My Plan<small>Pick events and build your week</small></a>' + newBox() + '<div class="grid">' + tiles + '</div>' +
       '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Last updated ' + UPDATED + '. <a href="?app=0" style="text-decoration:underline">Show full packet view</a>' + (/github\.io$/.test(location.hostname) ? ' · <a href="Moms_Activity_Packet.pdf" style="text-decoration:underline">Printable PDF</a>' : '') + '</p>';
-    var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span>';
+    var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span><a href="#" id="bsr">Search</a>';
     var nav = document.createElement('div'); nav.id = 'nav';
-    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#t-' + DOW[di] + '" data-n="today">Today</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
+    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#t-' + DOW[di] + '" data-n="today">Today</a><a href="#" data-n="search" id="nsr">Search</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
     document.body.insertBefore(home, book); document.body.insertBefore(bar, home); document.body.appendChild(nav);
+
+    /* SEARCH BEGIN js */
+    (function () {
+      var COLORS = {}; TABS.forEach(function (t) { COLORS[t.k] = t; });
+      var G = {
+        crochet: ['crochet', 'knit', 'yarn', 'fiber', 'fibre', 'stitch', 'needlework', 'sewing', 'quilt', 'weav', 'loom'],
+        yoga: ['yoga', 'qi gong', 'tai chi', 'stretch', 'pilates'],
+        garden: ['garden', 'plant', 'bulb', 'flower', 'seed', 'compost'],
+        walk: ['walk', 'hike', 'trail', '5k'],
+        art: ['art', 'paint', 'draw', 'watercolor', 'pottery', 'ceramic', 'craft'],
+        fitness: ['fitness', 'gym', 'exercise', 'workout', 'zumba', 'swim', 'trainer'],
+        music: ['music', 'concert', 'sing', 'choir', 'band'],
+        help: ['volunteer', 'donat']
+      };
+      var SYN = {};
+      Object.keys(G).forEach(function (g) { G[g].forEach(function (w) { (SYN[w] = SYN[w] || []).push(g); }); });
+      var TOPICS = [
+        { l: 'Crochet and knitting', any: G.crochet.slice(0, 5) },
+        { l: 'Crafts and art', any: G.art.concat(['sew', 'quilt', 'weav', 'glass']) },
+        { l: 'Gardening', any: G.garden.concat(['master gardener']) },
+        { l: 'Walks and hikes', any: G.walk.concat(['run']) },
+        { l: 'Yoga and fitness', any: G.yoga.concat(G.fitness) },
+        { l: 'Classes', any: ['class', 'workshop', 'course', 'lesson', 'encore'] },
+        { l: 'Volunteering', any: G.help.concat(['help out']) },
+        { l: 'Music and shows', any: G.music.concat(['theater', 'theatre', 'show']) },
+        { l: 'Markets and food', any: ['market', 'farm', 'food', 'bake', 'cook'] },
+        { l: 'Clubs and friends', any: ['club', 'circle', 'meetup', 'social', 'bingo', 'game night', 'group'] }
+      ];
+      var IDX = null;
+      function norm(t) { return String(t).replace(/\s+/g, ' ').trim(); }
+      function cleanText(e, title) {
+        var parts = [];
+        if (e.tagName === 'TR') {
+          [].forEach.call(e.querySelectorAll('td'), function (td, i) {
+            if (!i) { var c0 = td.cloneNode(true); [].forEach.call(c0.querySelectorAll('b,.more,.addbtn,button'), function (x) { x.remove(); }); var s0 = norm(c0.textContent); if (s0) parts.push(s0); return; }
+            var c = td.cloneNode(true); [].forEach.call(c.querySelectorAll('.more,.addbtn,button'), function (x) { x.remove(); });
+            var s = norm(c.textContent); if (s) parts.push(s);
+          });
+        } else {
+          var w = e.querySelector('.when'); if (w) { var wc = w.cloneNode(true); [].forEach.call(wc.querySelectorAll('.rc,.rd'), function (x) { x.remove(); }); var ws = norm(wc.textContent); if (ws) parts.push(ws); }
+          var wh = e.querySelector('.where'); if (wh) parts.push(norm(wh.textContent));
+          [].forEach.call(e.querySelectorAll('.meta > span:not(.lk)'), function (x) { var s = norm(x.textContent); if (s) parts.push(s); });
+          var nt = e.querySelector('.note'); if (nt) parts.push(norm(nt.textContent));
+        }
+        return parts.join(' · ');
+      }
+      function buildIdx() {
+        IDX = []; var seen = {};
+        [].forEach.call(book.querySelectorAll('.sheet:not(.printonly)'), function (sh) {
+          var k = sh.dataset.k; if (!k || k === 'plan' || k === 'me' || !COLORS[k]) return;
+          var els = [].slice.call(sh.querySelectorAll('.item, table.t tr')).filter(function (e) { return e.tagName === 'TR' ? (e.querySelector('td') && !e.closest('.item')) : true; });
+          els.forEach(function (e) {
+            var title;
+            if (e.tagName === 'TR') { var td = e.querySelector('td'), b = td.querySelector('b'); title = norm((b || td).textContent); }
+            else { var h = e.querySelector('h4'); if (!h) return; var c = h.cloneNode(true); [].forEach.call(c.querySelectorAll('.b,.dol'), function (x) { x.remove(); }); title = norm(c.textContent); }
+            if (!title) return;
+            var mo = document.createElement('span'); mo.className = 'more'; mo.textContent = 'Tap for website, sign-up and call ›';
+            (e.tagName === 'TR' ? e.querySelector('td') : (e.querySelector('.what') || e)).appendChild(mo);
+            var text = cleanText(e, title);
+            var rec = { k: k, el: e, title: title, tl: title.toLowerCase(), text: text, xl: text.toLowerCase() };
+            e.__mg = rec;
+            var key = k + '|' + title.toLowerCase(); if (seen[key]) return; seen[key] = 1;
+            IDX.push(rec);
+          });
+        });
+      }
+      function rx(w) { return new RegExp('(^|[^a-z0-9])' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'); }
+      function hit(str, w) { return rx(w).test(str); }
+      function score(r, tok) {
+        if (hit(r.tl, tok)) return 10; if (hit(r.xl, tok)) return 5;
+        var gs = SYN[tok] || [], best = 0;
+        gs.forEach(function (g) { G[g].forEach(function (w) { if (hit(r.tl, w)) best = Math.max(best, 3); else if (hit(r.xl, w)) best = Math.max(best, 1); }); });
+        return best;
+      }
+      function find(q, any) {
+        if (!IDX) buildIdx();
+        var out = [];
+        if (any) {
+          IDX.forEach(function (r) { var sc = 0; any.forEach(function (w) { if (hit(r.tl, w)) sc = Math.max(sc, 10); else if (hit(r.xl, w)) sc = Math.max(sc, 4); }); if (sc) out.push({ r: r, sc: sc }); });
+        } else {
+          var toks = q.toLowerCase().split(/[^a-z0-9']+/).filter(function (t) { return t.length > 1; });
+          if (!toks.length) return [];
+          IDX.forEach(function (r) { var tot = 0, ok = true; toks.forEach(function (t) { var x = score(r, t); if (!x) ok = false; tot += x; }); if (ok) out.push({ r: r, sc: tot }); });
+        }
+        out.sort(function (a, b) { return b.sc - a.sc || ORD[a.r.k] - ORD[b.r.k]; });
+        return out;
+      }
+      function E(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+      function snippet(r, words) {
+        var rest = r.text, rl = rest.toLowerCase(), at = -1, len = 0;
+        words.some(function (w) { var m = rx(w).exec(rl); if (m) { at = m.index + m[1].length; len = w.length; return true; } return false; });
+        var from = at > 60 ? at - 50 : 0, seg = rest.slice(from, from + 130);
+        var html = E(seg);
+        words.forEach(function (w) { html = html.replace(new RegExp('(^|[^a-z0-9])(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '[a-z]*)', 'gi'), '$1<mark>$2</mark>'); });
+        return (from ? '… ' : '') + html + (rest.length > from + 130 ? ' …' : '');
+      }
+      var q = home.querySelector('#q') || null;
+      var sbox = document.createElement('div'); sbox.className = 'sbox';
+      sbox.innerHTML = '<input id="q" type="search" placeholder="Search, like crochet or yoga" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"><button id="qx" type="button" aria-label="Clear search">✕</button>';
+      var chips = document.createElement('div'); chips.className = 'tchips';
+      chips.innerHTML = TOPICS.map(function (t, i) { return '<button type="button" data-t="' + i + '">' + t.l + '</button>'; }).join('');
+      var sres = document.createElement('div'); sres.id = 'sres';
+      var kids = [].slice.call(home.children), hm = document.createElement('div'); hm.id = 'hm';
+      kids.slice(3).forEach(function (n) { hm.appendChild(n); });
+      /* days as a compact row; topics as tiles */
+      var grid = hm.querySelector('.grid');
+      if (grid) {
+        var DK = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'], dh = '', rest = '';
+        [].forEach.call(grid.querySelectorAll('a.tile'), function (a) {
+          var k = (a.getAttribute('href') || '').replace('#t-', '');
+          if (DK.indexOf(k) >= 0) dh += '<a href="' + a.getAttribute('href') + '" style="--tc:' + COLORS[k].c + '">' + COLORS[k].l + '</a>'; else rest += a.outerHTML;
+        });
+        var wrap = document.createElement('div');
+        wrap.innerHTML = '<p class="lab2">Pick a day</p><div class="days">' + dh + '</div><p class="lab2">Everything else</p><div class="grid">' + rest + '</div>';
+        grid.parentNode.replaceChild(wrap, grid);
+      }
+      home.appendChild(sbox); home.appendChild(chips); home.appendChild(sres); home.appendChild(hm);
+      var inp = sbox.querySelector('#q'), clr = sbox.querySelector('#qx'), cur = [];
+      function show(list, label, words) {
+        cur = list.slice(0, 60);
+        var h = '<p class="rh">' + (list.length ? list.length + (list.length === 1 ? ' result' : ' results') + ' for “' + E(label) + '”' : 'Nothing found for “' + E(label) + '”') + '</p>';
+        if (!list.length) h += '<p class="no">Try a different word, like “knit” or “yoga”, or tap a topic above. You can also pick a day below.</p>';
+        h += cur.map(function (x, i) { var t = COLORS[x.r.k]; return '<a class="res" href="#" data-i="' + i + '" style="--tc:' + t.c + '"><b>' + E(x.r.title) + '</b><small>' + E(t.name) + '</small><span>' + snippet(x.r, words) + '</span></a>'; }).join('');
+        sres.innerHTML = h; sres.style.display = 'block'; hm.style.display = list.length ? 'none' : '';
+      }
+      function reset() { sres.style.display = 'none'; sres.innerHTML = ''; hm.style.display = ''; [].forEach.call(chips.children, function (b) { b.classList.remove('on'); }); }
+      function typed() {
+        var v = inp.value.trim(); sbox.classList.toggle('has', !!inp.value);
+        [].forEach.call(chips.children, function (b) { b.classList.remove('on'); });
+        if (v.length < 2) { reset(); return; }
+        var words = v.toLowerCase().split(/[^a-z0-9']+/).filter(function (t) { return t.length > 1; }), ex = [];
+        words.forEach(function (w) { ex.push(w); (SYN[w] || []).forEach(function (g) { G[g].forEach(function (x) { ex.push(x); }); }); });
+        show(find(v), v, ex);
+      }
+      inp.addEventListener('input', typed);
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { inp.blur(); } });
+      clr.addEventListener('click', function () { inp.value = ''; sbox.classList.remove('has'); reset(); inp.focus(); });
+      chips.addEventListener('click', function (e) {
+        var b = e.target.closest('button'); if (!b) return; var t = TOPICS[+b.getAttribute('data-t')];
+        if (b.classList.contains('on')) { inp.value = ''; sbox.classList.remove('has'); reset(); return; }
+        inp.value = ''; sbox.classList.remove('has'); reset(); b.classList.add('on');
+        show(find('', t.any), t.l, t.any);
+      });
+      /* ---- detail sheet ---- */
+      var dm = document.createElement('div'); dm.id = 'dm';
+      dm.innerHTML = '<div class="bk"></div><div class="card"><div class="grab"></div><button type="button" class="x" aria-label="Close">✕</button><div id="dmc"></div></div>';
+      document.body.appendChild(dm);
+      var dcard = dm.querySelector('.card'), dmc = dm.querySelector('#dmc'), dcur = null;
+      function closeD() { dm.classList.remove('on'); dcard.style.transform = ''; document.body.style.overflow = ''; }
+      dm.querySelector('.bk').addEventListener('click', closeD); dm.querySelector('.x').addEventListener('click', closeD);
+      var y0 = null;
+      dcard.addEventListener('touchstart', function (e) { y0 = (dcard.scrollTop <= 0) ? e.touches[0].clientY : null; }, { passive: true });
+      dcard.addEventListener('touchmove', function (e) { if (y0 === null) return; var d = e.touches[0].clientY - y0; if (d > 0) dcard.style.transform = 'translateY(' + d + 'px)'; }, { passive: true });
+      dcard.addEventListener('touchend', function (e) { if (y0 === null) return; var d = (e.changedTouches[0].clientY - y0); y0 = null; if (d > 90) closeD(); else dcard.style.transform = ''; });
+      function openD(rec, fromSearch) {
+        dcur = rec; var t = COLORS[rec.k], el = rec.el, h = '';
+        var when = el.querySelector('.when'), wh = el.querySelector('.where'), links = [], seenL = {};
+        var wc = when ? when.cloneNode(true) : null; if (wc) [].forEach.call(wc.querySelectorAll('.rc,.rd'), function (x) { x.remove(); });
+        var rest = rec.text;
+        h += '<div class="dt">' + E(rec.title) + '</div><span class="dk" style="--tc:' + t.c + '">' + E(t.name) + '</span>';
+        if (wc && norm(wc.textContent)) h += '<div class="dr"><b>When</b>' + E(norm(wc.textContent)) + '</div>';
+        if (wh && el.tagName !== 'TR') h += '<div class="dr"><b>Where</b>' + E(norm(wh.textContent)) + '</div>';
+        var nt = el.querySelector('.note'), cost = [].map.call(el.querySelectorAll('.meta > span:not(.lk):not(.tel)'), function (x) { return norm(x.textContent); }).filter(Boolean).join(' · ');
+        if (el.tagName === 'TR') { [].forEach.call(el.querySelectorAll('td'), function (td, i) { if (!i) return; var c = td.cloneNode(true); [].forEach.call(c.querySelectorAll('.more,.addbtn,button'), function (x) { x.remove(); }); var s = norm(c.textContent); if (s) h += '<div class="dr"><b>' + E(td.getAttribute('data-label') || 'Info') + '</b>' + E(s) + '</div>'; }); }
+        else { if (cost) h += '<div class="dr"><b>Cost</b>' + E(cost) + '</div>'; if (nt) h += '<div class="dr"><b>Good to know</b>' + E(norm(nt.textContent)) + '</div>'; }
+        var btn = '', phones = [], mails = [], webs = [], map = '';
+        [].forEach.call(el.querySelectorAll('a'), function (a) {
+          var hr = a.getAttribute('href') || ''; if (!hr || seenL[hr]) return; seenL[hr] = 1;
+          if (/^tel:/.test(hr)) phones.push([hr, a.textContent]);
+          else if (/^mailto:/.test(hr)) mails.push([hr, a.textContent]);
+          else if (/google\.com\/maps/.test(hr)) map = hr;
+          else if (/^https?:/.test(hr)) webs.push([hr, a.textContent]);
+        });
+        webs.forEach(function (w, i) { btn += '<a class="' + (i ? '' : 'pri') + '" href="' + E(w[0]) + '" target="_blank" rel="noopener">' + (/sign|regist|rsvp/i.test(rest) && i === 0 ? 'Website and sign-up' : 'Open website') + '<small>' + E(w[1].replace(/^https?:\/\//, '')) + '</small></a>'; });
+        phones.forEach(function (p) { btn += '<a class="' + (webs.length ? '' : 'pri') + '" href="' + E(p[0]) + '">Call<small>' + E(p[1]) + '</small></a>'; });
+        mails.forEach(function (m) { btn += '<a href="' + E(m[0]) + '">Email<small>' + E(m[1]) + '</small></a>'; });
+        if (map) btn += '<a href="' + E(map) + '" target="_blank" rel="noopener">Show on map</a>';
+        if (!webs.length) btn += '<a href="https://www.google.com/search?q=' + encodeURIComponent(rec.title + ' Wurtsboro NY') + '" target="_blank" rel="noopener">' + (phones.length ? 'Search the web for more' : 'No website posted. Search the web') + '</a>';
+        if (el.getAttribute('data-cid')) btn += '<button type="button" id="dcal">Add to calendar with a reminder</button>';
+        var ab = el.querySelector('.addbtn'); if (ab) btn += '<button type="button" id="dadd">' + (ab.classList.contains('in') ? 'In my plan (tap to change)' : 'Add to my plan') + '</button>';
+        if (fromSearch) btn += '<button type="button" id="dshow">Show in the guide</button>';
+        h += '<div class="db">' + btn + '</div>';
+        dmc.innerHTML = h; dcard.scrollTop = 0; dm.classList.add('on'); document.body.style.overflow = 'hidden';
+        var dc = dmc.querySelector('#dcal'); if (dc) dc.onclick = function () { dc.style.display = 'none'; window.__mgOpenCal(el); };
+        var da = dmc.querySelector('#dadd'); if (da) da.onclick = function () { closeD(); ab.click(); };
+        var ds = dmc.querySelector('#dshow'); if (ds) ds.onclick = function () {
+          closeD(); location.hash = '#t-' + rec.k;
+          setTimeout(function () { try { el.scrollIntoView({ block: 'center' }); } catch (er) {} el.classList.add('flash'); setTimeout(function () { el.classList.remove('flash'); }, 3200); }, 80);
+        };
+      }
+      sres.addEventListener('click', function (e) {
+        var a = e.target.closest('a.res'); if (!a) return; e.preventDefault();
+        var x = cur[+a.getAttribute('data-i')]; if (x) openD(x.r, true);
+      });
+      book.addEventListener('click', function (e) {
+        if (e.target.closest('a, button, input, label, .chk, .addbtn')) return;
+        var el = e.target.closest('.item, table.t tr'); if (!el || !el.__mg) return;
+        openD(el.__mg, false);
+      });
+      window.addEventListener('hashchange', closeD);
+      buildIdx();
+      function goSearch(e) { e.preventDefault(); if (location.hash && location.hash !== '#') location.hash = ''; setTimeout(function () { window.scrollTo(0, 0); inp.focus(); }, 60); }
+      document.getElementById('nsr').addEventListener('click', goSearch);
+      document.getElementById('bsr').addEventListener('click', goSearch);
+
+      /* REMIND BEGIN js */
+      var ALKEY = 'momsguide.alarm', ALARM = '60';
+      try { ALARM = localStorage.getItem(ALKEY) || '60'; } catch (er) {}
+      var ALN = { '0': 'When it starts', '60': '1 hour before', '1440': '1 day before' };
+      var DOWC = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'], ORDN = { '1st': 1, '2nd': 2, '3rd': 3, '4th': 4 };
+      function clock(txt) {
+        txt = String(txt || '');
+        var m = txt.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\s*(?:to|-|–)\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i), s1, e1;
+        function mins(h, mi, suf) { h = +h; mi = mi ? +mi : 0; suf = suf.toLowerCase(); if (suf === 'pm' && h < 12) h += 12; if (suf === 'am' && h === 12) h = 0; return h * 60 + mi; }
+        if (m) {
+          var es = m[6].toLowerCase(), ss = (m[3] || es).toLowerCase();
+          e1 = mins(m[4], m[5], es);
+          if (!m[3]) { s1 = mins(m[1], m[2], ss); if (s1 > e1) s1 = mins(m[1], m[2], ss === 'pm' ? 'am' : 'pm'); } else s1 = mins(m[1], m[2], ss);
+          return { s: s1, e: e1 > s1 ? e1 : s1 + 60 };
+        }
+        m = txt.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i);
+        if (m) { s1 = mins(m[1], m[2], m[3]); return { s: s1, e: s1 + 60 }; }
+        return null;
+      }
+      function icsEsc(t) { return String(t || '').replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n'); }
+      function dstr(isoD, m) { var d = isoD.replace(/-/g, ''); if (m == null) return d; return d + 'T' + pad(Math.floor(m / 60) % 24) + pad(m % 60) + '00'; }
+      function nextDay(isoD) { var d = fromIso(isoD); d.setDate(d.getDate() + 1); return iso(d); }
+      function ordOk(d, ords, wd) { return d.getDay() === wd && ords.indexOf(Math.ceil(d.getDate() / 7)) >= 0; }
+      function vevents(r, alarm, pickDate) {
+        var out = [], ck = clock(r.timeTxt || r.when) || clock((r.timeTxt || '') + ' ' + (r.when || '')), today = iso(new Date());
+        var wtxt = (r.when || '') + ' ' + (r.timeTxt || '') + ' ' + (r.name || ''), dates = (r.dates || []).slice(), weekly = (r.weekly || []).slice();
+        if (pickDate) { dates = [pickDate]; weekly = []; }
+        function head(uid) { return ['BEGIN:VEVENT', 'UID:' + uid + '@momsguide', 'DTSTAMP:' + dstr(today, 0).replace(/T.*/, '') + 'T000000Z', 'SUMMARY:' + icsEsc(r.name)]; }
+        function tail(L) {
+          if (r.where) L.push('LOCATION:' + icsEsc(r.where));
+          var dsc = [r.telTxt ? 'Phone: ' + r.telTxt : '', 'From Mom\u2019s Guide'].filter(Boolean).join('\\n'); L.push('DESCRIPTION:' + dsc);
+          if (alarm !== 'none') { L.push('BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEsc(r.name), 'TRIGGER:' + (alarm === '0' ? '-PT0M' : alarm === '1440' ? '-P1D' : '-PT' + alarm + 'M'), 'END:VALARM'); }
+          L.push('END:VEVENT'); return L;
+        }
+        function when(L, isoD) {
+          if (ck) { L.push('DTSTART:' + dstr(isoD, ck.s), 'DTEND:' + dstr(isoD, ck.e)); }
+          else { L.push('DTSTART;VALUE=DATE:' + dstr(isoD), 'DTEND;VALUE=DATE:' + dstr(nextDay(isoD))); }
+        }
+        dates.filter(function (x) { return x >= today; }).forEach(function (dd, i) { var L = head((r.id || r.name).replace(/\W+/g, '') + dd + i); when(L, dd); out.push(tail(L).join('\r\n')); });
+        if (weekly.length) {
+          var start = today > (r.from || '') ? today : r.from, ordm = wtxt.match(/\b(1st|2nd|3rd|4th)\b/g), every2 = /every other|biweekly|every 2/i.test(wtxt), monthly = /monthly/i.test(wtxt) && ordm;
+          if (start < '2026-10-19') start = '2026-10-19';
+          var d = fromIso(start), found = null, ords = ordm ? ordm.map(function (o) { return ORDN[o.toLowerCase()]; }) : [];
+          for (var i = 0; i < 70 && !found; i++) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i); if (weekly.indexOf(x.getDay()) >= 0 && (!monthly || ordOk(x, ords, x.getDay()))) found = x; }
+          var until = r.until || '2027-04-30';
+          if (found && iso(found) <= until) {
+            var L = head((r.id || r.name).replace(/\W+/g, '') + 'w'); when(L, iso(found));
+            var by = monthly ? weekly.map(function (w) { return ords.map(function (o) { return o + DOWC[w]; }).join(','); }).join(',') : weekly.map(function (w) { return DOWC[w]; }).join(',');
+            L.push('RRULE:FREQ=' + (monthly ? 'MONTHLY' : 'WEEKLY') + (every2 ? ';INTERVAL=2' : '') + ';BYDAY=' + by + ';UNTIL=' + until.replace(/-/g, '') + 'T235959');
+            out.push(tail(L).join('\r\n'));
+          }
+        }
+        return out;
+      }
+      function wrapIcs(evs) { return 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Moms Guide//EN\r\nCALSCALE:GREGORIAN\r\n' + evs.join('\r\n') + '\r\nEND:VCALENDAR\r\n'; }
+      function deliver(fn, ics) {
+        var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        var stand = window.navigator.standalone || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+        var file = null; try { file = new File([ics], fn, { type: 'text/calendar' }); } catch (er) {}
+        if (ios && !stand) { location.href = 'data:text/calendar;charset=utf8,' + encodeURIComponent(ics); return; }
+        if (file && navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file], title: fn }).catch(function () {}); return; }
+        var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = fn; document.body.appendChild(a); a.click(); setTimeout(function () { a.remove(); }, 800);
+      }
+      function chooserHtml(r) {
+        var h = '<div class="lab">Remind me</div><div class="chips">' + Object.keys(ALN).map(function (k) { return '<button type="button" class="chip' + (k === ALARM ? ' on' : '') + '" data-al="' + k + '">' + ALN[k] + '</button>'; }).join('') + '</div>';
+        var needDate = !(r.dates && r.dates.length) && !(r.weekly && r.weekly.length);
+        if (needDate) h += '<div class="lab">Which day?</div><input type="date" id="dpick" min="' + iso(new Date()) + '">';
+        h += '<button type="button" class="go" id="dgo">Add to my calendar</button><p class="hint">Your phone will ask you to confirm. The reminder alert comes from your Calendar app.</p>';
+        return h;
+      }
+      function bindChooser(box, r) {
+        var al = ALARM;
+        box.addEventListener('click', function (e) {
+          var c = e.target.closest('[data-al]'); if (c) { al = c.getAttribute('data-al'); ALARM = al; try { localStorage.setItem(ALKEY, al); } catch (er) {} [].forEach.call(box.querySelectorAll('[data-al]'), function (x) { x.classList.toggle('on', x === c); }); return; }
+          if (e.target.id === 'dgo') {
+            var pd = box.querySelector('#dpick'), pv = pd ? pd.value : '';
+            if (pd && !pv) { alert('Pick a day first.'); return; }
+            var evs = vevents(r, al, pv || null);
+            if (!evs.length) { alert('That date has already passed. Check the guide for the next one.'); return; }
+            deliver((r.name || 'event').replace(/[^\w ]+/g, '').trim().replace(/\s+/g, '-').slice(0, 40) + '.ics', wrapIcs(evs));
+          }
+        });
+      }
+      window.__mgOpenCal = function (el) {
+        var r = CATBY[el.getAttribute('data-cid')]; if (!r) return false;
+        var host = dmc.querySelector('.db'); if (!host) return false;
+        var box = document.createElement('div'); box.id = 'dcalbox'; box.innerHTML = chooserHtml(r); host.parentNode.insertBefore(box, host.nextSibling); bindChooser(box, r);
+        box.scrollIntoView({ block: 'nearest' }); return true;
+      };
+      /* coming up box on home */
+      var upBox = document.createElement('div'); upBox.className = 'up'; var dTop = hm.querySelector('.today.mypl'); if (dTop) dTop.parentNode.insertBefore(upBox, dTop.nextSibling); else hm.insertBefore(upBox, hm.firstChild);
+      function renderUp() {
+        var plan = (typeof S !== 'undefined' && S.plan) ? S.plan : [], now = new Date(), h = '<b>Coming up from My Plan</b>', n = 0, DNN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        if (!plan.length) { upBox.innerHTML = '<b>Reminders</b><p class="upn">Tap “Add to my plan” on anything you like. It will show up here, and you can send it to your Calendar with an alert.</p>'; return; }
+        for (var i = 0; i < 4; i++) {
+          var d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i), id = iso(d), L = entriesOn(id);
+          L.forEach(function (p) { n++; h += '<a class="ue" href="#" data-cid="' + esc(p.id) + '"><i>' + (i === 0 ? 'Today' : i === 1 ? 'Tomorrow' : DNN[d.getDay()]) + (p.timeTxt ? ' · ' + esc(p.timeTxt) : '') + '</i>' + esc(p.name) + '</a>'; });
+        }
+        if (!n) h += '<p class="upn">Nothing in your plan for the next few days.</p>';
+        h += '<div class="upa"><select id="upal" aria-label="Reminder time">' + Object.keys(ALN).map(function (k) { return '<option value="' + k + '"' + (k === ALARM ? ' selected' : '') + '>' + ALN[k] + '</option>'; }).join('') + '</select><button type="button" id="upgo">Send my plan to Calendar</button></div>';
+        upBox.innerHTML = h;
+      }
+      upBox.addEventListener('change', function (e) { if (e.target.id === 'upal') { ALARM = e.target.value; try { localStorage.setItem(ALKEY, ALARM); } catch (er) {} } });
+      upBox.addEventListener('click', function (e) {
+        var a = e.target.closest('a.ue');
+        if (a) { e.preventDefault(); var cid = a.getAttribute('data-cid'), el = book.querySelector('[data-cid="' + cid.replace(/"/g, '\\"') + '"]'); if (el && el.__mg) openD(el.__mg, false); return; }
+        if (e.target.id === 'upgo') {
+          var evs = []; S.plan.forEach(function (p) { evs = evs.concat(vevents(p, ALARM, null)); });
+          if (!evs.length) { alert('Nothing upcoming in your plan to send.'); return; }
+          deliver('Moms-Guide-plan.ics', wrapIcs(evs));
+        }
+      });
+      window.__mgRenderUp = renderUp;
+      try { renderUp(); } catch (er) {}
+      /* REMIND END js */
+      window.__mgSearch = { find: find, TOPICS: TOPICS, idx: function () { if (!IDX) buildIdx(); return IDX; } };
+      window.__mgSearch.ics = function (id, al) { return wrapIcs(vevents(CATBY[id], al || '60', null)); };
+    })();
+    /* SEARCH END js */
     var route = function () {
       var h = location.hash.replace('#', ''), k = h.indexOf('t-') === 0 ? h.slice(2) : '';
       var t = TABS.filter(function (x) { return x.k === k; })[0];
@@ -1202,6 +1589,7 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
       } else { document.body.classList.remove('view-my'); mine.innerHTML = ''; baseRoute(); }
     };
     refreshBtns();
+    var _routeBase = route; route = function () { _routeBase(); try { window.__mgRenderUp(); } catch (er) {} };
     window.addEventListener('hashchange', function () { route(); });
     route();
   }
