@@ -324,6 +324,9 @@ body:not(.app) .more { display: none; }
 #dcalbox .go { display: block; width: 100%; background: var(--green); color: #fff; border: 0; border-radius: 14px; padding: 14px; font-weight: 800; font-size: 13pt; font-family: inherit; min-height: 52px; }
 #dcalbox .hint { color: var(--soft); font-size: 10.5pt; margin: 8px 0 0; }
 body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
+#dcalbox a.go { display: block; text-align: center; text-decoration: none; margin-bottom: 8px; padding: 14px; border-radius: 14px; font-weight: 800; font-size: 13pt; background: var(--green); color: #fff; border: 2px solid var(--green); }
+#dcalbox .go.alt { background: #fff; color: var(--green); border: 2px solid var(--green); }
+#dcalbox button.go.alt { display: block; width: 100%; margin-bottom: 8px; border-radius: 14px; border: 2px solid var(--green); }
 /* REMIND END css */
 
 @media (max-width: 640px) {
@@ -1263,6 +1266,30 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
         if (file && navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file], title: fn }).catch(function () {}); return; }
         var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = fn; document.body.appendChild(a); a.click(); setTimeout(function () { a.remove(); }, 800);
       }
+      function gcalUrl(ics) {
+        var ev = ics.split('BEGIN:VEVENT')[1]; if (!ev) return '';
+        function g(k) { var m = ev.match(new RegExp('^' + k + '[^:\\r\\n]*:(.*)$', 'm')); return m ? m[1].replace(/\r/g, '') : ''; }
+        function un(t) { return t.replace(/\\n/g, '\n').replace(/\\([,;\\])/g, '$1'); }
+        var st = g('DTSTART'), en = g('DTEND'); if (!st) return '';
+        var u = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(un(g('SUMMARY'))) + '&dates=' + st + '/' + en + '&location=' + encodeURIComponent(un(g('LOCATION'))) + '&details=' + encodeURIComponent(un(g('DESCRIPTION')));
+        var rr = g('RRULE'); if (rr) u += '&recur=' + encodeURIComponent('RRULE:' + rr);
+        return u;
+      }
+      function calPanel(fn, ics, host, single) {
+        var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        var url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })), gu = single ? gcalUrl(ics) : '';
+        var h = '<div class="lab">Ready. Tap one:</div><a class="go" href="' + url + '"' + (ios ? '' : ' download="' + fn + '"') + '>Open in Calendar</a>';
+        if (navigator.share) h += '<button type="button" class="go alt" id="dsh">Share to Calendar</button>';
+        if (gu) h += '<a class="go alt" target="_blank" rel="noopener" href="' + E(gu) + '">Add with Google Calendar</a>';
+        h += '<p class="hint">On iPhone, tap “Add All” when the calendar page opens. If it does not open, try the Share button and choose Calendar.</p>';
+        host.innerHTML = h;
+        var sh = host.querySelector('#dsh');
+        if (sh) sh.onclick = function () {
+          var f = null; try { f = new File([ics], fn, { type: 'text/calendar' }); } catch (er) {}
+          var p = (f && navigator.canShare && navigator.canShare({ files: [f] })) ? navigator.share({ files: [f], title: fn }) : navigator.share({ title: fn, text: 'Calendar file', url: url });
+          if (p && p.catch) p.catch(function () {});
+        };
+      }
       function chooserHtml(r) {
         var h = '<div class="lab">Remind me</div><div class="chips">' + Object.keys(ALN).map(function (k) { return '<button type="button" class="chip' + (k === ALARM ? ' on' : '') + '" data-al="' + k + '">' + ALN[k] + '</button>'; }).join('') + '</div>';
         var needDate = !(r.dates && r.dates.length) && !(r.weekly && r.weekly.length);
@@ -1279,7 +1306,7 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
             if (pd && !pv) { alert('Pick a day first.'); return; }
             var evs = vevents(r, al, pv || null);
             if (!evs.length) { alert('That date has already passed. Check the guide for the next one.'); return; }
-            deliver((r.name || 'event').replace(/[^\w ]+/g, '').trim().replace(/\s+/g, '-').slice(0, 40) + '.ics', wrapIcs(evs));
+            calPanel((r.name || 'event').replace(/[^\w ]+/g, '').trim().replace(/\s+/g, '-').slice(0, 40) + '.ics', wrapIcs(evs), box, true);
           }
         });
       }
@@ -1309,7 +1336,8 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
         if (e.target.id === 'upgo') {
           var evs = []; S.plan.forEach(function (p) { evs = evs.concat(vevents(p, ALARM, null)); });
           if (!evs.length) { alert('Nothing upcoming in your plan to send.'); return; }
-          deliver('Moms-Guide-plan.ics', wrapIcs(evs));
+          dmc.innerHTML = '<div class="dt">Send my plan to Calendar</div><div id="dcalbox"></div>'; dm.classList.add('on'); document.body.style.overflow = 'hidden'; dcard.scrollTop = 0;
+          calPanel('Moms-Guide-plan.ics', wrapIcs(evs), dmc.querySelector('#dcalbox'), false);
         }
       });
       window.__mgRenderUp = renderUp;
