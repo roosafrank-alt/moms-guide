@@ -992,11 +992,11 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
     }
     var home = document.createElement('div'); home.id = 'home';
     home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.</p>' +
-      '<a class="today" href="#t-' + DOW[di] + '">Today: ' + DN[di] + '<small>See what is on today</small></a><a class="today mypl" href="#my">My Plan<small>Pick events and build your week</small></a>' + newBox() + '<div class="grid">' + tiles + '</div>' +
+      '<a class="today" href="#today">Today: ' + DN[di] + '<small>Everything happening today</small></a><a class="today mypl" href="#my">My Plan<small>Pick events and build your week</small></a>' + newBox() + '<div class="grid">' + tiles + '</div>' +
       '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Last updated ' + UPDATED + '. <a href="?app=0" style="text-decoration:underline">Show full packet view</a>' + (/github\.io$/.test(location.hostname) ? ' · <a href="Moms_Activity_Packet.pdf" style="text-decoration:underline">Printable PDF</a>' : '') + '</p>';
     var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span><a href="#" id="bsr">Search</a>';
     var nav = document.createElement('div'); nav.id = 'nav';
-    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#t-' + DOW[di] + '" data-n="today">Today</a><a href="#" data-n="search" id="nsr">Search</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
+    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#today" data-n="today">Today</a><a href="#" data-n="search" id="nsr">Search</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
     document.body.insertBefore(home, book); document.body.insertBefore(bar, home); document.body.appendChild(nav);
 
     /* SEARCH BEGIN js */
@@ -1345,6 +1345,7 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
       /* REMIND END js */
       window.__mgSearch = { find: find, TOPICS: TOPICS, idx: function () { if (!IDX) buildIdx(); return IDX; } };
       window.__mgSearch.ics = function (id, al) { return wrapIcs(vevents(CATBY[id], al || '60', null)); };
+      window.__mgOpenCid = function (cid) { var el = book.querySelector('[data-cid="' + String(cid).replace(/"/g, '\\"') + '"]'); if (el && el.__mg) openD(el.__mg, false); };
     })();
     /* SEARCH END js */
     var route = function () {
@@ -1353,7 +1354,7 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
       document.body.classList.toggle('view-tab', !!t);
       [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { sh.style.display = (t && sh.dataset.k === k) ? '' : 'none'; });
       if (t) { bar.style.setProperty('--tcbar', t.c); bar.querySelector('.ttl').textContent = t.name; }
-      [].forEach.call(nav.querySelectorAll('a'), function (a) { var n = a.getAttribute('data-n'); a.classList.toggle('on', t ? (n === k || (n === 'today' && k === DOW[di])) : n === 'home'); });
+      [].forEach.call(nav.querySelectorAll('a'), function (a) { var n = a.getAttribute('data-n'); a.classList.toggle('on', t ? (n === k) : n === 'home'); });
       window.scrollTo(0, 0);
     };
     /* ================= Planner (phone app) ================= */
@@ -1605,10 +1606,40 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
     [].forEach.call(book.querySelectorAll('.sheet:not(.printonly)'), function (sh) {
       var k = sh.querySelector('.kicker'); if (k && !/Last updated/.test(k.textContent) && !sh.classList.contains('cover-sheet')) { var u = document.createElement('p'); u.className = 'upd'; u.textContent = 'Last updated ' + UPDATED; k.parentNode.insertBefore(u, k.nextSibling); }
     });
+    function renderToday() {
+      var t0 = iso(new Date()), nd = new Date(), w0 = nd.getDay(), seen = {}, L = [];
+      CAT.forEach(function (r) {
+        var on = r.dates.indexOf(t0) >= 0 || (!r.dates.length && wkOn(r, t0, w0)); if (!on) return;
+        var key = r.name.toLowerCase().replace(/\W+/g, '') + '|' + (r.timeTxt || ''); if (seen[key]) return; seen[key] = 1; L.push(r);
+      });
+      S.plan.forEach(function (p) { if (p.custom && ((p.dates || []).indexOf(t0) >= 0 || wkOn(p, t0, w0))) L.push(p); });
+      L.sort(function (a, b) { return a.sortT - b.sortT || (a.name < b.name ? -1 : 1); });
+      var groups = [['Morning', 0, 720], ['Afternoon', 720, 1020], ['Evening', 1020, 9999], ['Any time or all day', 9999, 99999]], html = '<div class="mh"><a class="back" href="#">‹ Home</a></div><h2 class="dh">Today, ' + DN[w0] + ' ' + MN[nd.getMonth()] + ' ' + nd.getDate() + '</h2><p class="tip2" style="margin-top:0">Everything on today: classes, events, walks and your own plans. Tap one for details.</p>';
+      groups.forEach(function (g) {
+        var G2 = L.filter(function (r) { return r.sortT >= g[1] && r.sortT < g[2]; }); if (!G2.length) return;
+        html += '<p class="lab">' + g[0] + '</p>' + G2.map(function (p) {
+          return '<div class="pe tdr"' + (p.custom ? '' : ' data-tcid="' + esc(p.id) + '"') + '><div class="pt">' + esc(p.timeTxt || 'Any time') + '</div><div class="pn">' + esc(p.name) + '</div>' + (p.where ? '<div class="pw">' + esc(p.where) + '</div>' : '') +
+            '<div class="pa">' + (p.tel ? '<a class="tl" href="' + p.tel + '">' + esc(p.telTxt || 'Call') + '</a>' : '') + (p.map ? '<a class="mp" href="' + p.map + '">Map</a>' : '') + '</div></div>';
+        }).join('');
+      });
+      if (!L.length) html += '<p class="none2">Nothing with a set day is listed for today.</p>';
+      html += '<p class="tip2">More: <a href="#t-' + DOW[w0] + '" style="text-decoration:underline">All ' + DN[w0] + ' listings</a> · <a href="#t-ev" style="text-decoration:underline">Events</a> · <a href="#t-walk" style="text-decoration:underline">Walks</a> · <a href="#t-ideas" style="text-decoration:underline">Ideas with no set day</a></p>';
+      mine.innerHTML = html;
+    }
+    mine.addEventListener('click', function (e) {
+      var r = e.target.closest && e.target.closest('[data-tcid]'); if (!r || e.target.closest('a, button')) return;
+      try { window.__mgOpenCid(r.getAttribute('data-tcid')); } catch (er) {}
+    });
     var baseRoute = route;
     route = function () {
       var h = location.hash.replace('#', '');
-      if (h === 'my' || /^day-\d{4}-\d{2}-\d{2}$/.test(h)) {
+      if (h === 'today') {
+        document.body.classList.remove('view-tab'); document.body.classList.add('view-my');
+        [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { sh.style.display = 'none'; });
+        bar.style.setProperty('--tcbar', '#2f6b4f'); bar.querySelector('.ttl').textContent = 'Today';
+        [].forEach.call(nav.querySelectorAll('a'), function (a) { a.classList.toggle('on', a.getAttribute('data-n') === 'today'); });
+        renderToday(); window.scrollTo(0, 0);
+      } else if (h === 'my' || /^day-\d{4}-\d{2}-\d{2}$/.test(h)) {
         document.body.classList.remove('view-tab'); document.body.classList.add('view-my');
         [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { sh.style.display = 'none'; });
         bar.style.setProperty('--tcbar', '#2f6b4f'); bar.querySelector('.ttl').textContent = h === 'my' ? 'My Plan' : 'Build a day';
