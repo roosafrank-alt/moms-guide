@@ -341,6 +341,26 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
   .sheet { width: 8.5in; height: 11in; min-height: 0; margin: 0; box-shadow: none; break-after: page; page-break-after: always; overflow: hidden; padding: 0.65in 0.95in 0.85in 1in; }
   .holes { display: none; }
 }
+
+/* PICKS BEGIN css */
+.nw { display: inline-block; background: #c8892b; color: #fff; font-size: 8.5pt; font-weight: 800; letter-spacing: .04em; border-radius: 6px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; text-transform: uppercase; }
+.lk1 { display: inline-block; background: #e6f1ea; color: #2f6b4f; font-size: 8.5pt; font-weight: 800; border-radius: 6px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+body.app .mg-hid { display: none !important; }
+#home .addbox, #home .forbox { background: #fff; border-left: 8px solid #2f6b4f; border-radius: 16px; padding: 12px 14px 10px; margin: 0 0 14px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+#home .forbox { border-left-color: #7a4e8a; }
+#home .addbox b.h, #home .forbox b.h { font-size: 13pt; display: block; }
+#home .addbox small.s, #home .forbox small.s { display: block; color: var(--soft); font-size: 10pt; margin: 2px 0 4px; }
+.prow { display: block; padding: 8px 0; border-top: 1px solid var(--rule); font-size: 11.5pt; cursor: pointer; }
+.prow i { font-style: normal; display: block; color: var(--soft); font-size: 10pt; }
+.prow em { font-style: normal; font-size: 8.5pt; font-weight: 800; color: #7a4e8a; text-transform: uppercase; letter-spacing: .04em; }
+.seeall { display: block; text-align: right; font-weight: 700; padding-top: 6px; color: var(--green); }
+.fbrow { display: flex; gap: 8px; margin-top: 8px; }
+.fbrow button { flex: 1; min-height: 42px; border-radius: 999px; font: inherit; font-weight: 700; font-size: 11.5pt; background: #fff; border: 2px solid var(--rule); color: var(--ink); }
+.fbrow button.y.on { background: #2f6b4f; border-color: #2f6b4f; color: #fff; }
+.fbrow button.n.on { background: #9a2a1c; border-color: #9a2a1c; color: #fff; }
+#dmc .fbrow { margin: 4px 0 10px; }
+.fbnote { color: var(--soft); font-size: 10pt; margin: 4px 0 0; }
+/* PICKS END css */
 </style>
 <div id="book"></div>
 <script>
@@ -357,7 +377,7 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
     { k: 'ev', l: 'Events', name: 'Events and Markets', c: '#1f7a6b', d: 'One-day events and markets through March, with last dates' },
     { k: 'walk', l: 'Walks', name: 'Walks and Runs', c: '#b5476b', d: '5Ks, walking groups, places to hike' },
     { k: 'enc', l: 'Encore', name: 'SUNY Orange Encore', c: '#a1452f', d: 'How to join, classes through Nov 10' },
-    { k: 'fit', l: 'Fitness', name: 'Fitness', c: '#3b6ea5', d: 'Planet Fitness, YMCA events, trainers to call' },
+    { k: 'fit', l: 'Fitness', name: 'Fitness', c: '#3b6ea5', d: 'Gym, YMCA classes, pickleball, trainers' },
     { k: 'vol', l: 'Give', name: 'Volunteering', c: '#8a5a1f', d: 'Ways to help, meet people and stay busy' },
     { k: 'ideas', l: 'Ideas', name: 'Ideas', c: '#7a4e8a', d: 'Classes and places with no fixed dates' },
     { k: 'me', l: 'Mine', name: 'My Activities', c: '#55636a', d: 'Write in: signed up, to follow up, ideas' },
@@ -395,18 +415,23 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
   var DAYS = {
     mon: [
       ['Morning', [
-        I('Community Yoga', '11am to 12pm', 'Port Jervis School District boardroom, 150 Pike St', '~25 min', 'Free', '845-856-7313 (library)', 'a', 'Free. Started March 2026, no end date. Ask if you must live in Port Jervis or have a library card.'),
+        I('Community Yoga', '11am to 12pm', 'Port Jervis School District boardroom, 150 Pike St', '~25 min', 'Free', '845-858-3100 (school district)', 'c', 'Free. Started March 2026, no end date. The school page lists no rule about living in Port Jervis or having a library card.'),
         I('Group Exercise (Mon and Wed)', '9am', 'Montgomery Senior Center, 36 Bridge St', '~40 min', 'Free, all welcome', '845-457-9367', 'c', 'Free per Oct 2026 listing. On the village calendar every week through Dec 31. Senior Center page says village residents and neighboring areas are welcome.'),
-        I('Tai Chi Video (10am), Bingo (11:15am), Balance, Cardio & Weights (12:45pm)', '10am to 1:30pm', 'Montgomery Senior Center, 36 Bridge St', '~40 min', 'Cost not listed', '845-457-9367', 'c', 'Tai Chi Video every Mon. Bingo 1st and 3rd Mon. Balance, Cardio & Weights 1st and 2nd Mon. Per village calendar through Dec.')
+        I('Tai Chi Video (10am), Bingo (11:15am), Balance, Cardio & Weights (12:45pm)', '10am to 1:30pm', 'Montgomery Senior Center, 36 Bridge St', '~40 min', 'Cost not listed', '845-457-9367', 'c', 'Tai Chi Video every Mon. Bingo 1st and 3rd Mon. Balance, Cardio & Weights 1st and 2nd Mon. Per village calendar through Dec.'),
+        I("Family Crafty Yarn Club (learn to crochet or knit, or bring a project; adults welcome)", "11am to 12:30pm", "Wallkill Public Library, Reading Room, 7 Bona Ventura Ave, Wallkill", "~35 min", "Free", "845-895-3707", "c", "Drop in. Listed Mondays Nov 2 to Dec 28."),
+        I("Tai Chi (register with a library card)", "10:30 to 11:45am", "Florida Public Library, 4 Cohen Cir, Florida NY", "~35 to 40 min", "Cost not listed", "845-651-7659", "c", "Nov 2, 16 and 30.")
       ]],
       ['Afternoon', [
         I('Kindred Stitchers (knit, crochet, embroider; bring a project)', '1 to 3pm', 'Liberty Public Library, Main Floor Conference Room, 189 N Main St', '~25 to 30 min', 'Free', '845-292-6070', 'c', 'Confirmed every Monday on the library calendar, through April 2027. Ask if you need a library card.'),
         I('Mamakating Library Mahjong Classes (FULL, can join wait list)', '1 to 3pm', 'Mamakating Library, 128 Sullivan St, Wurtsboro', '~5 min', 'Free (library card holders)', '845-888-8004', 'c', 'FULL. Started Oct 5 (6 Mondays). You can join the wait list at mamakatinglibrary.org/registrations.'),
-        I('Gentle Yoga', '4:30 to 5:30pm', 'Rosendale Community Center, Rt 32, Rosendale', '~40 min', '$5 ($10 non-resident)', '845-658-8198', 'a', 'End date unknown. Residents pay less. Ask if non-residents can join.')
+        I('Gentle Yoga', '4:30 to 5:30pm', 'Rosendale Community Center, Rt 32, Rosendale', '~40 min', '$5 ($10 non-resident)', '845-658-8198', 'a', 'Cancelled Oct 26 and Nov 2. End date unknown. Residents pay less.')
       ]],
       ['Evening', [
         I('Knit and Crochet Group, monthly (3rd Monday: Nov 16, Dec 21, then monthly into 2027)', '6 to 7:30pm', 'Crawford Public Library, Community Room, 479 Broadway, Monticello', '~20 min', 'Free', '845-794-4660', 'c', 'Yarn available to start. Led by Ginny Schouten. Oct 19 was closed. Register on the library calendar.'),
-        I('Monday Mahjong (beginners welcome)', '6 to 7pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'c', 'Confirmed Oct 5 to Nov 30. Ask if you need a library card.')
+        I('Monday Mahjong (beginners welcome)', '6 to 7pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'c', 'Listed every Monday through Mar 22, 2027. Ask if you need a library card.'),
+        I("Crochet Club (Crochet and Chat; bring yarn and hooks)", "6 to 7pm", "Woodbury Library, Rushmore Branch, 16 County Route 105, Highland Mills", "~45 to 50 min", "Free", "845-928-6162", "c", "Drop in. Listed Mondays Nov 2 to Apr 26, 2027."),
+        I("Knit and Crochet Circle (all levels)", "6:15 to 7:45pm", "Florida Public Library, 4 Cohen Cir, Florida NY", "~35 to 40 min", "Free", "845-651-7659", "c", "Register with a library card. Listed Mondays Nov 2 to Dec 28."),
+        I("Narrowsburg Knitters (knit, crochet, other needle crafts)", "6 to 8pm", "Western Sullivan Library, Tusten-Cochecton Branch, 198 Bridge St, Narrowsburg", "~50 min", "Free", "845-252-3360", "c", "Back this fall. Listed Mondays Nov 2 to Dec 28.")
       ]]
     ],
     tue: [
@@ -414,56 +439,83 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
         I('Mahjong', '10:15am to 12:15pm', 'Liberty Public Library, Program Room, 189 N Main St', '~25 to 30 min', 'Cost not listed', '845-292-6070', 'c', 'Confirmed every Tuesday on the library calendar, through Feb 2, 2027. Ask if you need a library card.'),
         I('Mamakating Library Walking Group', '10 to 11am', 'Mamakating Library, 128 Sullivan St, Wurtsboro', '~5 min', 'Free', '845-888-8004', 'c', 'Confirmed Tuesdays. Registration form asks if you are a resident or library card holder. Register at mamakatinglibrary.org/registrations (listed Oct 20 and 27).'),
         I('Tai Chi Advanced (9am), Line Dancing and Mahjong Lessons (10am)', '9 to 11am', 'Montgomery Senior Center, 36 Bridge St', '~40 min', 'Mahjong lessons free; others not listed', '845-457-9367', 'c', 'Every week through Dec 31 on the village calendar. Also New Horizons Club, 1pm, 2nd and 4th Tue. Ask cost for tai chi and line dancing. Senior Center page says village residents and neighboring areas are welcome.'),
-        I('Chair-Assisted Yoga', '10 to 11am', 'Port Jervis School District boardroom, 150 Pike St', '~25 min', 'Free', '845-856-7313 (library)', 'a', 'Free. Started March 2026, no end date. Ask if you must live in Port Jervis or have a library card.'),
-        I('Wawarsing Program', '11am to 2pm', 'Trudy Resnick Farber Bldg, 50 Center St, Ellenville', '~25 min', 'Free', '845-647-7800 x129', 'c', 'Confirmed Tuesdays to Feb 9, 2027. No sign-up needed. Ask if you must live in town.')
+        I('Chair-Assisted Yoga', '10 to 11am', 'Port Jervis School District boardroom, 150 Pike St', '~25 min', 'Free', '845-858-3100 (school district)', 'c', 'Free. Started March 2026, no end date. The school page lists no rule about living in Port Jervis or having a library card.'),
+        I('Wawarsing Program', '11am to 2pm', 'Trudy Resnick Farber Bldg, 50 Center St, Ellenville', '~25 min', 'Free', '845-647-7800 x129', 'c', 'Confirmed Tuesdays to Feb 9, 2027. No sign-up needed. Ask if you must live in town.'),
+        I("Textile Tuesday (quilt, knit, crochet, sew, embroider; bring lunch)", "10am to 2pm", "Shawangunk Town Hall, Community Room, 14 Central Ave, Wallkill", "~35 min", "Free", "845-895-3707 (Wallkill library)", "c", "No sign-up. One part of the page says it ends at 3pm, so ask. Listed Oct 27 to Dec 29."),
+        I("Mahjong at the Library (loaner sets)", "10am to 1pm", "Albert Wisner Library, 1 McFarland Dr, Warwick", "~50 min", "Free", "845-986-1047 ext. 4", "c", "Every Tuesday.")
       ]],
       ['Afternoon', [
         I('Drop-in Crafts, adults 18+ (Tue Nov 17 and Dec 1 only; bring a project)', '12:30 to 2pm', 'Thrall Library, 11-19 Depot St, 2nd floor Community Room, Middletown', '~30 min', 'Cost not listed', '845-341-5604', 'c', 'Confirmed on library calendar. Registration required. Ask if you need a library card.'),
         I('Chair Yoga (Tue Nov 10, 17, Dec 1, 8; FULL, can join wait list)', '11:10am to 12:10pm', 'Thrall Library, 11-19 Depot St, Community Room, Middletown', '~30 min', 'Cost not listed', '845-341-5604', 'c', 'Groups of 5. Page also says online, so ask if it is in person. Register at thrall.libcal.com/event/17326944.'),
-        I('SUNY Orange Encore: Chair Yoga (Oct 27, Nov 3, Nov 10) and a JFK history class (Oct 27)', '3 to 4pm and 3 to 5pm', 'SUNY Orange, 115 South St, Middletown', '~25 to 30 min', '$45 a year membership', '845-341-4896', 'a', 'Join first. See the Encore tab.')
+        I('SUNY Orange Encore: Chair Yoga (Oct 27, Nov 3, Nov 10) and a JFK history class (Oct 27)', '3 to 4pm and 3 to 5pm', 'SUNY Orange, 115 South St, Middletown', '~25 to 30 min', '$45 a year membership', '845-341-4896', 'a', 'Join first. See the Encore tab.'),
+        I("Zumba", "12 to 1pm", "Rosendale Community Center, Rt 32, Rosendale", "~40 min", "$5 ($10 non-resident)", "845-658-8198", "a", "Started Oct 6. End date not posted."),
+        I("Crochetiers Club (crochet-alongs for crocheters past beginner; current series full)", "1 to 2:30pm", "Goshen Public Library, 2nd floor Meeting Room, 366 Main St, Goshen", "~40 min", "Free", "845-294-6606", "c", "The fall series (Oct 27 to Nov 24) is full. The next one starts Tue Dec 15 and runs into March. Register online.")
       ]],
       ['Evening', [
-        I('Scrabble (adults, beginners welcome)', '6 to 8pm', 'Ellenville Library conference room, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'c', 'Confirmed Oct 6 to Nov 24. Ask if you need a library card.'),
+        I('Scrabble (adults, beginners welcome)', '6 to 8pm', 'Ellenville Library conference room, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'c', 'Listed every Tuesday through Mar 16, 2027. Ask if you need a library card.'),
         I('Art Hang Out', '6 to 8pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'a', 'One 2025 listing. Ask if it is running. Ask if you need a library card.')
       ]]
     ],
     wed: [
       ['Morning', [
-        I('Group Exercise (Mon and Wed)', '9am', 'Montgomery Senior Center, 36 Bridge St', '~40 min', 'Free, all welcome', '845-457-9367', 'c', 'Free per Oct 2026 listing. On the village calendar every week through Dec 31. Senior Center page says village residents and neighboring areas are welcome.')
+        I('Group Exercise (Mon and Wed)', '9am', 'Montgomery Senior Center, 36 Bridge St', '~40 min', 'Free, all welcome', '845-457-9367', 'c', 'Free per Oct 2026 listing. On the village calendar every week through Dec 31. Senior Center page says village residents and neighboring areas are welcome.'),
+        I("Wednesday Wellness: Gentle Yoga or Gentle Zumba (alternating weeks)", "9:30am", "Goshen Public Library, 366 Main St, Goshen", "~40 min", "Cost not listed", "845-294-6606", "c", "Register on the library calendar."),
+        I("Yiddish conversation group (language, customs, humor; all levels)", "10:30am to 12pm", "Crawford Public Library, Community Room, 479 Broadway, Monticello", "~20 min", "Cost not listed", "845-794-4660", "c", "No sign-up. No meeting Nov 25."),
+        I("Tech help, drop in (phone, tablet, email)", "10:30am to 12:30pm", "Crawford Public Library, 479 Broadway, Monticello", "~20 min", "Free", "845-794-4660", "c", "First come, first served.")
       ]],
       ['Afternoon', [
         I('Chair Yoga with Rebecca DeRosa (Nov 18 only)', '2 to 3pm', 'Crawford Public Library, Community Room, 479 Broadway, Monticello', '~20 min', 'Cost not listed', '845-794-4660 ext. 9', 'c', 'Register on the library calendar (needs your library card number). Few seats left. Page also says online, so ask if it is in person.'),
+        I("Yarn Gang (work on projects and share the week)", "2 to 3:30pm", "Goshen Public Library, 2nd floor Meeting Room, 366 Main St, Goshen", "~40 min", "Free", "845-294-6606", "c", "No sign-up shown. Listed weekly through Jan 6, 2027 (no meeting Nov 11); ask about later dates."),
+        I("Mahjong Club", "1 to 4pm", "Wallkill Public Library, 7 Bona Ventura Ave, Wallkill", "~35 min", "Cost not listed", "845-895-3707", "c", "Every Wednesday.")
       ]],
       ['Evening', [
         I('Bulb Planting Garden Workshop (Oct 28 only)', '5 to 6pm', 'Cornell Extension, 64 Ferndale-Loomis Rd, Liberty', '~25 min', 'Free', '845-292-6180', 's', 'Wear shoes that can get dirty. Meet at the fenced raised bed. Sign up: pub.cce.cornell.edu/event_registration/main/events.cfm?dept=248'),
-        I('Yoga (foundational poses)', '6 to 7pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'c', 'Confirmed Oct 7, 14, 21 and Nov 18 (Oct 28 is the bulb workshop; Nov 4 and 11 not listed). Ask if it runs weekly. Ask if you need a library card.')
+        I('Yoga (foundational poses)', '6 to 7pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'c', 'Confirmed Oct 7, 14, 21 and Nov 18 (Oct 28 is the bulb workshop; Nov 4 and 11 not listed). Ask if it runs weekly. Ask if you need a library card.'),
+        I("Ukulele Jam (1st Wednesday)", "6 to 7:30pm", "Rosendale Community Center, Rt 32, Rosendale", "~40 min", "$5 suggested donation", "845-658-8198", "a", "First Wednesday each month. Ask if beginners and loaner ukuleles are fine."),
+        I("Beginner Line Dancing", "5:30 to 6:30pm", "Hurleyville Performing Arts Centre, 219 Main St, Hurleyville", "~30 min", "$8 a class", "845-985-4722", "a", "Listed as weekly, but only one fall date is posted. Call before going."),
+        I("Country Quilters Guild (2nd Wednesday; new members welcome, no experience needed)", "7pm", "Town of Crawford Town Hall, 121 Route 302, Pine Bush", "~35 min", "Dues about $30 a year", "845-361-4599 (Kate, leave a message)", "a", "Info is from a 2025 news story. Call to confirm.")
       ]]
     ],
     thu: [
       ['Morning', [
         I('Tai Chi (9am), Chair Yoga (10:15am), Chair Gentle Pilates (11:15am)', '9am to 12pm', 'Montgomery Senior Center, 36 Bridge St', '~40 min', 'Cost not listed (chair yoga was $5 in 2025)', '845-457-9367', 'a', 'On the village calendar every week through Dec 31. Ask the cost. Senior Center page says village residents and neighboring areas are welcome.'),
+        I("Fiber Arts (weekly; bring your current project)", "10:30am to 12:30pm", "Port Jervis Free Library, Community Room, 138 Pike St, Port Jervis", "~25 min", "Free", "845-856-7313", "c", "Drop in. Every Thursday into 2027. The library may be closed Nov 26, Dec 24 and Dec 31."),
+        I("Craft and Conversation (bring a project)", "10am to 12pm", "Rosendale Library, 264 Main St, Rosendale", "~40 to 45 min", "Cost not listed", "845-658-9013", "c", "Thursdays Oct 29 to Feb 11, 2027. Register on the library calendar (name and email)."),
+        I("Calico Geese Quilting Guild \"Sewcial\" (quilt, knit or embroider and chat)", "10am to 12pm", "Cornell Extension, 64 Ferndale-Loomis Rd, Liberty", "~25 min", "Free to visit", "845-292-6180 (Cornell Extension)", "c", "Knitters and crocheters welcome. Come as a guest first. Their quilt show is at the Liberty library in early March."),
+        I("Bone Builders (strength with light weights)", "11am to 12pm", "Cornell Extension, 64 Ferndale-Loomis Rd, Liberty", "~25 min", "Free", "845-292-6180", "c", "Open to anyone. Bring water, a mat and 1 to 2 lb weights. Register: pub.cce.cornell.edu/event_registration/main/events.cfm?dept=248"),
+        I("Mahjong free play (tiles provided; some experience helps)", "10am to 12:30pm", "Goshen Public Library, 366 Main St, Goshen", "~40 min", "Free", "845-294-6606", "c", "Register on the library calendar. Listed to Mar 4, 2027.")
       ]],
       ['Afternoon', [
         I('Qi Gong', '4:30 to 5:30pm', 'Rosendale Community Center, Rt 32, Rosendale', '~40 min', '$5 ($10 non-resident)', '845-658-8198', 'a', 'End date unknown. Residents pay less. Ask if non-residents can join.'),
+        I("Pinochle (they will teach you)", "1 to 3pm", "Wallkill Public Library, 7 Bona Ventura Ave, Wallkill", "~35 min", "Cost not listed", "845-895-3707", "c", "Registration required. Listed weekly into June 2027."),
+        I("Sew-cial Circle (cross stitch, embroidery, needlepoint; supplies available)", "1 to 3pm", "Western Sullivan Library, Jeffersonville Branch, 19 Center St, Jeffersonville", "~45 to 50 min", "Free", "845-482-4350", "c", "No sign-up.")
       ]],
       ['Evening', []]
     ],
     fri: [
       ['Morning', [
         I('Cards and Games', '9am', 'Montgomery Senior Center, 36 Bridge St', '~40 min', 'Cost not listed (chair yoga was $5 in 2025)', '845-457-9367', 'a', 'On the village calendar every week through Dec 31. Ask the cost. Senior Center page says village residents and neighboring areas are welcome.'),
-        I('Yoga Therapy and Tai-Chi Walking', '11am to 12pm', 'Port Jervis School District boardroom, 150 Pike St', '~25 min', 'Free', '845-856-7313 (library)', 'a', 'Free. Started March 2026, no end date. Ask if you must live in Port Jervis or have a library card.')
+        I('Yoga Therapy and Tai-Chi Walking', '11am to 12pm', 'Port Jervis School District boardroom, 150 Pike St', '~25 min', 'Free', '845-858-3100 (school district)', 'c', 'Free. Started March 2026, no end date. The school page lists no rule about living in Port Jervis or having a library card.'),
+        I("Goshen Library Fiber Arts Guild (knit, sew, spin, weave; share what you are making)", "11:30am to 1pm", "Goshen Public Library, 366 Main St, Goshen", "~40 min", "Free", "845-294-6606", "c", "Monthly.")
       ]],
       ['Afternoon', [
         I('Adult Gaming Group, 21+ (cards, Scrabble, mahjong; bring your own tiles)', '1 to 4pm', 'Crawford Public Library, Community Room, 479 Broadway, Monticello', '~20 min', 'Free', '845-794-4660', 'c', 'Confirmed Fridays on the library calendar through March 2027 (closed on holidays). Ask if you need a library card.'),
+        I("Knot Just Knitting", "3:30 to 5pm", "Elting Memorial Library, 93 Main St, New Paltz", "~40 min", "Free", "845-255-5030", "c", "Registration optional. Listed Fridays to Dec 18."),
+        I("Drop Spindle meet-up (learn to spin yarn; wool and spindles supplied)", "4 to 5:30pm", "Port Jervis Free Library, 138 Pike St, Port Jervis", "~25 min", "Free", "845-856-7313", "c", "First Friday each month. Beginners welcome.")
       ]],
       ['Evening', [
-        I('Game Night', '6 to 8pm', 'Rosendale Community Center, Rt 32, Rosendale', '~40 min', 'Free', '845-658-8198', 'a', 'Nov 20 only. Not weekly. Residents pay less. Ask if non-residents can join.')
+        I('Game Night', '6 to 8pm', 'Rosendale Community Center, Rt 32, Rosendale', '~40 min', 'Free', '845-658-8198', 'a', 'Nov 20 only. Not weekly. Residents pay less. Ask if non-residents can join.'),
+        I("Trivia night (4th Friday)", "6:30 to 8:30pm", "Two Farms Brewing, 689 Winterton Rd, Bloomingburg", "~10 min", "Cost not posted", "845-412-5205", "c", "Teams welcome. The page also lists Dec 25; ask if that one is real.")
       ]]
     ],
     sat: [
       ['Morning', [
-        I("What's the Stitch? (knit, crochet, embroider, craft)", '10am to 12pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'c', 'Confirmed Oct 3 to Nov 28.'),
-        I('Fiber Arts Saturday', 'Time unknown', 'Port Jervis Free Library, 138 Pike St', '~25 min', 'Cost not listed', '845-856-7313', 'a', 'Ask the time and how often. Ask if you need a library card.')
+        I("What's the Stitch? (knit, crochet, embroider, craft)", '10am to 12pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'c', 'Listed Saturdays into March 2027 (Nov 7, Dec 5, 12, 19, and Jan to Mar). Closed Dec 31 afternoon and Jan 1.'),
+        I('Saturday Fiber Arts (3rd Saturday; drop in, bring any project)', '10:30am to 12:30pm', 'Port Jervis Free Library, Community Room, 138 Pike St, Port Jervis', '~25 min', 'Free', '845-856-7313', 'c', 'Monthly on the 3rd Saturday. No sign-up. The same group also meets every Thursday morning.'),
+        I("Friends of Mamakating Library meetup", "10 to 11am", "Mamakating Library, 128 Sullivan St, Wurtsboro", "~5 min", "Free", "mamakatingfol@gmail.com", "c", "2nd Saturday. Meet neighbors and help plan library events."),
+        I("Community Spin-In (bring a wheel, spindle or any small craft)", "10:30am to 1pm", "Fiber on Main, 227 Main St, Hurleyville", "~30 min", "Free", "845-707-8428", "a", "First Saturday each month, except holiday weekends. Call to confirm the date."),
+        I("Herbal Hour (tea and cookies)", "11:30am to 12:30pm", "Goshen Public Library, 366 Main St, Goshen", "~40 min", "Free", "845-294-6606", "c", "First Saturday. Register on the library calendar."),
+        I("Beginners Oil Painting, drop in (materials included)", "10am to 12pm", "Wallkill River Center for the Arts, 232 Ward St, Montgomery", "~30 to 35 min", "$65 a class", "845-457-2787", "c", "Pick any Saturday: Nov 7, 14, 21, Dec 5, 12, 19.")
       ]],
       ['Afternoon', [
         I('Wurtsboro Art Alliance gallery (viewing only, also Sun)', '12 to 4pm', '73 Sullivan St, Wurtsboro', '~5 min', 'Cost not listed', 'info.waagallery@gmail.com', 'a', 'Open Sat and Sun.')
@@ -473,23 +525,25 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
     sun: [
       ['Morning', [
         I('Learn to Crochet with Pat Blanco (Nov 1, Nov 8; supplies provided; ages 12+)', '10am to 12pm', '73 Sullivan St, Wurtsboro', '~5 min', 'Free (donations welcome)', 'rhettbit@aol.com, subject "Learn to Crochet classes"', 'c', 'Register by email. Max 12 students. Bring your own supplies or use theirs.'),
-        I('Sunday Morning Knitting Circle (all crafts, beginners welcome; arrive and leave any time)', '9am to 12pm', 'Taylor + Ace, 1975 Old Route 17, Roscoe', '~50 min', 'Free', 'No phone posted', 'c', 'Every Sunday; the calendar runs into June 2027. Crochet, cross stitch and fly tying welcome too. Coffee by Material (Index). Knitting help by Cam Shaw. Overlaps the crochet class on Oct 25, Nov 1 and Nov 8.')
+        I('Sunday Morning Knitting Circle (all crafts, beginners welcome; arrive and leave any time)', '9am to 12pm', 'Taylor + Ace, 1975 Old Route 17, Roscoe', '~50 min', 'Free', 'No phone posted', 'c', 'Every Sunday; the calendar runs into June 2027. Crochet, cross stitch and fly tying welcome too. Coffee by Material (Index). Knitting help by Cam Shaw. Overlaps the crochet class on Oct 25, Nov 1 and Nov 8.'),
+        I("Sky Stitching at MEEC (knit along with the artist)", "10am to 12pm", "MEEC, 762 South Rd, Wurtsboro", "~5 min", "Free", "845-644-5014", "c", "Sit with artist Audrey Bartow while she knits the birds she sees into a big tapestry. Yarn and knitted pieces welcome as donations. Every Sunday, year-long project.")
       ]],
       ['Afternoon', [
-        I('Wurtsboro Art Alliance gallery (viewing only, also Sat)', '12 to 4pm', '73 Sullivan St, Wurtsboro', '~5 min', 'Cost not listed', 'info.waagallery@gmail.com', 'a', 'Open Sat and Sun.')
+        I('Wurtsboro Art Alliance gallery (viewing only, also Sat)', '12 to 4pm', '73 Sullivan St, Wurtsboro', '~5 min', 'Cost not listed', 'info.waagallery@gmail.com', 'a', 'Open Sat and Sun.'),
+        I("\"Slow Down Sunday\" knit and crochet social", "3 to 5pm", "Grumpy Goat Fine Yarn, 78 Front St, Suite 60, Port Jervis", "~25 min", "Free", "845-672-4307", "a", "Not every Sunday; call for dates. The shop also teaches beginner knit and crochet ($30).")
       ]],
       ['Evening', []]
     ]
   };
 
   var REC = {
-    mon: [['w', 'Every Mon', 'Community Yoga'], ['w', 'Every Mon and Wed', 'Group Exercise'], ['w', 'Every Mon (some Mondays)', 'Tai Chi Video, Bingo, Balance'], ['w', 'Every Mon to Apr 2027', 'Kindred Stitchers'], ['q', 'Full, can join wait list', 'Mahjong, Mamakating'], ['w', 'Every Mon', 'Gentle Yoga'], ['w', 'Monthly, 3rd Mon to Feb 2027', 'Knit and Crochet, Monticello'], ['w', 'Every Mon to Nov 30', 'Monday Mahjong']],
-    tue: [['w', 'Every Tue to Feb 2027', 'Mahjong, Liberty'], ['w', 'Every Tue', 'Walking Group, Mamakating'], ['w', 'Every Tue', 'Line Dancing, Mahjong Lessons, Tai Chi Adv.'], ['w', 'Every Tue', 'Chair-Assisted Yoga'], ['w', 'Every Tue to Feb 2027', 'Wawarsing Program'], ['d', 'Nov 17, Dec 1', 'Drop-in Crafts, Thrall'], ['d', 'Nov 10, 17, Dec 1, 8 (full, wait list)', 'Chair Yoga, Thrall'], ['d', 'Oct 20, 27 and Oct 27, Nov 3, 10', 'Encore: JFK class, Chair Yoga'], ['w', 'Every Tue to Nov 24', 'Scrabble'], ['q', 'One 2025 listing', 'Art Hang Out']],
-    wed: [['w', 'Every Wed', 'Group Exercise'], ['d', 'Nov 18 only', 'Chair Yoga, Monticello'], ['d', 'Oct 28 only', 'Bulb Planting Workshop'], ['w', 'Wed Oct 7 to 21, Nov 18', 'Yoga, Ellenville']],
-    thu: [['w', 'Every Thu', 'Tai Chi, Chair Yoga, Pilates'], ['w', 'Every Thu', 'Qi Gong']],
-    fri: [['w', 'Every Fri', 'Cards and Games'], ['w', 'Every Fri', 'Yoga Therapy, Tai-Chi Walking'], ['w', 'Every Fri to Mar 2027', 'Adult Gaming, Monticello'], ['d', 'Nov 20 only', 'Game Night']],
-    sat: [['w', 'Every Sat to Nov 28', "What's the Stitch?"], ['q', 'Time and how often unknown', 'Fiber Arts Saturday'], ['w', 'Open every Sat and Sun', 'Art Alliance gallery']],
-    sun: [['d', 'Nov 1, Nov 8 only', 'Learn to Crochet'], ['w', 'Every Sunday', 'Knitting Circle, Roscoe'], ['w', 'Open every Sat and Sun', 'Art Alliance gallery']]
+    mon: [["w", "Every Mon", "Community Yoga"], ["w", "Every Mon and Wed", "Group Exercise"], ["w", "Every Mon (some Mondays)", "Tai Chi Video, Bingo, Balance"], ["m", "Mondays Nov 2 to Dec 28", "Yarn Club, Wallkill"], ["d", "Nov 2, 16, 30 only", "Tai Chi, Florida"], ["w", "Every Mon to Apr 2027", "Kindred Stitchers"], ["q", "Full, can join wait list", "Mahjong, Mamakating"], ["w", "Every Mon", "Gentle Yoga"], ["w", "Monthly, 3rd Mon to Feb 2027", "Knit and Crochet, Monticello"], ["w", "Every Mon to Mar 2027", "Monday Mahjong"], ["m", "Mondays Nov 2 to Apr 26", "Crochet Club, Highland Mills"], ["m", "Mondays Nov 2 to Dec 28", "Knit Circle, Florida"], ["m", "Mondays Nov 2 to Dec 28", "Narrowsburg Knitters"]],
+    tue: [["w", "Every Tue to Feb 2027", "Mahjong, Liberty"], ["w", "Every Tue", "Walking Group, Mamakating"], ["w", "Every Tue", "Line Dancing, Mahjong Lessons, Tai Chi Adv."], ["w", "Every Tue", "Chair-Assisted Yoga"], ["w", "Every Tue to Feb 2027", "Wawarsing Program"], ["m", "Tuesdays to Dec 29", "Textile Tuesday, Wallkill"], ["w", "Every Tue", "Mahjong, Warwick"], ["d", "Nov 17, Dec 1", "Drop-in Crafts, Thrall"], ["d", "Nov 10, 17, Dec 1, 8 (full, wait list)", "Chair Yoga, Thrall"], ["d", "Oct 20, 27 and Oct 27, Nov 3, 10", "Encore: JFK class, Chair Yoga"], ["w", "Every Tue", "Zumba, Rosendale"], ["m", "Tuesdays Dec 15 to Mar 2", "Crochetiers, Goshen"], ["w", "Every Tue to Mar 2027", "Scrabble"], ["q", "One 2025 listing", "Art Hang Out"]],
+    wed: [["w", "Every Wed", "Group Exercise"], ["w", "Every Wed", "Gentle Yoga or Zumba, Goshen"], ["w", "Every Wed", "Yiddish, Monticello"], ["w", "Every Wed", "Tech help, Monticello"], ["d", "Nov 18 only", "Chair Yoga, Monticello"], ["m", "Wednesdays to Jan 6", "Yarn Gang, Goshen"], ["w", "Every Wed", "Mahjong, Wallkill"], ["d", "Oct 28 only", "Bulb Planting Workshop"], ["w", "Wed Oct 7 to 21, Nov 18", "Yoga, Ellenville"], ["d", "Nov 4, Dec 2, Jan 6, Feb 3, Mar 3", "Ukulele Jam, Rosendale"], ["q", "Ask if it runs this winter", "Line Dancing, Hurleyville"], ["d", "Nov 11, Dec 9 (2nd Wed)", "Quilters Guild, Pine Bush"]],
+    thu: [["w", "Every Thu", "Tai Chi, Chair Yoga, Pilates"], ["w", "Every Thu", "Fiber Arts, Port Jervis"], ["m", "Thursdays to Feb 11", "Craft & Conversation, Rosendale"], ["w", "Every Thu", "Calico Geese, Liberty"], ["d", "Oct 29, Nov 5, 12, 19 only", "Bone Builders, Liberty"], ["m", "Thursdays to Mar 4", "Mahjong, Goshen"], ["w", "Every Thu", "Qi Gong"], ["w", "Every Thu", "Pinochle, Wallkill"], ["w", "Every Thu", "Sew-cial Circle, Jeffersonville"]],
+    fri: [["w", "Every Fri", "Cards and Games"], ["w", "Every Fri", "Yoga Therapy, Tai-Chi Walking"], ["d", "Nov 13, Dec 11 only", "Fiber Arts Guild, Goshen"], ["w", "Every Fri to Mar 2027", "Adult Gaming, Monticello"], ["m", "Fridays to Dec 18", "Knot Just Knitting, New Paltz"], ["d", "Nov 6, Dec 4 (1st Fri)", "Drop Spindle, Port Jervis"], ["d", "Nov 20 only", "Game Night"], ["d", "Nov 27, Jan 22, Feb 26, Mar 26", "Trivia, Bloomingburg"]],
+    sat: [["w", "Every Sat into Mar 2027", "What's the Stitch?"], ["d", "Nov 21, Dec 19, then 3rd Sat", "Saturday Fiber Arts"], ["d", "Nov 14, Dec 12 (2nd Sat)", "Friends of the Library"], ["d", "Nov 7, Dec 5 (1st Sat)", "Spin-In, Hurleyville"], ["d", "Nov 7, Dec 5 (1st Sat)", "Herbal Hour, Goshen"], ["d", "Nov 7, 14, 21, Dec 5, 12, 19", "Oil Painting, Montgomery"], ["w", "Open every Sat and Sun", "Art Alliance gallery"]],
+    sun: [["d", "Nov 1, Nov 8 only", "Learn to Crochet"], ["w", "Every Sunday", "Knitting Circle, Roscoe"], ["w", "Every Sunday", "Sky Stitching, MEEC"], ["w", "Open every Sat and Sun", "Art Alliance gallery"], ["q", "Call for which Sundays", "Slow Down Sunday, Port Jervis"]]
   };
   Object.keys(REC).forEach(function (k) { var n = 0; DAYS[k].forEach(function (p) { p[1].forEach(function (o) { o.r = REC[k][n++]; }); }); });
   function pw(per) { return per[1].length ? per[1].reduce(function (a, o) { return a + weight(o); }, 0) + 0.45 : 1.5; }
@@ -587,7 +641,7 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
       ['Sat Nov 21', 'SUNY Sullivan Holiday Craft Fair 11am to 3pm (free)', 'Loch Sheldrake'],
       ['Sun Nov 22', 'Last Warwick Valley market', 'Warwick'],
       ['Wed Nov 25', 'Goshen special market', 'Goshen'],
-      ['Sat Dec 5', 'MEEC Holiday Artisan Fair and Fox Kit raffle (call for hours)', 'Wurtsboro'],
+      ['Sat Dec 5', 'MEEC Holiday Artisan Market 10am to 3pm and Fox Kit raffle', 'Wurtsboro'],
       ['Sun Dec 20', 'Live music, 2pm', 'Bashakill Vineyards, Wurtsboro'],
       ['Tue Dec 29', 'Last Tai Chi Winter session', 'Cornell Extension'],
     ];
@@ -626,7 +680,7 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
 
   /* Events and Markets */
   function EV(date, name, time, where, drive, cost, phone, last, x) {
-    var rt = /^Tuesdays/.test(date) ? ['w', 'Weekly series'] : /market|Ends|Season|Last:/.test(last) ? ['m', 'Ends ' + (last.split(': ')[1] || '').replace(/ \(.*$/, '')] : ['d', 'One day'];
+    var rt = /^(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)days\b/.test(date) ? ['w', 'Weekly series'] : /market|Ends|Season|Last:/.test(last) ? ['m', 'Ends ' + (last.split(': ')[1] || '').replace(/ \(.*$/, '')] : ['d', 'One day'];
     if (/Season|End of Oct/.test(date)) rt = ['m', 'Season end unclear'];
     if (/^Jan to/.test(date)) rt = ['q', '2027 dates not posted yet'];
     if (/^Daily/.test(date)) rt = ['w', 'Open daily'];
@@ -646,23 +700,21 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
       EV('Sat Nov 7', 'MEEC Fall Festival', '10am to 3pm', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', '$5 a person', '845-644-5014', 'Last day: Nov 7', 'Their biggest fall event: vendors, face painting, pumpkin carving demo, crafts, fall garden tour, bake sale, campfire. friendsofmeec.org'),
     ].join(''));
   add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'events, continued', '') + '<h3>One-day and short-run events</h3>' + [
-      EV('Tue Nov 10', 'Fall Wreath Workshop with Jessica Williams', '6pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'Last day: Nov 10', 'Ask about cost, sign-up and a library card.'),
+      EV('Tue Nov 10', 'Fall Wreath Workshop with Jessica Williams', '6 to 8pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Free', '845-647-5530', 'Last day: Nov 10', 'Registration required. Library card holders got first pick, so call to ask for a seat.'),
       EV('Wed Nov 18', 'Chair Zumba for All Abilities', '1pm', 'Ellenville Library, 40 Center St', '~20 to 25 min', 'Cost not listed', '845-647-5530', 'Last day: Nov 18', 'Ask about cost and sign-up.'),
       EV('Thu Nov 5', 'Fisher and Kean, live music duo (register)', '6:30 to 7:30pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Free', '845-794-4660', 'Last day: Nov 5', ''),
       EV('Sat Nov 7', 'Community Art Exhibit opening reception (Catskill landscape paintings)', '1 to 3pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Free', '845-794-4660', 'Last day: Nov 7', ''),
       EV('Mon Nov 2', 'Tai Chi Series with Pedro Tweed (call to register)', '12 to 1pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Cost not listed', '845-794-4660 ext. 2', 'Last day: Nov 2', 'Also Dec 7 and Jan 4.'),
       EV('Mon Nov 16', 'Knit and Crochet Group (monthly, yarn available)', '6 to 7:30pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Free', '845-794-4660', 'Last day: Nov 16', 'Also Dec 21 and monthly into 2027.'),
-      EV('Tue Nov 17', 'Bracelet Making Workshop', '5:30 to 7:30pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', 'Cost not listed', '845-794-4660', 'Last day: Nov 17', 'Ask about sign-up.'),
+      EV('Tue Nov 17', 'Bracelet Making Workshop', '5:30 to 7:30pm', 'Crawford Public Library, 479 Broadway, Monticello', '~20 min', '$5 cash', '845-794-4660 ext. 4', 'Last day: Nov 17', 'Call ext. 4 to register.'),
       EV('Tuesdays Nov 10 to Dec 29', 'Tai Chi Winter 2026, Cornell Extension Sullivan (all ages)', '11am to 12pm', 'CCE Sullivan, 64 Ferndale-Loomis Rd, Liberty', '~25 min', '$25 for all 8, or $5 a class', '845-292-6180 x122', 'Last day: Dec 29', 'Sign up: tinyurl.com/5n6mtpy4 or sullivancrc@cornell.edu. No one is turned away for cost.'),
       EV('Weekends to Dec 20', 'Live music at the winery (adults only)', 'Fri 3 to 6pm; Sat, Sun 2 to 5pm', 'Bashakill Vineyards and Winery, 1131 South Rd, Wurtsboro', '~5 min', 'Cost not listed', '845-888-5858', 'Ends: Dec 20', 'Oct 23 Tim Santiago, Oct 24 Tasi, Oct 25 Julian Giaimo, Oct 30 Shane Rennison, Oct 31 Big Sticky Band, Nov 7 Andrew the Hitman, Nov 14 Ken Flood, Nov 21 Julian Giaimo, Nov 28 Catbird, Dec 5 Shane Rennison, Dec 12 Andrew the Hitman, Dec 19 Shane Rennison.'),
-      EV('Sat Dec 5', 'MEEC Holiday Artisan Fair and Fox Kit raffle', 'Raffle drawing 3pm; fair hours not confirmed', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', 'Raffle price not confirmed', '845-644-5014', 'Last day: Dec 5', 'Fair may be Dec 6, 10am to 3pm. Call to confirm.'),
+      EV('Sat Dec 5', 'MEEC Holiday Artisan Market and Fox Kit raffle', '10am to 3pm', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', 'Free to browse; raffle $20 or 3 for $50', '845-644-5014', 'Last day: Dec 5', 'Local makers, including crochet and knitting. Raffle prize is a framed fox kit photo.'),
       EV('Sun Dec 20', 'Live music: Julian Giaimo (adults only)', '2 to 5pm', 'Bashakill Vineyards and Winery, 1131 South Rd, Wurtsboro', '~5 min', 'Cost not listed', '845-888-5858', 'Last day: Dec 20', '')
     ].join('') +
     '<div class="box"><b>Likely to repeat, 2026 date not posted yet</b><ul class="plain">' +
     '<li>Narrowsburg Holiday Market (Main St and the Union, 7 Erie Ave). Last year: Sat Dec 6. Check welcometonarrowsburg.com.</li>' +
     '<li>Holiday in Hurleyville (shops, Sullivan County Museum tree open house). Last year: Sat Dec 6. Museum 845-434-8044.</li>' +
-    '<li>Narrowsburg Knitters, Mondays 6 to 8pm, Western Sullivan Public Library. Last year: Feb 23 to Apr 27. A weekly crochet-friendly group; ask the library if it returns.</li>' +
-    '<li>New Century Christmas Market, 517 Neversink Dr, Port Jervis. Last year: Sat Dec 6 and 13.</li>' +
     '<li>Wurtsboro Art Alliance holiday gift show, 73 Sullivan St. Last year: mid-November to mid-December, Sat and Sun 12 to 4pm. info.waagallery@gmail.com.</li>' +
     '<li>Goshen Holiday Experience, tree lightings, church fairs: no 2026 dates found. Check again in mid-November.</li></ul></div>' +
     '');
@@ -674,13 +726,68 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
   ].join(''));
   add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'more, through March', '<p class="lead">Almost nothing is posted for January, February and March yet.</p>') +
     '<h3>More dated events</h3>' + [
-      EV('Sun Nov 1', 'MEEC artist residency: "Sky Stitching" (Audrey Bartow)', '10am', 'MEEC, 762 South Rd, Wurtsboro', '~5 min', 'Cost not listed', 'MEEC 845-644-5014', 'Last day: Nov 1', 'Posted on Patch only. Call to confirm.'),
-      EV('Sat Nov 7', 'Catskill Art Space gallery (Livingston Manor)', 'Fri, Sat 11am to 5pm; Sun 11am to 3pm', 'Catskill Art Space, Livingston Manor', '~45 to 50 min (estimate)', 'Cost not listed, likely free', 'info@catskillartspace.org', 'Murray show ends: Dec 27', 'Nov 7 opening not confirmed. Call before going.'),
+      EV('Sat Nov 7', 'Catskill Art Space: artists talk and opening reception', '3 to 4pm', 'Catskill Art Space, 48 Main St, Livingston Manor', '~45 to 50 min', 'Gallery is free', 'info@catskillartspace.org', 'Last day: Nov 7', 'Gallery open Fri and Sat 11am to 5pm, Sun 11am to 3pm.'),,
     ].join(''));
   add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'more, continued', '') +
     '<h3>More dated events</h3>' + [
       EV('Sat Nov 21', 'SUNY Sullivan Holiday Craft Fair', '11am to 3pm', 'Paul Gerry Fieldhouse, 112 College Rd, Loch Sheldrake', '~35 min', 'Free admission and parking', 'events@sunysullivan.edu; 845-434-5750', 'Last day: Nov 21', 'Date confirmed on the college page.'),
       EV('Daily to Dec 31', 'Bethel Woods Museum (Woodstock history)', '10am to 5pm, may vary', 'Bethel Woods, Bethel', '~35 min', 'See notes', '845-583-2000', 'Open daily to Dec 31', 'Adult $19.69 advance, $22.69 at the door; 65+ $18 advance. Closed Jan to Mar.'),
+      EV("Tue Oct 27", "Rain garden and swale design workshop (talk, then outdoor tour)", "4 to 5:30pm", "Cornell Extension, 64 Ferndale-Loomis Rd, Liberty", "~25 min", "Free", "845-292-6180 ext. 123", "Last day: Oct 27", "Register: pub.cce.cornell.edu/event_registration/main/events.cfm?dept=248 or call Katie Gasior."),
+      EV("Thu Oct 29", "Organic farm walk: garden pests and deer (Cornell Extension)", "4 to 6pm", "Bobolink Farm, 6127 State Rte 55, Liberty", "~25 min", "Free", "845-292-6180 ext. 129", "Last day: Oct 29", "A 2-hour walking tour. Aimed at small farms, but gardeners welcome."),
+      EV("Fri Oct 30", "Bird walk at the Gardiner Library (Minnewaska staff)", "8:30 to 10am", "Gardiner Library, lower parking lot, Gardiner", "~40 min", "Free", "845-255-0752", "Last day: Oct 30", "About 3/4 mile on the rail trail and grass. No sign-up. May be muddy."),
+      EV("Fri Oct 30", "Hand-knit chunky yarn pumpkin workshop", "6 to 8pm", "Hudson Valley Atelier, 21 N Main St, Florida NY", "~40 min", "$40, materials included", "hudsonvalleyatelier.com", "Last day: Oct 30", "Book online. No walk-ins."),
+      EV("Sat Oct 31", "Guided hike: Lake Minnewaska, Echo Rock and the meadows", "9:30am to 12:30pm", "Minnewaska State Park, 5281 Route 44-55, Kerhonkson", "~35 min", "Free ($10 a car to park)", "845-255-0752", "Last day: Oct 31", "About 4 miles on carriage roads. Call to register."),
+      EV("Sun Nov 1", "Warwick Valley Gardeners wine and cheese fall party", "2 to 5pm", "Mount Lake Park, 46 Bowen Rd, Warwick", "~50 min", "$35", "warwickgardeners.com", "Last day: Nov 1", "A garden club fundraiser and an easy way to meet members. Tickets are limited."),
+      EV("Sun Nov 1 and Sun Dec 6", "Crochet Sundays with Mamba (all levels)", "1 to 3pm", "Moffat Library, 6 W Main St, Washingtonville", "~45 min", "Free", "845-496-5483", "Last day: Dec 6", "Registration required."),
+      EV("Sun Nov 1, Sun Nov 22, Sat Dec 5", "Free afternoon movies at the Rosendale Theatre", "1pm", "Rosendale Theatre, Main St, Rosendale", "~40 min", "Free", "rosendaletheatre.org", "Last day: Dec 5", "Nov 1 Coco, Nov 22 The Nightmare Before Christmas, Dec 5 An American Tail."),
+      EV("Wed Nov 4 and Wed Dec 2", "Art and Audiobook (craft while you listen to a short story)", "4 to 5:30pm", "Port Jervis Free Library, 138 Pike St, Port Jervis", "~25 min", "Free", "845-856-7313", "Last day: Dec 2", "Bring your own project. Sign-up preferred."),
+      EV("Thu Nov 5 and Thu Dec 3", "Memoir writing workshop", "4:30 to 6:30pm (Dec 3 at 3:30pm)", "Liberty Public Library, 189 N Main St, Liberty", "~25 to 30 min", "Free", "845-292-6070", "Last day: Dec 3", "Register on the library calendar."),
+      EV("Thu Nov 5", "Winter wreath workshop", "6pm", "Hudson Valley Atelier, 21 N Main St, Florida NY", "~40 min", "$60", "hudsonvalleyatelier.com", "Last day: Nov 5", "Book online."),
+      EV("Thursdays Nov 5 to Nov 19", "Drawing and water media class with Roberta Rosenthal (3 weeks)", "12 to 3pm", "Wurtsboro Art Alliance, 73 Sullivan St, Wurtsboro", "~5 min", "$150 for 3 ($130 members) or $50 a class", "robertasrosenthal@gmail.com", "Last day: Nov 19", "Email to sign up. Pay by cash or check."),
+      EV("Fri Nov 6 and Fri Nov 20", "Readers Theatre (Nov 6) and Improv Play (Nov 20), no experience needed", "2 to 4pm", "Thrall Library, Community Room, 11-19 Depot St, Middletown", "~30 min", "Free", "845-341-5454", "Last day: Nov 20", "Read scripts aloud, no memorizing. Register on the library calendar."),
+      EV("Sat Nov 7", "Natural plant dye workshop (dye 2 skeins of yarn)", "10am to 1:30pm", "Cornell Extension Orange, 18 Seward Ave, Suite 300, Middletown", "~25 to 30 min", "$30, materials included", "845-344-1234 ext. 240", "Last day: Nov 7", "Only 12 spots. SIGN UP BY FRI OCT 30: weblink.donorperfect.com/2026NaturalPlantDyes"),
+      EV("Sat Nov 7", "Gardening classes: Native Grasses (10am) and Landscape Design (1pm)", "10 to 11:30am and 1 to 2:30pm", "Cornell Extension Orange, 18 Seward Ave, Suite 300, Middletown", "~25 to 30 min", "$10 each", "845-344-1234 ext. 240", "Last day: Nov 7", "Taught by Master Gardeners. Register on the Cornell Extension Orange events page."),
+      EV("Sat Nov 7, 14, 28, Dec 5, 12, 19", "Tri-State Mercantile holiday markets", "11am to 4pm", "Tri-State Mercantile, 85-89 Jersey Ave, Port Jervis", "~25 min", "Cost not listed", "tristatemercantile@gmail.com", "Last day: Dec 19", "Local makers. A few blocks from the Grumpy Goat yarn shop."),
+      EV("Sun Nov 8", "Freestyle weaving workshop (beginners welcome)", "4pm", "Hudson Valley Atelier, 21 N Main St, Florida NY", "~40 min", "$60, materials included", "hudsonvalleyatelier.com", "Last day: Nov 8", "Book online."),
+      EV("Sun Nov 8", "Community book swap", "10am to 12pm", "Rosendale Community Center, Rt 32, Rosendale", "~40 min", "Free", "845-658-8198", "Last day: Nov 8", ""),
+      EV("Wed Nov 11", "Apple picking for food pantries (Big Glean, volunteer)", "10:30am to 2:30pm", "Lawrence Farms Orchard, 91 Colandrea Rd, Newburgh", "~45 min", "Free (volunteer)", "845-344-1234 ext. 255", "Last day: Nov 11", "Bring a bag, boots, water and lunch. Sign up: cceorangecounty.volunteermatters.org/project-catalog/269"),
+      EV("Wed Nov 11 and Wed Dec 9", "Tea tasting", "2 to 3:30pm", "Port Jervis Free Library, 138 Pike St, Port Jervis", "~25 min", "Free", "845-856-7313", "Last day: Dec 9", ""),
+      EV("Sat Nov 14 and Sat Dec 12", "Project Linus: make blankets for children in need", "10am to 1:30pm", "Town of Wallkill Community Center, 7-9 Wes Warren Dr, Middletown", "~30 min", "Free", "projectlinusocpc.org", "Last day: Dec 12", "Knit, crochet or fleece blankets. Dec 12 is their holiday party. Contact them through the website."),
+      EV("Thu Nov 19 and Thu Dec 17", "Project Linus, Pike County group (blanket making)", "10am to 1pm", "Matamoras Borough Hall, 10 Avenue I, Matamoras PA", "~30 min", "Free", "projectlinusocpc.org", "Last day: Dec 17", "Dec 17 is their holiday party."),
+      EV("Sat Nov 14", "Friendsgiving lunch, Women of Orange County and Beyond (Meetup group)", "4:15pm", "Limoncello, 159 Main St, Goshen", "~40 min", "$10 deposit, goes toward your bill", "meetup.com/women-of-orange-countyandbeyond", "Last day: Nov 14", "A women-only social group. Join on Meetup to sign up. Next: holiday dinner Sat Dec 12."),
+      EV("Sat Dec 12", "Holiday dinner and gift swap, Women of Orange County and Beyond", "3:30pm", "Destefano's Old Erie, 7 W Main St, Middletown", "~25 to 30 min", "$45 buffet, $10 gift", "meetup.com/women-of-orange-countyandbeyond", "Last day: Dec 12", "Join on Meetup to sign up."),
+      EV("Sat Nov 14", "Holiday craft supply swap", "10am to 2pm", "Western Sullivan Library, Jeffersonville Branch, 19 Center St, Jeffersonville", "~45 to 50 min", "Free", "845-482-4350", "Last day: Nov 14", "Bring craft supplies you will not use (drop-off Nov 2 to 13) and take some home."),
+      EV("Sun Nov 15", "Beeswax candle making", "1 to 3pm", "MEEC, 762 South Rd, Wurtsboro", "~5 min", "$5 plus $20 kit", "845-644-5014", "Last day: Nov 15", "Must call to sign up (kits are counted)."),
+      EV("Sun Nov 15", "Frame loom weaving workshop (materials included)", "1 to 4pm", "Wallkill River Center for the Arts, 232 Ward St, Montgomery", "~30 to 35 min", "$80 ($70 members)", "845-457-2787", "Last day: Nov 15", "Sign up at wallkill.art/events"),
+      EV("Sun Nov 15", "Digital photo editing workshop (fix up garden and walk photos)", "12:30 to 4:30pm", "Bethel Woods, 200 Hurd Rd, Bethel", "~35 to 40 min", "$55", "845-583-2000", "Last day: Nov 15", ""),
+      EV("Wed Nov 18", "Adult Crochet Club (Pike County Library)", "10 to 11:30am", "Pike County Library, 119 E Harford St, Milford PA", "~35 to 40 min", "Cost not listed", "570-296-8211", "Last day: Nov 18", "Seems to meet monthly. Ask about December. Rug hooking group the same day at 1:30pm."),
+      EV("Thu Nov 19", "Decorate the edges of a book (spray-paint craft)", "4 to 6pm", "Ellenville Library, 40 Center St", "~20 to 25 min", "Free", "845-647-5530", "Last day: Nov 19", ""),
+      EV("Fri Nov 20 and Fri Dec 18", "Cookbook Club (bring a dish from the month's book)", "1:30pm", "Florida Public Library, 4 Cohen Cir, Florida NY", "~35 to 40 min", "Free", "845-651-7659", "Last day: Dec 18", "Register with a library card."),
+      EV("Sat Nov 21", "Felted infinity scarf workshop (wet felting)", "10am", "Hudson Valley Atelier, 21 N Main St, Florida NY", "~40 min", "$75, materials included", "hudsonvalleyatelier.com", "Last day: Nov 21", "About 2 hours. Book online."),
+      EV("Sat Nov 21", "Fall pumpkin centerpiece with fresh flowers", "10 to 11am", "Cornell Extension Orange, 18 Seward Ave, Suite 300, Middletown", "~25 to 30 min", "$30, materials included", "845-344-1234 ext. 240", "Last day: Nov 21", "Sign up by Fri Nov 13: weblink.donorperfect.com/2026FallPumpkinCenterpieceWorkshop"),
+      EV("Sat Nov 21", "Beekeeping basics", "1 to 3pm", "Cornell Extension Orange, 18 Seward Ave, Suite 300, Middletown", "~25 to 30 min", "$15", "845-344-1234", "Last day: Nov 21", "Register: weblink.donorperfect.com/BeekeepingBasics2026"),
+      EV("Sat Nov 21", "Valley Central Holiday Craft Fair (110+ vendors)", "10am to 3pm", "Valley Central High School, 1175 NY-17K, Montgomery", "~40 min", "Admission not posted", "vcscholarshipcouncil@gmail.com", "Last day: Nov 21", "Same day as the SUNY Sullivan craft fair; pick one."),
+      EV("Sat Nov 21", "Soap making", "11am", "Florida Public Library, 4 Cohen Cir, Florida NY", "~35 to 40 min", "Free", "845-651-7659", "Last day: Nov 21", "Register with a library card."),
+      EV("Sat Nov 21, Sun Nov 22", "Gathered in Gratitude: early Thanksgiving crafts and cooking", "10am to 4pm", "Museum Village, 1010 State Route 17M, Monroe", "~40 min", "About $10", "845-782-8248", "Last day: Nov 22", "Open-hearth cooking and craft demos."),
+      EV("Fri Nov 27, Sat Nov 28, Sun Nov 29", "Bethel Woods Holiday Market (75+ local makers)", "11am to 7pm (Sun 12 to 6pm)", "Bethel Woods, 200 Hurd Rd, Bethel", "~35 min", "Free, free parking", "845-583-2000", "Last day: Nov 29", "The biggest craft and food market nearby."),
+      EV("Sat Dec 5, 12, 19", "Bethel Woods holiday market pop-ups (new makers each week)", "2 to 9pm", "Bethel Woods, 200 Hurd Rd, Bethel", "~35 min", "Free", "845-583-2000", "Last day: Dec 19", ""),
+      EV("Fri Dec 4, 11, 18", "Holiday sing-alongs at Bethel Woods", "6:30 to 8:30pm", "Bethel Woods, 200 Hurd Rd, Bethel", "~35 min", "Free", "845-583-2000", "Last day: Dec 18", ""),
+      EV("Sat Nov 28", "\"Joy to Wurtsboro\" holiday day in the village", "1 to 4pm (village calendar)", "Sullivan St and 3rd St, Wurtsboro", "~5 min", "Not posted", "845-888-3000 option 0", "Last day: Nov 28", "Few details posted. Call the town to ask what is planned."),
+      EV("Sun Nov 29", "Christkindlmarkt (100+ vendors, wagon rides, German band)", "10am to 4pm", "Erie Trackside Manor and downtown Port Jervis", "~25 min", "Free", "portjervisny.gov/events", "Last day: Nov 29", ""),
+      EV("Fri Dec 4", "Holiday greens workshops: wreath, kissing ball or tabletop tree", "10am, 2pm or 6pm (by workshop)", "Cornell Extension Orange, 18 Seward Ave, Suite 300, Middletown", "~25 to 30 min", "$50 each, materials included", "845-344-1234 ext. 240", "Last day: Dec 4", "Bring gloves and clippers. Sign up on the Cornell Extension Orange events page."),
+      EV("Sat Dec 5", "Holiday market at Liberty Mall", "11am to 5pm", "Liberty Mall, 15 Sullivan Ave, Liberty", "~25 min", "Cost not posted", "sullivancatskills.com", "Last day: Dec 5", "Crafts, food, music."),
+      EV("Sat Dec 5, Sun Dec 6", "Christmas Market and Winter Wonderland", "3 to 8pm", "New Century, 517 Neversink Dr, Port Jervis", "~25 min", "Free admission and parking", "845-236-5535", "Last day: Dec 6", "Handmade gifts, music, cider and cocoa, indoors or under a heated tent."),
+      EV("Sat Dec 5", "Card making (registration opens Nov 7)", "2 to 4pm", "Thrall Library, 11-19 Depot St, Middletown", "~30 min", "Free", "845-341-5454", "Last day: Dec 5", ""),
+      EV("Sun Dec 6", "Winter watercolor card workshop", "10am to 12pm", "Wallkill River Center for the Arts, 232 Ward St, Montgomery", "~30 to 35 min", "$50", "845-457-2787", "Last day: Dec 6", ""),
+      EV("Sun Dec 6", "Mosaic ornaments workshop", "1pm", "Hudson Valley Atelier, 21 N Main St, Florida NY", "~40 min", "$50", "hudsonvalleyatelier.com", "Last day: Dec 6", "Book online."),
+      EV("Fri Dec 11", "Winter seed sowing in milk jugs (Delaware Highlands Conservancy)", "3 to 4:30pm", "Western Sullivan Library, 198 Bridge St, Narrowsburg", "~50 min", "Free", "570-226-3164", "Last day: Dec 11", "Bring clean gallon jugs. Seeds, soil and tools provided. Registration required."),
+      EV("Fri Dec 18", "Holiday Swing! (move to holiday songs)", "1 to 2pm", "Liberty Public Library, 189 N Main St, Liberty", "~25 to 30 min", "Cost not listed", "845-292-6070", "Last day: Dec 18", "Ask if you need to register."),
+      EV("Sat Dec 19", "Repair Cafe (bring something broken)", "10am to 1pm", "Thrall Library, 11-19 Depot St, Middletown", "~30 min", "Donation", "845-341-5454", "Last day: Dec 19", ""),
+      EV("Sat Jan 16", "Make suet cakes for the birds", "11am", "Florida Public Library, 4 Cohen Cir, Florida NY", "~35 to 40 min", "Free", "845-651-7659", "Last day: Jan 16", "Register with a library card."),
+      EV("Tue Jan 13, 27, Feb 10, 24", "Learn to play mahjong (4 classes)", "6 to 7pm", "Florida Public Library, 4 Cohen Cir, Florida NY", "~35 to 40 min", "Free", "845-651-7659", "Last day: Feb 24", "Register with a library card."),
+      EV("Sat Feb 20", "Pen and ink drawing", "11am", "Florida Public Library, 4 Cohen Cir, Florida NY", "~35 to 40 min", "Free", "845-651-7659", "Last day: Feb 20", "Register with a library card."),
+      EV("Thu Mar 4", "Irish music concert (PA Celts)", "6 to 7pm", "Liberty Public Library, 189 N Main St, Liberty", "~25 to 30 min", "Cost not listed", "845-292-6070", "Last day: Mar 4", ""),
+      EV("Sat Mar 13 to Sun Mar 21", "NY Maple Weekend (sugarhouse tours and tastings)", "10am to 4pm", "Farms near you, such as Winterton Farms, 689 Winterton Rd, Bloomingburg", "~10 to 30 min", "Mostly free", "845-707-9207 (Winterton Farms)", "Last day: Mar 21", "Two weekends: Mar 13 and 14, Mar 20 and 21. Farm list at mapleweekend.com; call the farm first.")
     ].join(''));
   add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'farmers markets', '<p class="lead">The red box is the last market date of the 2026 season.</p>') +
     '<h3>Farmers markets: last date of the 2026 season</h3>' + [
@@ -699,9 +806,9 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
     '');
   add('ev', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Events and Markets', 'winter markets', '') +
     '<h3>Winter markets</h3><table class="t"><tr><th>Market</th><th>When and where</th><th>Dates</th><th>Note</th></tr>' +
-    '<tr><td>Callicoon indoor market</td><td>Sun 11am to 2pm, Delaware Youth Center · ~50 min</td><td>December to March</td><td>Last year\'s info; confirm</td></tr>' +
-    '<tr><td>New Paltz winter markets</td><td>Sat mornings, Robins Market on Rt 32 and Deyo Hall · ~35 to 40 min</td><td>Listed Dec to Feb (3rd and 4th Sat; 2nd Sat)</td><td>Year not stated; confirm</td></tr>' +
-    '<tr><td>Pine Island indoor market</td><td>Sun 10am to 2pm, Big Gray Barn · ~55 min</td><td>Year-round</td><td>Good for winter. Drive is an estimate; check hours</td></tr></table>' +
+    '<tr><td>Callicoon market</td><td>Sun 11am to 2pm · ~50 min. Indoors in winter (likely Delaware Youth Center, 8 Creamery Rd)</td><td>Sundays Nov 1 to Jan 17 posted</td><td>Dates confirmed; call 845-747-4449 for the spot</td></tr>' +
+    '<tr><td>New Paltz winter markets</td><td>Sat mornings, Robins Market on Rt 32 and Deyo Hall · ~35 to 40 min</td><td>Only old listings found (2008 to 2015)</td><td>Not confirmed for this winter. Call Winter Sun Farms 347-721-7386</td></tr>' +
+    '<tr><td>Newburgh indoor market (Common Ground)</td><td>Sat 10am to 2pm, Lobby at the Ritz, 97 Broadway, Newburgh · ~45 min</td><td>December to April</td><td>845-231-4424</td></tr><tr><td>Stonehenge Farm Market, Bullville</td><td>Daily 9am to 5pm, 1401 NY Rt 302 · ~30 min</td><td>Year-round</td><td>Produce, baked goods, plants. 845-361-4014</td></tr><tr><td>Pine Island indoor market</td><td>Sun 10am to 2pm, Big Gray Barn · ~55 min</td><td>Year-round</td><td>Good for winter. Drive is an estimate; check hours</td></tr></table>' +
     '<h3>Already ended in 2026</h3><p>Middletown (Oct 17), Port Jervis (Sep 26), Wurtsboro Thursday market (Aug 28), Liberty and Rock Hill.</p><h3>Markets I want to try</h3><div class="lines"><i></i><i></i><i></i><i></i></div>');
 
   /* Encore */
@@ -751,11 +858,21 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
       EV('Halloween', 'YMCA Halloween event (spooky games)', 'Date not shown', 'YMCA of Middletown, 81 Highland Ave', '~25 to 30 min', 'Cost not shown', '845-344-9622', 'Last day: Oct 31', 'Details and sign-up: middletownymca.org/halloween')
     ].join('') +
     '<h3>My fitness notes</h3><div class="lines"><i></i><i></i><i></i><i></i><i></i></div>');
+  add('fit', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Fitness', 'YMCA classes', '<p class="lead">YMCA of Middletown, 81 Highland Ave. One membership covers all of these. About $39 a month at age 62+, plus a $35 join fee. Help with cost is offered. 845-344-9622.</p>') +
+    '<h3>Weekly classes</h3>' + [
+      F("Water exercise (Aquacize)", "Included with membership", "Instructor-led, easy on the joints.", "Mon to Fri 9 to 9:45am; also Mon 6:45pm and Wed 6:30pm.", "845-344-9622 · 81 Highland Ave, Middletown", "~25 to 30 min", "Pool schedule runs to Nov 15; ask for the next one.", "c"),
+      F("Daytime yoga", "Included with membership", "Many weekly yoga times.", "Mon 11am; Tue and Thu 11:15am; Sat 10am. Chair Yoga Wed 6:15pm.", "845-344-9622", "~25 to 30 min", "Times can change; check the Y app.", "c"),
+      F("Gentle strength and balance; Light and Lively", "Included with membership", "Gentle strength and balance class, and low-impact cardio.", "Strength and balance Tue and Thu 2:15pm. Light and Lively Wed 8am.", "845-344-9622", "~25 to 30 min", "", "c"),
+      F("Pickleball for beginners (indoor)", "Included with membership", "Beginner-only sessions, then all-levels play most weekdays.", "Beginners Tue 10:15am and Wed 12pm.", "845-344-9622", "~25 to 30 min", "Ask whether you need to book ahead.", "c")
+    ].join('') + '<h3>More places to move</h3>' + [
+      F("Vinyasa yoga at Catskill Art Space", "$20 drop in", "Yoga class inside an art gallery.", "Tue 10 to 11am; Sat 10:30 to 11:30am.", "info@catskillartspace.org · 48 Main St, Livingston Manor", "~45 to 50 min", "Pair the Saturday class with the gallery, which opens at 11am.", "c"),
+      F("Adult pickleball, Town of Thompson", "Free for Thompson residents", "All levels, ages 18+. Bring your own paddle and balls.", "Sundays 5 to 7pm (Nov 8 into June), Monticello High School gym.", "845-796-3606 · parksandrecreation@thompsonny.gov", "~20 min", "Ask if non-residents can play.", "a")
+    ].join(''));
   add('fit', head('Fall 2026 – Winter 2027 · Last updated ' + UPDATED, 'Fitness', 'local trainers', '<p class="lead">Plan: one session a week with a trainer, plus her own workouts at Planet Fitness the other days. Ask each trainer: can you coach weekly, and do you work with women 55+ and weight loss?</p>') +
     [
-      F('Cynthia Pfeifer (Sgt. Cyndi), Body Physics', 'Price not listed', 'Personal training, boot camp, nutrition, online coaching. Focus: weight loss, muscle tone, core, posture. Has a "Fit and Fabulous 50s Project." Serves Wurtsboro, Ellenville, Middletown.', 'Text 914-805-0590 to set up a call.', '914-805-0590 · 358 Cox Rd, Pine Bush · sgtcyndi.com', '~35 to 45 min', '', 'k'),
-      F('Alexandra Tomson, Hidden Charm Performance Training', '$50 one session; $180 for 4 a month', 'Woman, NASM trainer. Trains beginners, women, weight loss, active older adults.', 'Town not posted. Ask where.', '845-492-9417 · hidden-charm-performance-training.com', '', '', 'k'),
-      F('Kim Lowe, Kim Lowe Fitness', 'Price not listed', 'Woman. In-home training, yoga and Pilates at her studio.', 'Town not posted. Ask where she is and if she comes to Wurtsboro.', '917-848-5523 (call or text) · kimlowe32@gmail.com · kimlowe.fitness', '', '', ''),
+      F('Cynthia Pfeifer (Sgt. Cyndi), Body Physics', 'Price not listed', 'Personal training, boot camp, nutrition, online coaching. Focus: weight loss, muscle tone, core, posture. Has a "Fit and Fabulous 50s Project" and a beginner 4-week "Building Blocks" class (30 min, 3 times a week). Serves Wurtsboro, Ellenville, Middletown.', 'Text 914-805-0590 to set up a call. Her website looks old, so ask if she is taking new clients.', '914-805-0590 · 358 Cox Rd, Pine Bush · sgtcyndi.com', '~35 to 45 min', '', 'k'),
+      F('Alexandra Tomson, Hidden Charm Performance Training', 'Small group $25 a class or 4 for $90; private $50', 'Woman, NASM trainer and Pilates teacher. Trains beginners, women, weight loss, active older adults. Small groups (max 6) weeknights 6 to 7pm, Pilates mat Tue 6pm and Sat 9am.', 'Book by text 24 hours ahead. Town still not posted; ask where.', '845-492-9417 · hidden-charm-performance-training.com', '', '', 'k'),
+      F('Kim Lowe, Kim Lowe Fitness', '$70 an hour at her studio ($90 with a friend)', 'Woman. Yoga, Pilates (mat and reformer) and strength, mostly one-on-one or with a partner. Also in-home and Zoom.', 'Studio: 80 Pantelop Rd, Bloomingburg. Ask if she runs any small group class.', '917-848-5523 (call or text) · kimlowe32@gmail.com · kimlowe.fitness', '~10 to 15 min', 'Closest trainer to Wurtsboro.', 'c'),
     ].join(''));
 
   /* Calls */
@@ -770,15 +887,15 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
     V('Garnet Health Catskills (Harris and Callicoon)', 'Hospital volunteer. Closest hospital to Wurtsboro. Choose your own days and hours.', 'Harris NY · ~30 to 35 min', '845-333-8785', '') +
     V('Garnet Health Medical Center, Middletown', 'Gift shop, front desk, patient transport, comfort care. One 4-hour shift a week, same day all year. Needs references, background check and orientation.', '707 E Main St, Middletown · ~25 to 30 min', '845-333-0213 (Volunteer Services). Sign up: ghvolunteers-garnethealth.icims.com', 'Applications open about 4 times a year; ask if October is open') +
     V('Bethel Woods Center for the Arts', 'Museum guide, office help and event help. Training is provided. Museum open daily to Dec 31, 10am to 5pm. Concerts are over for the season.', '200 Hurd Rd, Bethel · ~35 to 40 min', '845-583-2000. Sign up: bethelwoodscenter.org/volunteer', '') +
-    V('SPCA, Sullivan County (Liberty)', 'Dog walking and cat time are the usual jobs. Ask what they need.', 'Liberty · ~30 min', 'Ask through Sullivan Volunteers (845-807-0255)', 'Call to confirm the roles') +
+    V('SPCA, Sullivan County (Rock Hill)', 'Dog walking, cat socializing, laundry, events. Open Tue to Sun 10am to 3pm.', '104 Rock Hill Dr, Rock Hill (Exit 109) · ~15 to 20 min', '845-796-3120. Apply: sullivanspca.org/volunteer', '') +
     '</table>');
   add('vol', head('Fall 2026 – Winter 2027 · Wurtsboro, NY and nearby', 'Volunteering', 'page 2 of 3', '') +
     '<h3>More places to help</h3>' + '<table class="t" style="table-layout:fixed;font-size:8.8pt">' + VH + V('Ulster County SPCA, Kingston', 'Walk dogs, spend time with cats, feed, clean. Volunteers needed every day, 7:30am to 4pm.', 'Kingston · ~50 min (estimate)', '845-331-5377 x215, volunteer@ucspca.org', 'Check the address when you call') +
     V('Literacy Volunteers of Sullivan County', 'Tutor an adult one-on-one in reading or English. Free online training first.', '63 North St, Monticello · ~35 min', '845-794-0017 (Angela Dutcher)', '') +
     V('MEEC, Wurtsboro', 'Trails and events. Ask whether they need volunteers for the Nov 7 Fall Festival or trail days. Joining the events is an easy way to meet people first.', '762 South Rd, Wurtsboro · ~5 to 10 min', '845-644-5014', '') +
-    V('Mamakating Library', 'Ask about helping at the library or joining the book club and writers group.', '128 Sullivan St, Wurtsboro · ~5 min', 'Ask at the desk (845-888-8004)', '') +
-    V('Community Church of Wurtsboro Food Pantry', 'Pantry help. Ask what days they pack and hand out.', '134 Sullivan St, Wurtsboro · ~5 min', 'Ask the church', 'Phone: ask') +
-    V('Wurtsboro Fire Department Ladies Auxiliary', 'Supports the fire department. Ask how to join, when they meet, and what help is needed.', '54 Pine St, Wurtsboro · ~5 min', '845-888-4611 (fire district office). wurtsborofd.com', 'Meeting dates not posted') +
+    V('Friends of Mamakating Library', 'Meets the 2nd Saturday, 10 to 11am (Nov 14, Dec 12). Helps run library events. Volunteers welcome.', '128 Sullivan St, Wurtsboro · ~5 min', 'mamakatingfol@gmail.com · 845-888-8004', 'Free to join for local residents') +
+    V('Community Church of Wurtsboro Food Pantry', 'Pantry help. Ask what days they pack and hand out.', '134 Sullivan St, Wurtsboro · ~5 min', '845-888-5626', 'Pantry is open Wed and Thu') +
+    V('Wurtsboro Fire Department Ladies Auxiliary', 'Supports the fire department. Ask how to join, when they meet, and what help is needed.', '54 Pine St, Wurtsboro · ~5 min', '845-888-4611 (fire district office). wurtsborofd.com', 'Meets 3rd Wednesday, 6pm (Nov 18, Dec 16, Jan 20). Fill out the inquiry form on the website') +
     V('Cornell Extension Sullivan', 'Trail clean-up, tree pruning and office help. Ask about gardening roles. The Bulb Planting Workshop on Oct 28 is a good first visit.', '64 Ferndale-Loomis Rd, Liberty · ~30 min', '845-292-6180. Sign up: sullivancce.org/volunteer', 'Background check is paid for by Cornell') +
     '</table>');
   add('vol', head('Fall 2026 – Winter 2027 · Wurtsboro, NY and nearby', 'Volunteering', 'page 3 of 3', '') +
@@ -786,7 +903,14 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
     V('Friends of Liberty Library', 'Library volunteers meet the last Monday of the month at 11am (Oct 26, Nov 30). Go to a meeting and ask how to help.', '189 N Main St, Liberty · ~25 to 30 min', '845-292-6070', 'Same day as Kindred Stitchers at 1pm') +
     V('Thrift shops (Callicoon Main Street Thrift and others)', 'Sort, price and run the register. Lots of chatting.', 'Callicoon · ~60 min', 'Ask through Sullivan Volunteers', '') +
     V('Hospice of Orange and Sullivan Counties', 'Companionship and listening. Training offered. Ask for the next info session.', 'Newburgh · ~50 min', '845-561-6111', '') +
-    V('Habitat for Humanity ReStore, Newburgh', 'Customer help, pricing and stocking.', '38 S Plank Rd, Newburgh · ~40 min', '845-565-1789', 'Volunteer details: ask') +
+    V('Habitat for Humanity ReStore, Newburgh', 'Customer help, pricing and stocking.', '38 S Plank Rd, Newburgh · ~40 min', '845-565-1789. Sign up: habitatnewburgh.org/restore/volunteer.html', 'Sort and price donations, keep the store tidy. Store Tue to Sat 10 to 5') +
+    V("Pets Alive, Middletown", "Dog walking (18+) and cat care, any day 10am to 4pm after a new-volunteer orientation.", "363 Derby Rd, Middletown · ~30 min", "845-386-9738 · petsalive.org/all-about-volunteering", "") +
+    V("Catskill Animal Rescue, Ferndale", "Cleaning, playing with cats, walking dogs.", "263 Old Monticello Rd, Ferndale · ~25 min", "845-747-9450", "Call for hours") +
+    V("Regional Food Bank, Montgomery warehouse", "Sort and pack food with a group. Daily shifts. Closed-toe shoes.", "580 NY-416, Montgomery · ~35 to 40 min", "845-534-5344 · regionalfoodbank.net/volunteer", "") +
+    V("Cornell Extension Orange: volunteer orientation", "Meet staff and pick a role (garden, events, office). Sat Jan 23, 10am to 12pm.", "18 Seward Ave, Suite 300, Middletown · ~25 to 30 min", "845-344-1234 ext. 250 · cceorangecounty.volunteermatters.org/project-catalog/276", "Also the Big Glean apple picking, Wed Nov 11 (see Events)") +
+    V("Friends of the Port Jervis Library", "Runs the used-book shop. Meets every Tuesday 10am to 1pm in the Book Cellar.", "138 Pike St, Port Jervis · ~25 min", "845-856-7313", "") +
+    V("Project Linus (blankets for children)", "Knit, crochet or tie fleece blankets for kids in hospitals and shelters. Group meetings in Middletown and Matamoras (see Events).", "Middletown or Matamoras PA · ~30 min", "projectlinusocpc.org", "A good fit for her crochet") +
+    V("Basha Kill Area Association", "Nature Watch: greet visitors and share bird sightings on spring weekends. Training is in March at MEEC.", "Basha Kill, South Rd, Wurtsboro · ~5 to 10 min", "845-789-2846 · info@thebashakill.org", "2027 dates not posted yet; ask in February") +
     '</table>' +
     '<h3>My notes</h3><div class="lines"><i></i><i></i><i></i></div>');
 
@@ -796,17 +920,17 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
   function R(a){return '<tr><td><b>'+a[0]+'</b><br><span style="color:var(--soft);font-weight:400">'+a[1]+'</span></td><td>'+a[2]+'</td><td>'+a[3]+'</td><td>'+a[4]+'</td><td>'+a[5]+'</td></tr>';}
   var IHR='<tr><th style=\"width:19%\">Event and date</th><th style=\"width:19%\">Address and drive</th><th style=\"width:20%\">Sign up or contact</th><th style=\"width:28%\">Times and details</th><th style=\"width:14%\">Cost</th></tr>';
   function P(sec,lead,rows,ttl,hdr){var h=head('Fall 2026 – Winter 2027 · Wurtsboro, NY and nearby',ttl,sec,lead);return h+'<table class="t" style="table-layout:fixed;font-size:8.4pt">'+(hdr||IH)+rows.map(R).join('')+'</table>';}
-  add('ideas',P("arts and crafts","<p class=\"lead\">No fixed dates. Call first to ask about the next class and to confirm price. Drive times are estimates.</p>",[["Wallkill River Center for the Arts", "Montgomery", "Patchett House, 232 Ward St, Montgomery \u00b7 ~30 min (est.)", "845-457-2787 \u00b7 info@wallkill.art \u00b7 wallkill.art/events/category/classes", "Multi-week adult classes: acrylic (Thu or Tue 1 to 3pm), watercolor (Sun 10 to 12), drawing (Mon), oil painting (Sat). One-day: frame loom weaving, watercolor cards. Drop-in beginner oils, Sat 10 to 12.", "Most series $120 ($105 members). Weaving $80. Cards $50. Drop-in oils $65 a class."], ["Fiber on Main", "Hurleyville", "227 Main St, Hurleyville \u00b7 ~30 min (est.)", "845-707-8428 \u00b7 fiberstudioonmain@gmail.com \u00b7 fiberonmain.com", "Open studio for your own sewing or fiber project, with help. Wed 3:30 to 6:30. Also sewing workshops and Intro to Knitting; ask for the next ones.", "Not posted"], ["Unison Arts", "New Paltz", "9 Paradies Ln, New Paltz \u00b7 ~40 min (est.)", "845-255-1559 \u00b7 unisonarts.org", "Hands-on classes listed: wood carving, Chinese brush painting, watercolor, collage, monotype and encaustics. Ask which are for adults.", "Not posted"], ["Willow Deep Studio", "near Rosendale", "Address not posted \u00b7 ~45 min (est.)", "845-658-0370 \u00b7 willowdeepstudio@gmail.com \u00b7 willowdeepstudio.com/workshops", "Stained glass: suncatcher workshops (beginner), and a leaded window series. Private sessions can be booked.", "Not posted"], ["The Newburgh Pottery", "Newburgh", "11 Spring St, Newburgh \u00b7 ~45 min (est.)", "201-741-3552 \u00b7 thenewburghpottery.com/pottery-workshops", "Intro to Wheel: first time on the wheel, pieces glazed and fired for pickup. Buy a voucher online, then call to schedule.", "Page shows $10 a piece; confirm. Call first, site is old."], ["Mosaic Art Studio USA", "Warwick", "24 Ronald Reagan Blvd, Warwick \u00b7 ~45 min (est.)", "Phone not posted. Search 'Mosaic Art Studio USA' on Eventbrite", "Mosaic lamp workshop (hand-cut glass, materials and tea included). Ceramic painting workshops at the same address.", "Lamp about $86 to $129"], ["Hurleyville Performing Arts Centre", "Hurleyville", "219 Main St, Hurleyville \u00b7 ~30 min (est.)", "845-985-4722 \u00b7 info@hpacny.org \u00b7 hpacny.org", "Lists Sip & Paint and craft workshops, none posted now. Call to ask.", "Not posted"], ["Let's Paint Studio", "Liberty", "21 Sullivan Ave, Liberty \u00b7 ~30 min (est.)", "845-720-6811", "Painting studio. Classes not confirmed; call to ask.", "Not posted"]],"Ideas"));
-  add('ideas',P("gardening","<p class=\"lead\">No fixed dates. Call first to ask about the next class and to confirm price. Drive times are estimates.</p>",[["Cornell Cooperative Extension, Sullivan", "Liberty", "64 Ferndale-Loomis Rd, Liberty \u00b7 ~25 min", "845-292-6180 \u00b7 sullivan@cornell.edu \u00b7 sullivancce.org/gardening", "Gardening workshops and Master Gardener office hours all year. Ask Katie Gasior (ext. 123) to be put on the workshop list.", "Bulb workshop is free. Others not posted."], ["Cornell Cooperative Extension, Orange", "Middletown", "18 Seward Ave, Suite 300, Middletown \u00b7 ~25 to 30 min (est.)", "845-344-1234 \u00b7 orange@cornell.edu \u00b7 cceorangecounty.org/gardening", "Saturday gardening classes: soil and composting, fruit, landscape design, plus craft workshops (wreaths, plant dyes, centerpieces).", "Not posted"], ["Master Gardener training (CCE Orange)", "Middletown", "Same office as above", "Susan Ndiaye \u00b7 845-344-1234 ext. 250 \u00b7 sgn32@cornell.edu", "A 12-month course: monthly Saturday class, 9 to 4, plus online work. Graduates teach and staff the helpline. Ask when the next group starts.", "$300 (scholarships by need)"], ["Community Garden Club of Liberty", "Sullivan County", "Meets at varied places \u00b7 ~30 min", "845-794-7631 or 845-292-7832", "Meets 3rd Tuesday, 1pm. Garden tours, talks, plant sale, workdays at the Liberty Community Garden. Notice is old; call to confirm it is active.", "Not posted"], ["Warwick Valley Gardeners", "Warwick", "Address not posted \u00b7 ~45 min (est.)", "warwickgardeners.com/contact-us", "Garden club that tends nine public gardens; garden tour. Meeting times not posted.", "Not posted"], ["Other Orange County garden clubs", "Pine Bush, Port Jervis, Otisville, Middletown", "Ask CCE Orange for meeting places", "845-344-1234", "Artful Gardener's Club (Port Jervis), Country Garden Club, Pine Bush Garden Club, Garden Lover's Club (Middletown). Activity not confirmed.", "Not posted"], ["Delaware Highlands Conservancy", "Beach Lake, PA", "571 Perkins Pond Rd, Beach Lake PA \u00b7 ~45 min (est.)", "570-226-3164 \u00b7 info@delawarehighlands.org \u00b7 delawarehighlands.org/events", "Native plant, seed saving and landscape design workshops, plus guided walks.", "Not posted"]],"Ideas"));
-  add('walk',P('walks and 5Ks with set dates','<p class="lead">5Ks with a walk option, through November. None found yet for December to March. Costs include sign-up fees. Drive times are estimates.</p>',[["Walk to End Alzheimer's, Orange/Sullivan", "Sat Oct 24", "Benedict Farm Park, 1675 NY-17K, Montgomery \u00b7 ~40 min (est.)", "Tina Eckert, 845-471-2619", "Check-in 9am, ceremony 10am, walk 10:20am. Short route 1/2 mile, long route 1 mile. Gravel and grass path.", "Free to walk (donations welcome)"], ["Cider 5 (5K Walk), Knights of Columbus", "Sat Oct 24", "626 County Route 22, Middletown (Holy Cross church lot) \u00b7 ~30 min (est.)", "cider5.com. Register by 5pm that day.", "5K Walk starts 8:50am. Run options too.", "$38.10"], ["We Can Be Heroes 5K Walk", "Sun Oct 25", "Orange County Airport, 500 Dunn Rd, Montgomery \u00b7 ~40 min (est.)", "kcarballo@fearlesshv.org \u00b7 fearlesshv.org/heroesrun", "Packet pickup 8am. 5K Walk 9:15am, run 9:30am. Benefits Fearless! Hudson Valley.", "$33.63"], ["Pine Bush Ambulance Corps 5K Walk (38th annual)", "Sun Nov 1", "Ambulance Corps, 131 Center St, Pine Bush \u00b7 ~30 min (est.)", "runsignup.com/Race/NY/PineBush/PBAVAC5K", "5K Walk 9:15am, run 9am. Honors Helen and George Low.", "$44.30"], ["Beautiful People Fun Run, Walk and Roll 5K", "Sun Nov 8", "Field of Dreams, 253 State School Rd, Warwick \u00b7 ~45 min (est.)", "beautifulpeoplesports.org/5k", "5K 9:30am, check-in from 8am. Benefits adaptive sports for children and young adults.", "$40 early, $45 that day"], ["HV Hawks Reindeer Dash 5K Run/Walk", "Sat Nov 14", "L. Vern Allen Park, 1 Ahern Blvd, Washingtonville \u00b7 ~45 min (est.)", "runsignup.com/Race/NY/Washingtonville/HVHawksReindeerDash", "5K 10am, sign-in from 9am. Shirt guaranteed if you register by Nov 1.", "$43.40"], ["Bloodline Turkey Trot 5K Run/Walk (Thanksgiving)", "Thu Nov 26", "Warwick Valley Middle School, 225 West St, Warwick \u00b7 ~45 min (est.)", "runsignup.com/Race/NY/Warwick/BloodlineTurkeyTrot", "8am start. Walkers welcome. Includes a shirt.", "$32.80"]],'Walks and Runs',IHR));
-  add('walk',P("walking groups and clubs","<p class=\"lead\">Groups that meet on a regular day. Call to confirm the next meeting and the start place.</p>",[["Orange County Walking Club", "Office for the Aging", "Thomas Bull Memorial Park, Day Camp Area (park address not posted; ask) \u00b7 ~40 min (est.)", "845-291-4000 (Mon to Fri 9 to 5) \u00b7 orangecountyny.gov/2790/Walking-Club", "Weekly group walk, Fridays 10 to 11am. About 2 to 3 miles in an hour; members build up to faster, longer walks. Call to confirm start spot.", "Not posted"], ["Bob Babb Wednesday Walks", "Mohonk Preserve", "Trailhead varies; emailed when you register \u00b7 ~35 to 40 min (est.)", "845-255-0919 \u00b7 areynolds@mohonkpreserve.org \u00b7 mpreserve.ticketapp.org/portal/product/25/events", "Volunteer-led weekday hikes, Wednesdays 9:30am to about 12:30. A past walk was moderate, about 4 miles. Ages 18+. Register by the day before.", "Fees vary; Minnewaska parking $10 a car"], ["Mohonk Preserve weekend hikes", "Mohonk Preserve", "Meeting place emailed when you register \u00b7 ~40 min (est.)", "845-255-0919 \u00b7 mohonkpreserve.org/events", "Volunteer-led weekend hikes. A past one was an easy to moderate 5 to 6 mile ramble. Current dates not confirmed.", "Hike fee not posted; parking $10 a car"], ["Mid-Hudson Adirondack Mountain Club", "Hudson Valley hiking club", "Meeting places vary, mostly Hudson Valley \u00b7 ~45 to 70 min (est.)", "midhudsonadk@gmail.com \u00b7 midhudsonadk.org", "All-ages club. Mid-week hikes, usually Thursdays, plus weekend outings. Active this fall. Pace and cost not posted.", "Not posted"], ["Delaware Highlands Morning Wellness Walk", "Conservancy", "Van Scott Nature Reserve, 571 Perkins Pond Rd, Beach Lake PA \u00b7 ~60 min (est.)", "570-226-3164 \u00b7 info@delawarehighlands.org \u00b7 delawarehighlands.org/events", "Staff-led walk, 9 to 10:30am, rotating trails. Appears to repeat; ask how often.", "Not posted"], ["Mall Walk with the UCOFA", "Ulster County Office for the Aging", "Hudson Valley Mall, 1300 Ulster Ave, Kingston, by the Food Court \u00b7 ~50 to 55 min (est.)", "845-340-3456 \u00b7 ulstercountyny.gov (search Mall Walk)", "Indoor walk, Tuesdays: meet 9:45, walk 10am. Good for bad weather. Cancelled when Kingston schools are closed or delayed. All welcome.", "Free"], ["Strava (phone app)", "Track walks, find walking clubs", "Phone app, any place", "strava.com \u00b7 free app for iPhone and Android", "Records each walk with a map, distance and time. Search Clubs for local walking groups, or keep a 5K log. Friends can follow along and cheer.", "Free; paid plan is optional"]],"Walks and Runs"));
-  add('walk',P("places to hike","<p class=\"lead\">Trails to walk any day. Some have guided hikes. Call first for those.</p>",[["Minnewaska State Park Preserve", "Kerhonkson", "5281 Route 44-55, Kerhonkson \u00b7 ~35 min (est.)", "845-255-0752 \u00b7 parks.ny.gov/parks/minnewaska", "Free guided hikes several times a week (ravine treks, ledge hikes, early-morning birding). Call the visitor center to join.", "$10 a car; guided programs no extra fee"], ["Sam's Point (Minnewaska)", "Cragsmoor", "400 Sam's Point Rd, Cragsmoor \u00b7 ~35 min (est.)", "845-647-7989 \u00b7 parks.ny.gov/parks/193", "Ice caves and dwarf pine ridge trails. Weekend parking must be reserved in season: 1-800-777-9644.", "$10 a car"], ["Mohonk Preserve", "Gardiner", "Visitor Center, 3197 Route 44/55, Gardiner \u00b7 ~40 min (est.)", "845-255-0919 \u00b7 mohonkpreserve.org/events", "Volunteer-led hikes and programs. None posted now; online registration coming. Call to ask.", "Day pass $15 Mon to Thu, $20 Fri to Sun"], ["Neversink River Unique Area", "Forestburgh", "Trailhead: Katrina Falls Rd \u00b7 ~25 min (est.)", "DEC 845-256-3076 \u00b7 dec.ny.gov/places/neversink-river-unique-area", "Self-guided river trails. Poor cell service, so walk with someone.", "Free"], ["Basha Kill", "Wurtsboro", "Between Route 209 and South Rd \u00b7 ~5 to 10 min", "Town of Thompson \u00b7 thompsonny.gov/?p=9377", "Flat trails, observation tower, birding, boat launch. No set programs.", "Not posted"], ["Black Rock Forest", "Cornwall", "65 Reservoir Rd, Cornwall \u00b7 ~45 min (est.)", "845-534-4517 \u00b7 info@blackrockforest.org \u00b7 blackrockforest.org/events", "Occasional led hikes; register ahead. None posted now.", "Past hikes $10 (confirm)"], ["Hudson Highlands Nature Museum", "Cornwall", "120 Muser Dr, Cornwall \u00b7 ~45 min (est.)", "845-534-5506 \u00b7 hhnaturecenter.org", "Free trails dawn to dusk. 'Hike the Highlands' and nature programs listed; ask.", "Trails free; programs not posted"], ["Walkway Over the Hudson", "Highland", "87 Haviland Rd, Highland \u00b7 ~50 min (est.)", "845-834-2867 \u00b7 walkway.org/visit", "1.28-mile bridge walk. Free audio tour by QR code. Guided group tours through Friends of the Walkway: 845-454-9649.", "Walking free; Highland parking is paid"]],"Walks and Runs"));
+  add('ideas',P("arts and crafts","<p class=\"lead\">No fixed dates. Call first to ask about the next class and to confirm price. Drive times are estimates.</p>",[["Wallkill River Center for the Arts", "Montgomery", "Patchett House, 232 Ward St, Montgomery \u00b7 ~30 min (est.)", "845-457-2787 \u00b7 info@wallkill.art \u00b7 wallkill.art/events/category/classes", "Multi-week adult classes: acrylic (Thu or Tue 1 to 3pm), watercolor (Sun 10 to 12), drawing (Mon), oil painting (Sat). One-day: frame loom weaving, watercolor cards. Drop-in beginner oils, Sat 10 to 12.", "Most series $120 ($105 members). Weaving $80. Cards $50. Drop-in oils $65 a class."], ["Fiber on Main", "Hurleyville", "227 Main St, Hurleyville \u00b7 ~30 min (est.)", "845-707-8428 \u00b7 fiberstudioonmain@gmail.com \u00b7 fiberonmain.com", "Open studio for your own sewing or fiber project, with help. Wed 3:30 to 6:30. Also sewing workshops and Intro to Knitting; ask for the next ones.", "Not posted"], ["Unison Arts", "New Paltz", "9 Paradies Ln, New Paltz \u00b7 ~40 min (est.)", "845-255-1559 \u00b7 unisonarts.org", "Hands-on classes listed: wood carving, Chinese brush painting, watercolor, collage, monotype and encaustics. Ask which are for adults.", "Not posted"], ["Willow Deep Studio", "near Rosendale", "Address not posted \u00b7 ~45 min (est.)", "845-658-0370 \u00b7 willowdeepstudio@gmail.com \u00b7 willowdeepstudio.com/workshops", "Stained glass: suncatcher workshops (beginner), and a leaded window series. Private sessions can be booked.", "Not posted"], ["The Newburgh Pottery", "Newburgh", "11 Spring St, Newburgh \u00b7 ~45 min (est.)", "201-741-3552 \u00b7 thenewburghpottery.com/pottery-workshops", "Intro to Wheel: first time on the wheel, pieces glazed and fired for pickup. Buy a voucher online, then call to schedule.", "Page shows $10 a piece; confirm. Call first, site is old."], ["Mosaic Art Studio USA", "Warwick", "24 Ronald Reagan Blvd, Warwick \u00b7 ~45 min (est.)", "Phone not posted. Search 'Mosaic Art Studio USA' on Eventbrite", "Mosaic lamp workshop (hand-cut glass, materials and tea included). Ceramic painting workshops at the same address.", "Lamp about $86 to $129"], ["Hurleyville Performing Arts Centre", "Hurleyville", "219 Main St, Hurleyville \u00b7 ~30 min (est.)", "845-985-4722 \u00b7 info@hpacny.org \u00b7 hpacny.org", "Lists Sip & Paint and craft workshops, none posted now. Call to ask.", "Not posted"], ["Let's Paint Studio", "Liberty", "21 Sullivan Ave, Liberty \u00b7 ~30 min (est.)", "845-720-6811", "Painting studio. Classes not confirmed; call to ask.", "Not posted"], ["Grumpy Goat Fine Yarn", "Port Jervis \u00b7 yarn shop", "78 Front St, Suite 60, Port Jervis \u00b7 ~25 min", "845-672-4307 \u00b7 grumpygoatfineyarn.com", "Yarn shop with a free \"Slow Down Sunday\" knit and crochet social (3 to 5pm, call for dates). Beginner knit and crochet classes, 3 students at a time. Open Wed to Sun.", "Classes $30; private $40"], ["Hudson Valley Atelier", "Florida NY \u00b7 craft studio", "21 N Main St, Florida NY \u00b7 ~40 min", "hudsonvalleyatelier.com", "Small hands-on workshops: chunky knitting, felting, weaving, wreaths, mosaics. Book each one online; no walk-ins. See the Events tab for dates.", "$40 to $75, materials included"], ["Knit One Needlepoint Too", "Monticello \u00b7 yarn and needlepoint shop", "364 East Broadway, Monticello \u00b7 ~20 min", "845-791-5648 \u00b7 NeedlepointToo@gmail.com", "Closest shop for yarn and needlepoint supplies. Open Thu to Sun 12 to 4pm or by appointment. No classes listed.", "Shop"], ["Wurtsboro Art Alliance", "Wurtsboro \u00b7 gallery and classes", "John Neilson Gallery, 73 Sullivan St, Wurtsboro \u00b7 ~5 min", "info.waagallery@gmail.com \u00b7 waagallery.org", "Local art group (30+ members) with classes and shows. New members welcome; forms at waagallery.org/forms. Community classes are often free or by donation.", "Dues not posted"]],"Ideas"));
+  add('ideas',P("gardening","<p class=\"lead\">No fixed dates. Call first to ask about the next class and to confirm price. Drive times are estimates.</p>",[["Cornell Cooperative Extension, Sullivan", "Liberty", "64 Ferndale-Loomis Rd, Liberty \u00b7 ~25 min", "845-292-6180 \u00b7 sullivan@cornell.edu \u00b7 sullivancce.org/gardening", "Gardening workshops and Master Gardener office hours all year. Ask Katie Gasior (ext. 123) to be put on the workshop list.", "Bulb workshop is free. Others not posted."], ["Cornell Cooperative Extension, Orange", "Middletown", "18 Seward Ave, Suite 300, Middletown \u00b7 ~25 to 30 min (est.)", "845-344-1234 \u00b7 orange@cornell.edu \u00b7 cceorangecounty.org/gardening", "Saturday gardening classes: soil and composting, fruit, landscape design, plus craft workshops (wreaths, plant dyes, centerpieces).", "Not posted"], ["Master Gardener training (CCE Orange)", "Middletown", "Same office as above", "Susan Ndiaye \u00b7 845-344-1234 ext. 250 \u00b7 sgn32@cornell.edu", "A 12-month course: monthly Saturday class, 9 to 4, plus online work. Graduates teach and staff the helpline. Ask when the next group starts.", "$300 (scholarships by need)"], ["Community Garden Club of Liberty", "Sullivan County", "Meets at varied places \u00b7 ~30 min", "845-794-7631 or 845-292-7832", "Meets 3rd Tuesday, 1pm. Garden tours, talks, plant sale, workdays at the Liberty Community Garden. Notice is old; call to confirm it is active.", "Not posted"], ["Warwick Valley Gardeners", "Warwick", "Address not posted \u00b7 ~45 min (est.)", "warwickgardeners.com/contact-us", "Garden club that tends nine public gardens; garden tour. Meeting times not posted.", "Not posted"], ["Other Orange County garden clubs", "Pine Bush, Port Jervis, Otisville, Middletown", "Ask CCE Orange for meeting places", "845-344-1234", "Artful Gardener's Club (Port Jervis), Country Garden Club, Pine Bush Garden Club, Garden Lover's Club (Middletown). Activity not confirmed.", "Not posted"], ["Delaware Highlands Conservancy", "Beach Lake, PA", "571 Perkins Pond Rd, Beach Lake PA \u00b7 ~45 min (est.)", "570-226-3164 \u00b7 info@delawarehighlands.org \u00b7 delawarehighlands.org/events", "Native plant, seed saving and landscape design workshops, plus guided walks.", "Not posted"], ["Sullivan County Soil and Water: tree and shrub sale", "Liberty", "64 Ferndale-Loomis Rd, Liberty \u00b7 ~25 min", "845-292-6552 \u00b7 sullivanswcd.org/tree-shrub-program", "Low-cost native trees, shrubs, fruit trees and wildflower seed. Orders usually open in early January; pick up in April.", "Low cost"], ["Orange County Arboretum", "Hamptonburgh", "Thomas Bull Memorial Park, Rt 416, Hamptonburgh \u00b7 ~35 to 40 min", "845-615-3830 \u00b7 orangecountyny.gov/1393/Orange-County-Arboretum", "Free public gardens, open dawn to dusk all year. Nice for a quiet walk and garden ideas.", "Free"], ["Stonehenge Farm Market", "Bullville", "1401 NY Rt 302, Bullville \u00b7 ~30 min", "845-361-4014", "Farm market open every day 9am to 5pm, all year: produce, baked goods, plants and cut flowers.", "Shop"]],"Ideas"));
+  add('walk',P('walks and 5Ks with set dates','<p class="lead">5Ks and easy hikes with a walk option, through December. None found yet for January to March. Costs include sign-up fees. Drive times are estimates.</p>',[["Pine Bush Ambulance Corps 5K Walk (38th annual)", "Sun Nov 1", "Ambulance Corps, 131 Center St, Pine Bush \u00b7 ~30 min (est.)", "runsignup.com/Race/NY/PineBush/PBAVAC5K", "5K Walk 9:15am, run 9am. Honors Helen and George Low.", "$44.30"], ["Beautiful People Fun Run, Walk and Roll 5K", "Sun Nov 8", "Field of Dreams, 253 State School Rd, Warwick \u00b7 ~45 min (est.)", "beautifulpeoplesports.org/5k", "5K 9:30am, check-in from 8am. Benefits adaptive sports for children and young adults.", "$40 early, $45 that day"], ["HV Hawks Reindeer Dash 5K Run/Walk", "Sat Nov 14", "L. Vern Allen Park, 1 Ahern Blvd, Washingtonville \u00b7 ~45 min (est.)", "runsignup.com/Race/NY/Washingtonville/HVHawksReindeerDash", "5K 10am, sign-in from 9am. Shirt guaranteed if you register by Nov 1.", "$43.40"], ["Red, White and Blue 5K Walk and 1-mile walk (for veterans)", "Sat Nov 14", "Veterans Memorial Park, 109 Scenic Dr, Lackawaxen PA \u00b7 ~45 min", "runsignup.com/Race/PA/Lackawaxen/RunWalkVets5K", "9am. Sign-up on the day from 8am.", "$25"], ["Post to Post 5K, \"walk, run or crawl\" (for veterans)", "Sat Nov 14", "American Legion Post 1420, 1171 Union Ave, Newburgh \u00b7 ~45 min", "runsignup.com/Race/NY/Newburgh/PosttoPostRunforVeterans5k", "8am. Shirts for the first 100.", "About $28"], ["DV Turkey Trot 5K Run/Walk", "Sat Nov 21", "Delaware Valley High School, 252 Route 6 and 209, Milford PA \u00b7 ~40 min", "runsignup.com/Race/PA/Milford/DVTURKEY", "Morning (start time not posted). Bring canned food for the pantry.", "$30"], ["Bloodline Turkey Trot 5K Run/Walk (Thanksgiving)", "Thu Nov 26", "Warwick Valley Middle School, 225 West St, Warwick \u00b7 ~45 min (est.)", "runsignup.com/Race/NY/Warwick/BloodlineTurkeyTrot", "8am start. Walkers welcome. Includes a shirt.", "$32.80"], ["Family of New Paltz Turkey Trot 5K (run or walk)", "Thu Nov 26", "Water Street Market, New Paltz \u00b7 ~45 to 50 min", "newpaltzturkeytrot.com", "9:30am, Thanksgiving morning.", "$22.20 at 65+, $32.80 others"], ["Livingston Manor Turkey \"Trout\" 5K and 1-mile walk (dogs welcome)", "Sat Nov 28", "Renaissance Park, Main St, Livingston Manor \u00b7 ~50 min", "runsignup.com/Race/NY/LivingstonManor/LivingstonManorTurkeyTroutKRunWalk", "11am. Helps the county animal shelter.", "$35"], ["Mohonk \"Turkey Day Recovery\" easy hike, 6 miles with a car shuttle", "Sat Nov 28", "Mohonk Preserve (meeting place emailed) \u00b7 ~40 min", "845-255-0919 \u00b7 mpreserve.ticketapp.org/portal/product/26/events", "8:45am to 1:30pm. Easy. Limit 16. Adults.", "$20 day fee (members free)"], ["Tinsel Trot 5K Walk (holiday costumes welcome)", "Sat Dec 5", "Dutch's Tavern, 204 Rock Hill Dr, Rock Hill \u00b7 ~25 min", "runsignup.com/Race/NY/RockHill/5thAnnualTinselTrot5kFunRun", "10am. Flat paved road.", "$32.80 (goes up after Nov 7)"], ["Jingle Jog 4-mile walk or run (holiday costumes, toy drive)", "Sun Dec 6", "Middletown Elks, 48 Prospect St, Middletown \u00b7 ~30 min", "orangerunnersclub.org/jinglejog.htm", "Walkers start 9:45am. 4 miles, a bit longer than a 5K.", "Price not posted"], ["Kris Kringle 5K Fun Walk", "Sat Dec 12", "Matamoras Airport Park, 701 Ave Q, Matamoras PA \u00b7 ~30 min", "runsignup.com/Race/PA/Matamoras/KrisKringle5KRace", "Walk starts 8:45am. Flat course.", "$35"]],'Walks and Runs',IHR));
+  add('walk',P("walking groups and clubs","<p class=\"lead\">Groups that meet on a regular day. Call to confirm the next meeting and the start place.</p>",[["Orange County Walking Club", "Office for the Aging", "Thomas Bull Memorial Park, Day Camp Area (park address not posted; ask) \u00b7 ~40 min (est.)", "845-291-4000 (Mon to Fri 9 to 5) \u00b7 orangecountyny.gov/2790/Walking-Club", "Weekly group walk, Fridays 10 to 11am. About 2 to 3 miles in an hour; members build up to faster, longer walks. Call to confirm start spot.", "Not posted"], ["Bob Babb Wednesday Walks", "Mohonk Preserve", "Trailhead varies; emailed when you register \u00b7 ~35 to 40 min (est.)", "845-255-0919 \u00b7 areynolds@mohonkpreserve.org \u00b7 mpreserve.ticketapp.org/portal/product/25/events", "Volunteer-led weekday hikes, Wednesdays 9:30am. Coming up: Nov 11 Slabsides (5 mi, easier); Nov 18 Sam's Point (8.5 mi, some steep parts); Nov 25 Black Creek (3 mi, easy). Ages 18+. Register by the day before.", "Fees vary; Minnewaska parking $10 a car"], ["Mohonk Preserve weekend hikes", "Mohonk Preserve", "Meeting place emailed when you register \u00b7 ~40 min (est.)", "845-255-0919 \u00b7 mohonkpreserve.org/events", "Volunteer-led weekend hikes, several a month. Easiest coming up: Sat Nov 28 shuttle hike, 6 miles (see dated walks). Others are 6 to 9 miles, moderate. $20 day fee for non-members.", "Hike fee not posted; parking $10 a car"], ["Mid-Hudson Adirondack Mountain Club", "Hudson Valley hiking club", "Meeting places vary, mostly Hudson Valley \u00b7 ~45 to 70 min (est.)", "midhudsonadk@gmail.com \u00b7 midhudsonadk.org", "All-ages club. Mid-week hikes, usually Thursdays, plus weekend outings. Active this fall. Pace and cost not posted.", "Not posted"], ["Delaware Highlands Morning Wellness Walk", "Conservancy", "Van Scott Nature Reserve, 571 Perkins Pond Rd, Beach Lake PA \u00b7 ~60 min (est.)", "570-226-3164 \u00b7 info@delawarehighlands.org \u00b7 delawarehighlands.org/events", "Staff-led walk, 9 to 10:30am, rotating trails. Appears to repeat; ask how often.", "Not posted"], ["Mall Walk with the UCOFA", "Ulster County Office for the Aging", "Hudson Valley Mall, 1300 Ulster Ave, Kingston, by the Food Court \u00b7 ~50 to 55 min (est.)", "845-340-3456 \u00b7 ulstercountyny.gov (search Mall Walk)", "Indoor walk, Tuesdays: meet 9:45, walk 10am. Good for bad weather. Cancelled when Kingston schools are closed or delayed. All welcome.", "Free"], ["Strava (phone app)", "Track walks, find walking clubs", "Phone app, any place", "strava.com \u00b7 free app for iPhone and Android", "Records each walk with a map, distance and time. Search Clubs for local walking groups, or keep a 5K log. Friends can follow along and cheer.", "Free; paid plan is optional"]],"Walks and Runs"));
+  add('walk',P("places to hike","<p class=\"lead\">Trails to walk any day. Some have guided hikes. Call first for those.</p>",[["Minnewaska State Park Preserve", "Kerhonkson", "5281 Route 44-55, Kerhonkson \u00b7 ~35 min (est.)", "845-255-0752 \u00b7 parks.ny.gov/parks/minnewaska", "Free guided hikes several times a week (ravine treks, ledge hikes, early-morning birding). Call the visitor center to join.", "$10 a car; guided programs no extra fee"], ["Sam's Point (Minnewaska)", "Cragsmoor", "400 Sam's Point Rd, Cragsmoor \u00b7 ~35 min (est.)", "845-647-7989 \u00b7 parks.ny.gov/parks/193", "Ice caves and dwarf pine ridge trails. Weekend parking must be reserved in season: 1-800-777-9644.", "$10 a car"], ["Mohonk Preserve", "Gardiner", "Visitor Center, 3197 Route 44/55, Gardiner \u00b7 ~40 min (est.)", "845-255-0919 \u00b7 mohonkpreserve.org/events", "Volunteer-led hikes and programs. None posted now; online registration coming. Call to ask.", "Day pass $15 Mon to Thu, $20 Fri to Sun"], ["Neversink River Unique Area", "Forestburgh", "Trailhead: Katrina Falls Rd \u00b7 ~25 min (est.)", "DEC 845-256-3076 \u00b7 dec.ny.gov/places/neversink-river-unique-area", "Self-guided river trails. Poor cell service, so walk with someone.", "Free"], ["Basha Kill", "Wurtsboro", "Between Route 209 and South Rd \u00b7 ~5 to 10 min", "Town of Thompson \u00b7 thompsonny.gov/?p=9377", "Flat trails, observation tower, birding, boat launch. No set programs.", "Not posted"], ["Black Rock Forest", "Cornwall", "65 Reservoir Rd, Cornwall \u00b7 ~45 min (est.)", "845-534-4517 \u00b7 info@blackrockforest.org \u00b7 blackrockforest.org/events", "Occasional led hikes; register ahead. None posted now.", "Past hikes $10 (confirm)"], ["Hudson Highlands Nature Museum", "Cornwall", "120 Muser Dr, Cornwall \u00b7 ~45 min (est.)", "845-534-5506 \u00b7 hhnaturecenter.org", "Free trails dawn to dusk. 'Hike the Highlands' and nature programs listed; ask.", "Trails free; programs not posted"], ["Walkway Over the Hudson", "Highland", "87 Haviland Rd, Highland \u00b7 ~50 min (est.)", "845-834-2867 \u00b7 walkway.org/visit", "1.28-mile bridge walk. Free audio tour by QR code. Guided group tours through Friends of the Walkway: 845-454-9649.", "Walking free; Highland parking is paid"], ["Mamakating Rail Trail (O&W)", "Wurtsboro", "Trailheads: 2 Sullivan St and 136 McDonald Rd, Wurtsboro \u00b7 ~5 min", "sullivanoandw.com/trails/mamakating \u00b7 info@SullivanOandW.com", "Flat old railbed, 7 miles in the Wurtsboro section. Easy walking any day. The Sullivan St to McDonald Rd part was closed for bridge work until Oct 30; check it has reopened.", "Free"], ["Orange Heritage Trail", "Goshen, Chester, Monroe", "Trailheads at Hartley Rd (Goshen), Chester Depot, Airplane Park (Monroe) \u00b7 ~35 to 45 min", "845-615-3830 \u00b7 orangecountyny.gov/1475/Heritage-Trail", "Paved, wide and flat, 19.5 miles. Good for a long easy walk. Not plowed in winter.", "Free"], ["Mongaup eagle viewing blinds", "Forestburgh", "Mongaup Falls Reservoir blind, County Route 43 \u00b7 ~35 min", "845-256-3000 (NY DEC)", "Bald eagles winter here from December, best in January and February, 7 to 9am and 4 to 5pm. Watch from the car or the blind; stay out of closed areas.", "Free"]],"Walks and Runs"));
   })();
   // IDEAS END
   add('host', head('Fall 2026 – Winter 2027 · Wurtsboro, NY and nearby', 'Hosts', 'page 1 of 2', '<p class="lead">Who runs each event, in alphabetical order. Call to confirm before you go.</p>') + '<table class="t" style="table-layout:fixed;width:100%;font-size:9pt"><tr><th style="width:24%">Host</th><th style="width:26%">Address</th><th style="width:19%">Phone or email</th><th style="width:31%">Website</th></tr><tr><td><b>Barryville Farmers Market</b></td><td>3405 NY-97, Barryville NY</td><td>Not posted</td><td style="word-break:break-all">sullivancatskillsfarmersmarkets.com</td></tr><tr><td><b>Bashakill Vineyards and Winery</b></td><td>1131 South Rd, Wurtsboro NY 12790</td><td>845-888-5858</td><td style="word-break:break-all">bashakillvineyards.com</td></tr><tr><td><b>Bethel Woods Center for the Arts</b></td><td>200 Hurd Rd, Bethel NY 12720</td><td>845-583-2000</td><td style="word-break:break-all">bethelwoodscenter.org</td></tr><tr><td><b>Catskill Art Space</b></td><td>Livingston Manor NY (street on website)</td><td style="word-break:break-all">info@catskillartspace.org</td><td style="word-break:break-all">catskillartspace.org</td></tr><tr><td><b>Cornell Cooperative Extension Sullivan</b></td><td>64 Ferndale-Loomis Rd, Liberty NY 12754</td><td>845-292-6180</td><td style="word-break:break-all">pub.cce.cornell.edu/event_registration/main/events.cfm?dept=248</td></tr><tr><td><b>Delaware Highlands Conservancy</b></td><td>Eagle bus tours start at Zane Grey Museum, 135 Scenic Dr, Lackawaxen PA</td><td>570-226-3164</td><td style="word-break:break-all">delawarehighlands.org/events</td></tr><tr><td><b>Ellenville Farmers Market</b></td><td>Market St, Ellenville NY</td><td>Not posted</td><td style="word-break:break-all">none found</td></tr><tr><td><b>Ellenville Public Library</b></td><td>40 Center St, Ellenville NY 12428</td><td>845-647-5530</td><td style="word-break:break-all">eplm.org/calendar-2</td></tr><tr><td><b>Ethelbert B. Crawford Public Library (Crawford Library, Monticello)</b></td><td>479 Broadway, Monticello NY 12701</td><td>845-794-4660</td><td style="word-break:break-all">ebcpl.libcal.com</td></tr><tr><td><b>Florida Farmers Market</b></td><td>Rt 17A and Rt 94, Florida NY (across from Quick Chek)</td><td>845-651-8310</td><td style="word-break:break-all">pickocny.com</td></tr><tr><td><b>Goshen Farmers Market</b></td><td>Orange County Government Center, 255 Main St, Goshen NY</td><td>845-294-7741</td><td style="word-break:break-all">pickocny.com</td></tr><tr><td><b>Liberty Public Library</b></td><td>189 N Main St, Liberty NY 12754</td><td>845-292-6070</td><td style="word-break:break-all">libertypubliclibrary.libcal.com</td></tr><tr><td><b>Mamakating Environmental Education Center (MEEC)</b></td><td>762 South Rd, Wurtsboro NY 12790</td><td>845-644-5014</td><td style="word-break:break-all">pjschools.org/about/community-corner/mamakating-environmental-education-center-monthly-events</td></tr><tr><td><b>Mamakating Library</b></td><td>128 Sullivan St, Wurtsboro NY 12790</td><td>845-888-8004</td><td style="word-break:break-all">calendar.mamakatinglibrary.org</td></tr><tr><td><b>Middletown Thrall Library</b></td><td>11-19 Depot St, Middletown NY 10940</td><td>845-341-5604</td><td style="word-break:break-all">thrall.libcal.com/calendar?cid=18395</td></tr><tr><td><b>Monroe Farmers Market</b></td><td>Commuter lot, Millpond Pkwy, Monroe NY</td><td>845-782-8341</td><td style="word-break:break-all">pickocny.com</td></tr></table>');
   add('host', head('Fall 2026 – Winter 2027 · Wurtsboro, NY and nearby', 'Hosts', 'page 2 of 2', '') + '<table class="t" style="table-layout:fixed;width:100%;font-size:9pt"><tr><th style="width:24%">Host</th><th style="width:26%">Address</th><th style="width:19%">Phone or email</th><th style="width:31%">Website</th></tr><tr><td><b>Montgomery Senior Center</b></td><td>36 Bridge St, Montgomery NY 12549</td><td>845-457-9367</td><td style="word-break:break-all">villageofmontgomeryny.gov/our-community/senior-information/senior-services</td></tr><tr><td><b>Monticello Farmers Market</b></td><td>10 Jefferson St, Monticello NY</td><td>845-794-4660</td><td style="word-break:break-all">sullivancatskillsfarmersmarkets.com</td></tr><tr><td><b>Pat Blanco (Learn to Crochet)</b></td><td>73 Sullivan St, Wurtsboro NY 12790</td><td style="word-break:break-all">rhettbit@aol.com</td><td style="word-break:break-all">none found</td></tr><tr><td><b>Pine Bush Farmers Market</b></td><td>62 Main St at New St, Pine Bush NY</td><td>845-978-0298</td><td style="word-break:break-all">pickocny.com</td></tr><tr><td><b>Pine Bush Library</b></td><td>223-227 Maple Ave, Pine Bush NY 12566</td><td>845-744-3375</td><td style="word-break:break-all">pinebusharealibrary.org/programs-events/month</td></tr><tr><td><b>Port Jervis Free Library</b></td><td>138 Pike St, Port Jervis NY 12771</td><td>845-856-7313</td><td style="word-break:break-all">pjschools.org</td></tr><tr><td><b>Port Jervis School District boardroom (yoga)</b></td><td>150 Pike St, Port Jervis NY</td><td>845-856-7313 (library)</td><td style="word-break:break-all">pjschools.org</td></tr><tr><td><b>Rosendale Recreation Center</b></td><td>Rt 32, Rosendale NY</td><td>845-658-8198</td><td style="word-break:break-all">townofrosendaleny.gov</td></tr><tr><td><b>SUNY Orange Encore</b></td><td>115 South St, Middletown NY 10940</td><td>845-341-4896</td><td>sunyorange.edu (Encore page)</td></tr><tr><td><b>SUNY Sullivan (Paul Gerry Fieldhouse)</b></td><td>112 College Rd, Loch Sheldrake NY</td><td style="word-break:break-all">845-434-5750 or events@sunysullivan.edu</td><td style="word-break:break-all">sunysullivan.edu</td></tr><tr><td><b>Taylor + Ace (Sunday Knitting Circle)</b></td><td>1975 Old Route 17, Roscoe NY 12776</td><td>Not posted</td><td style="word-break:break-all">sullivancatskills.com/series/sunday-morning-knitting-circle</td></tr><tr><td><b>Trudy Resnick Farber Building (Wawarsing program)</b></td><td>50 Center St, Ellenville NY</td><td>845-647-7800 x129</td><td style="word-break:break-all">ulstercountyny.gov/Facilities/Trudy-Center/Events/Wawarsing-Senior-Program</td></tr><tr><td><b>Warwick Valley Farmers Market</b></td><td>South St parking lot at Bank St, Warwick NY</td><td>845-987-9990</td><td style="word-break:break-all">pickocny.com</td></tr><tr><td><b>Wawayanda Farmers Market (Farm to Go)</b></td><td>2580 US-6, Slate Hill NY</td><td>845-636-8755</td><td style="word-break:break-all">pickocny.com</td></tr><tr><td><b>Wurtsboro Art Alliance</b></td><td>73 Sullivan St, Wurtsboro NY 12790</td><td style="word-break:break-all">info.waagallery@gmail.com</td><td style="word-break:break-all">waagallery.org</td></tr></table>');
   add('me', head('Fall 2026 – Winter 2027 · Wurtsboro, NY and nearby', 'My Activities', 'to follow up', '<p class="lead">Not posted yet. Call these on the date shown.</p>') +
-    '<table class="t" style="table-layout:fixed;width:100%%"><tr><th style="width:24%%">Who</th><th style="width:20%%">Phone or email</th><th style="width:15%%">When to call</th><th>Why</th></tr><tr><td><b>Delaware Highlands Conservancy</b></td><td>570-226-3164</td><td>Early November</td><td>Eagle watching bus tours (Jan to mid-March): are they running, dates, price, how to reserve.</td></tr><tr><td><b>Port Jervis library (Community Yoga)</b></td><td>845-856-7313</td><td>This week</td><td>Do you need to live in Port Jervis or have a library card for the free yoga classes?</td></tr><tr><td><b>Libraries and senior centers with weekly classes</b></td><td>See the Hosts tab</td><td>Early December</td><td>Which weekly classes continue January to March?</td></tr><tr><td><b>SUNY Orange Encore</b></td><td>845-341-4896</td><td>Early December</td><td>Spring classes, when registration opens, any trial class.</td></tr><tr><td><b>Wurtsboro Art Alliance</b></td><td>info.waagallery@gmail.com</td><td>Early November</td><td>Holiday gift show dates.</td></tr></table>');
+    '<table class="t" style="table-layout:fixed;width:100%%"><tr><th style="width:24%%">Who</th><th style="width:20%%">Phone or email</th><th style="width:15%%">When to call</th><th>Why</th></tr><tr><td><b>Delaware Highlands Conservancy</b></td><td>570-226-3164</td><td>Early November</td><td>Eagle watching bus tours (Jan to Feb weekends): 2027 dates, price, how to reserve.</td></tr><tr><td><b>MEEC</b></td><td>845-644-5014</td><td>Early January</td><td>Date of the free snowshoe walk on the rail trail (last year Feb 1, loaner snowshoes).</td></tr><tr><td><b>NY State Parks First Day Hikes</b></td><td>parks.ny.gov/events/first-day-hikes</td><td>Mid-December</td><td>Free New Year\'s Day guided walks. Places not posted yet.</td></tr><tr><td><b>Sullivan County Soil and Water</b></td><td>845-292-6552</td><td>Early January</td><td>Low-cost tree, shrub and wildflower sale. Orders open in January.</td></tr><tr><td><b>Port Jervis schools (Community Yoga)</b></td><td>845-858-3100</td><td>Before the first class</td><td>The page lists no rule about living in Port Jervis. Confirm it is still running.</td></tr><tr><td><b>Libraries and senior centers with weekly classes</b></td><td>See the Hosts tab</td><td>Early December</td><td>Which weekly classes continue January to March?</td></tr><tr><td><b>SUNY Orange Encore</b></td><td>845-341-4896</td><td>Early December</td><td>Spring classes, when registration opens, any trial class.</td></tr><tr><td><b>Wurtsboro Art Alliance</b></td><td>info.waagallery@gmail.com</td><td>Early November</td><td>Holiday gift show dates.</td></tr></table>');
   add('me', head('Fall 2026 – Winter 2027 · Wurtsboro, NY and nearby', 'My Activities', 'what they told me', '<p class="lead">Write what each host told you.</p>') + '<div class="lines">' + new Array(22).join('<i></i>') + '</div>');
   add('me', head('Fall 2026 – Winter 2027 · Wurtsboro, NY and nearby', 'My Activities', 'my own ideas', '<p class="lead">Write your own ideas.</p>') + '<div class="lines">' + new Array(22).join('<i></i>') + '</div>');
 
@@ -814,6 +938,13 @@ body.app #nav a { font-size: 9.5pt; padding: 8px 0; }
   /* Merge dated events into one date-ordered list */
   /* ===== UPDATE LOG: newest first. The Monday update adds entries at the TOP. {d: date, t: short text, k: tab key or 'my'} ===== */
 var UPDATES = [
+  { d: '2026-10-26', t: "Big update: about 120 new classes, groups, walks, markets and ways to help", k: '' },
+  { d: '2026-10-26', t: "New weekly knit and crochet circles: Port Jervis, Rosendale, Wallkill, Goshen, Liberty", k: 'thu' },
+  { d: '2026-10-26', t: "Sky Stitching at MEEC is free, every Sunday 10 to 12", k: 'sun' },
+  { d: '2026-10-26', t: "Yarn dyeing workshop Sat Nov 7. Sign up by Fri Oct 30", k: 'ev' },
+  { d: '2026-10-26', t: "Holiday markets: Bethel Woods, Port Jervis, Christkindlmarkt and more", k: 'ev' },
+  { d: '2026-10-26', t: "December walks and turkey trots added", k: 'walk' },
+  { d: '2026-10-26', t: "Fixed: the SPCA is in Rock Hill. Ellenville groups run to March", k: 'vol' },
   { d: '2026-10-26', t: 'Removed events that already ended (Oct 21 to 25), including two Encore one-day classes', k: 'ev' },
   { d: '2026-10-21', t: 'Tap any listing for website, sign-up, call and map. Add to Calendar with a reminder', k: '' },
   { d: '2026-10-21', t: 'New search box and topic buttons on the home screen (try “crochet”)', k: '' },
@@ -824,7 +955,137 @@ var UPDATES = [
   { d: '2026-10-20', t: 'MEEC Fall Festival, Sat Nov 7, $5', k: 'ev' },
   { d: '2026-10-20', t: 'Sunday knitting circle at Taylor + Ace, Roscoe', k: 'sun' }
 ];
+/* ===== RECENTLY ADDED: newest first. The Monday update adds [date, [exact listing names]] at the TOP. Shown as 'New' for 21 days. ===== */
+var ADDED = [
+  ['2026-10-26', [
+    "Crochet Club (Crochet and Chat; bring yarn and hooks)",
+    "Knit and Crochet Circle (all levels)",
+    "Narrowsburg Knitters (knit, crochet, other needle crafts)",
+    "Family Crafty Yarn Club (learn to crochet or knit, or bring a project; adults welcome)",
+    "Tai Chi (register with a library card)",
+    "Zumba",
+    "Crochetiers Club (crochet-alongs for crocheters past beginner; current series full)",
+    "Textile Tuesday (quilt, knit, crochet, sew, embroider; bring lunch)",
+    "Mahjong at the Library (loaner sets)",
+    "Ukulele Jam (1st Wednesday)",
+    "Beginner Line Dancing",
+    "Country Quilters Guild (2nd Wednesday; new members welcome, no experience needed)",
+    "Yarn Gang (work on projects and share the week)",
+    "Mahjong Club",
+    "Wednesday Wellness: Gentle Yoga or Gentle Zumba (alternating weeks)",
+    "Yiddish conversation group (language, customs, humor; all levels)",
+    "Tech help, drop in (phone, tablet, email)",
+    "Pinochle (they will teach you)",
+    "Sew-cial Circle (cross stitch, embroidery, needlepoint; supplies available)",
+    "Fiber Arts (weekly; bring your current project)",
+    "Craft and Conversation (bring a project)",
+    "Calico Geese Quilting Guild \"Sewcial\" (quilt, knit or embroider and chat)",
+    "Bone Builders (strength with light weights)",
+    "Mahjong free play (tiles provided; some experience helps)",
+    "Trivia night (4th Friday)",
+    "Knot Just Knitting",
+    "Drop Spindle meet-up (learn to spin yarn; wool and spindles supplied)",
+    "Goshen Library Fiber Arts Guild (knit, sew, spin, weave; share what you are making)",
+    "Friends of Mamakating Library meetup",
+    "Community Spin-In (bring a wheel, spindle or any small craft)",
+    "Herbal Hour (tea and cookies)",
+    "Beginners Oil Painting, drop in (materials included)",
+    "\"Slow Down Sunday\" knit and crochet social",
+    "Sky Stitching at MEEC (knit along with the artist)",
+    "Rain garden and swale design workshop (talk, then outdoor tour)",
+    "Organic farm walk: garden pests and deer (Cornell Extension)",
+    "Bird walk at the Gardiner Library (Minnewaska staff)",
+    "Hand-knit chunky yarn pumpkin workshop",
+    "Guided hike: Lake Minnewaska, Echo Rock and the meadows",
+    "Warwick Valley Gardeners wine and cheese fall party",
+    "Crochet Sundays with Mamba (all levels)",
+    "Free afternoon movies at the Rosendale Theatre",
+    "Art and Audiobook (craft while you listen to a short story)",
+    "Memoir writing workshop",
+    "Winter wreath workshop",
+    "Drawing and water media class with Roberta Rosenthal (3 weeks)",
+    "Readers Theatre (Nov 6) and Improv Play (Nov 20), no experience needed",
+    "Natural plant dye workshop (dye 2 skeins of yarn)",
+    "Gardening classes: Native Grasses (10am) and Landscape Design (1pm)",
+    "Tri-State Mercantile holiday markets",
+    "Freestyle weaving workshop (beginners welcome)",
+    "Community book swap",
+    "Apple picking for food pantries (Big Glean, volunteer)",
+    "Tea tasting",
+    "Project Linus: make blankets for children in need",
+    "Project Linus, Pike County group (blanket making)",
+    "Friendsgiving lunch, Women of Orange County and Beyond (Meetup group)",
+    "Holiday dinner and gift swap, Women of Orange County and Beyond",
+    "Holiday craft supply swap",
+    "Beeswax candle making",
+    "Frame loom weaving workshop (materials included)",
+    "Digital photo editing workshop (fix up garden and walk photos)",
+    "Adult Crochet Club (Pike County Library)",
+    "Decorate the edges of a book (spray-paint craft)",
+    "Cookbook Club (bring a dish from the month's book)",
+    "Felted infinity scarf workshop (wet felting)",
+    "Fall pumpkin centerpiece with fresh flowers",
+    "Beekeeping basics",
+    "Valley Central Holiday Craft Fair (110+ vendors)",
+    "Soap making",
+    "Gathered in Gratitude: early Thanksgiving crafts and cooking",
+    "Bethel Woods Holiday Market (75+ local makers)",
+    "Bethel Woods holiday market pop-ups (new makers each week)",
+    "Holiday sing-alongs at Bethel Woods",
+    "\"Joy to Wurtsboro\" holiday day in the village",
+    "Christkindlmarkt (100+ vendors, wagon rides, German band)",
+    "Holiday greens workshops: wreath, kissing ball or tabletop tree",
+    "Holiday market at Liberty Mall",
+    "Christmas Market and Winter Wonderland",
+    "Card making (registration opens Nov 7)",
+    "Winter watercolor card workshop",
+    "Mosaic ornaments workshop",
+    "Winter seed sowing in milk jugs (Delaware Highlands Conservancy)",
+    "Holiday Swing! (move to holiday songs)",
+    "Repair Cafe (bring something broken)",
+    "Make suet cakes for the birds",
+    "Learn to play mahjong (4 classes)",
+    "Pen and ink drawing",
+    "Irish music concert (PA Celts)",
+    "NY Maple Weekend (sugarhouse tours and tastings)",
+    "Pets Alive, Middletown",
+    "Catskill Animal Rescue, Ferndale",
+    "Regional Food Bank, Montgomery warehouse",
+    "Cornell Extension Orange: volunteer orientation",
+    "Friends of the Port Jervis Library",
+    "Project Linus (blankets for children)",
+    "Basha Kill Area Association",
+    "Water exercise (Aquacize)",
+    "Daytime yoga",
+    "Gentle strength and balance; Light and Lively",
+    "Pickleball for beginners (indoor)",
+    "Vinyasa yoga at Catskill Art Space",
+    "Adult pickleball, Town of Thompson",
+    "Grumpy Goat Fine Yarn",
+    "Hudson Valley Atelier",
+    "Knit One Needlepoint Too",
+    "Wurtsboro Art Alliance",
+    "Sullivan County Soil and Water: tree and shrub sale",
+    "Orange County Arboretum",
+    "Stonehenge Farm Market",
+    "Mamakating Rail Trail (O&W)",
+    "Orange Heritage Trail",
+    "Mongaup eagle viewing blinds",
+    "Red, White and Blue 5K Walk and 1-mile walk (for veterans)",
+    "Post to Post 5K, \"walk, run or crawl\" (for veterans)",
+    "DV Turkey Trot 5K Run/Walk",
+    "Family of New Paltz Turkey Trot 5K (run or walk)",
+    "Livingston Manor Turkey \"Trout\" 5K and 1-mile walk (dogs welcome)",
+    "Mohonk \"Turkey Day Recovery\" easy hike, 6 miles with a car shuttle",
+    "Tinsel Trot 5K Walk (holiday costumes welcome)",
+    "Jingle Jog 4-mile walk or run (holiday costumes, toy drive)",
+    "Kris Kringle 5K Fun Walk",
+    "Saturday Fiber Arts (3rd Saturday; drop in, bring any project)",
+    "Friends of Mamakating Library"
+  ]]
+];
 var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+p[1] - 1] + ' ' + (+p[2]) + ', ' + p[0]; })();
+sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined/g, 'Last updated ' + UPDATED); });
 (function () {
     var isMk = function (h) { return /<small>(farmers markets|markets, continued|winter markets)<\/small>/.test(h); };
     var keep = [], items = [], extras = [], first = true, MO = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
@@ -1155,8 +1416,10 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
         if (el.getAttribute('data-cid')) btn += '<button type="button" id="dcal">Add to calendar with a reminder</button>';
         var ab = el.querySelector('.addbtn'); if (ab) btn += '<button type="button" id="dadd">' + (ab.classList.contains('in') ? 'In my plan (tap to change)' : 'Add to my plan') + '</button>';
         if (fromSearch) btn += '<button type="button" id="dshow">Show in the guide</button>';
+        if (window.__mgFbHtml) h += window.__mgFbHtml(rec.title);
         h += '<div class="db">' + btn + '</div>';
-        dmc.innerHTML = h; dcard.scrollTop = 0; dm.classList.add('on'); document.body.style.overflow = 'hidden';
+        dmc.innerHTML = h;
+        if (window.__mgFbWire) window.__mgFbWire(dmc, rec.title); dcard.scrollTop = 0; dm.classList.add('on'); document.body.style.overflow = 'hidden';
         var dc = dmc.querySelector('#dcal'); if (dc) dc.onclick = function () { dc.style.display = 'none'; window.__mgOpenCal(el); };
         var da = dmc.querySelector('#dadd'); if (da) da.onclick = function () { closeD(); ab.click(); };
         var ds = dmc.querySelector('#dshow'); if (ds) ds.onclick = function () {
@@ -1392,6 +1655,8 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
       if (!rg && !rec.dates.length && (hasDate || (cls === 'd' && dayK >= 0))) rec.dates = parseDates(hasDate ? whenText : whenText + ' ' + rd);
       if (!rec.dates.length && !rec.weekly.length && dayK >= 0) rec.weekly = [dayK];
       else if (!rec.dates.length && !rec.weekly.length && cls === 'w') { var dd = dowIn(whenText); if (dd >= 0) rec.weekly = [dd]; }
+      rec.rd = rd;
+      if (rec.weekly.length && !rec.until) { var rr = rd.match(/(?:\b(Jan|Feb|Mar|Apr|Oct|Nov|Dec)[a-z]*\s+(\d{1,2})\s+)?to\s+(Jan|Feb|Mar|Apr|Oct|Nov|Dec)[a-z]*\s+(\d{1,2})\b/i); if (rr) { var u2 = MON[rr[3].toLowerCase()]; rec.until = (u2 >= 9 ? 2026 : 2027) + '-' + pad(u2 + 1) + '-' + pad(+rr[4]); if (rr[1]) { var f2 = MON[rr[1].toLowerCase()]; rec.from = (f2 >= 9 ? 2026 : 2027) + '-' + pad(f2 + 1) + '-' + pad(+rr[2]); } } }
       var bdg = h4.querySelector('.b'); rec.badge = bdg ? bdg.textContent : '';
       rec.sortT = timeKey(hasDate ? (whenText + ' ' + where) : whenText);
       if (rec.sortT === 9999) rec.sortT = timeKey(where);
@@ -1623,6 +1888,136 @@ var UPDATED = (function () { var p = UPDATES[0].d.split('-'); return ['Jan', 'Fe
         renderMine(h); window.scrollTo(0, 0);
       } else { document.body.classList.remove('view-my'); mine.innerHTML = ''; baseRoute(); }
     };
+
+    /* PICKS BEGIN js: Recently added, Interested / Not for me. Choices stay on this phone (S.fb). */
+    (function () {
+      var NEWD = 21, t0 = iso(new Date());
+      function nk(t) { return String(t || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
+      var addedOn = {};
+      (typeof ADDED !== 'undefined' ? ADDED : []).forEach(function (a) { a[1].forEach(function (n) { var k = nk(n); if (!addedOn[k] || addedOn[k] < a[0]) addedOn[k] = a[0]; }); });
+      if (!S.fb) S.fb = {};
+      function fbOf(name) { return S.fb[nk(name)] || ''; }
+      function setFb(name, v) { var k = nk(name); if (!v || S.fb[k] === v) delete S.fb[k]; else S.fb[k] = v; save(); sweep(); }
+      function isNew(name) { var d = addedOn[nk(name)]; return d && (fromIso(t0) - fromIso(d)) / 864e5 <= NEWD; }
+      function nextOn(r) {
+        var ds = (r.dates || []).filter(function (x) { return x >= t0; }).sort();
+        if (ds.length) return ds[0];
+        if (r.dates && r.dates.length) return '';
+        for (var j = 0; j < 150; j++) { var d = new Date(); d.setDate(d.getDate() + j); var di = iso(d); if (wkOn(r, di, d.getDay())) return di; }
+        return (r.k === 'ideas' || r.k === 'vol' || r.k === 'fit' || r.k === 'walk') ? '9999' : '';
+      }
+      function kindOf(r) { return catOf(r); }
+      var TN = {}; TABS.forEach(function (t) { TN[t.k] = t; });
+      function row(r, why) {
+        var nx = nextOn(r), when;
+        if (r.dates && r.dates.length && nx) when = fmt(nx) + (r.timeTxt ? ' · ' + r.timeTxt : '');
+        else if (r.weekly && r.weekly.length) when = (r.from && r.from > t0 ? DS[r.weekly[0]] + 's from ' + fmt(r.from).slice(4) : (r.rd && /^(Every|Monthly)/.test(r.rd) ? r.rd : 'Every ' + DS[r.weekly[0]])) + (r.timeTxt ? ' · ' + r.timeTxt : '');
+        else when = r.when || '';
+        return '<div class="prow" data-tcid="' + esc(r.id) + '">' + (why ? '<em>' + esc(why) + '</em><br>' : '') + '<b>' + esc(r.name) + '</b><i>' + esc(when) + (r.where ? ' · ' + esc(r.where.split(' · ')[0]) : '') + '</i></div>';
+      }
+      function live(r) { return fbOf(r.name) !== 'n' && nextOn(r) !== ''; }
+      function newList() {
+        var seen = {}, L = CAT.filter(function (r) { var k = nk(r.name); if (seen[k] || !isNew(r.name) || !live(r)) return false; seen[k] = 1; return true; });
+        L.sort(function (a, b) { var x = nextOn(a), y = nextOn(b); return x < y ? -1 : x > y ? 1 : 0; });
+        return L;
+      }
+      /* Picked for you: mostly her kinds of things, but always some different ones so she keeps trying new things */
+      function picks() {
+        var liked = {}, nLiked = 0;
+        CAT.forEach(function (r) { if (fbOf(r.name) === 'y') { liked[kindOf(r)] = (liked[kindOf(r)] || 0) + 1; nLiked++; } });
+        if (!nLiked) return null;
+        var seen = {}, pool = CAT.filter(function (r) { var k = nk(r.name); if (seen[k] || fbOf(r.name) || !live(r) || /FULL|wait list/i.test(r.name)) return false; seen[k] = 1; return true; });
+        pool.sort(function (a, b) { var x = nextOn(a), y = nextOn(b); return x < y ? -1 : x > y ? 1 : 0; });
+        var mine = [], other = [], usedK = {};
+        pool.forEach(function (r) { var c = kindOf(r); if (liked[c] && mine.length < 4 && (usedK[c] || 0) < 2) { mine.push(r); usedK[c] = (usedK[c] || 0) + 1; } });
+        pool.forEach(function (r) { var c = kindOf(r); if (!liked[c] && other.length < 2 && !usedK['o' + c]) { other.push(r); usedK['o' + c] = 1; } });
+        if (other.length < 2) pool.forEach(function (r) { if (other.length < 2 && mine.indexOf(r) < 0 && other.indexOf(r) < 0 && kindOf(r) !== kindOf(mine[0] || r)) other.push(r); });
+        return { mine: mine, other: other };
+      }
+      window.__mgFbHtml = function (title) {
+        var v = fbOf(title);
+        return '<div class="fbrow"><button type="button" class="y' + (v === 'y' ? ' on' : '') + '">👍 Interested</button><button type="button" class="n' + (v === 'n' ? ' on' : '') + '">Not for me</button></div>' +
+          (v === 'n' ? '<p class="fbnote">Hidden from your lists. Tap again to bring it back.</p>' : '');
+      };
+      window.__mgFbWire = function (box, title) {
+        var r = box.querySelector('.fbrow'); if (!r) return;
+        r.querySelector('.y').onclick = function () { setFb(title, 'y'); r.outerHTML = window.__mgFbHtml(title); window.__mgFbWire(box, title); };
+        r.querySelector('.n').onclick = function () { setFb(title, 'n'); var nn = box.querySelector('.fbnote'); if (nn) nn.remove(); r.outerHTML = window.__mgFbHtml(title); window.__mgFbWire(box, title); };
+      };
+      /* tags on listings, and hide "Not for me" ones */
+      function sweep() {
+        [].forEach.call(book.querySelectorAll('.item, table.t tr'), function (el) {
+          if (!el.__mg) return; var nm = el.__mg.title, hd = el.tagName === 'TR' ? el.querySelector('td b') : el.querySelector('h4');
+          if (!hd) return;
+          var tg = hd.querySelector('.nw'); if (isNew(nm) && !tg) hd.insertAdjacentHTML('beforeend', '<span class="nw">New</span>');
+          var lk = hd.querySelector('.lk1'), v = fbOf(nm);
+          if (v === 'y' && !lk) hd.insertAdjacentHTML('beforeend', '<span class="lk1">👍</span>'); else if (v !== 'y' && lk) lk.remove();
+          el.classList.toggle('mg-hid', v === 'n');
+        });
+        CAT.forEach(function (r) { if (fbOf(r.name) === 'n') { r._cls = r._cls || r.cls; r.cls = 'q'; } else if (r._cls) { r.cls = r._cls; delete r._cls; } });
+        [].forEach.call(document.querySelectorAll('#mine .pe'), function (pe) {
+          var c = pe.getAttribute('data-tcid') || ((pe.querySelector('[data-cid]') || {}).getAttribute ? pe.querySelector('[data-cid]').getAttribute('data-cid') : '');
+          var r = c && CATBY[c]; if (r && fbOf(r.name) === 'n') pe.classList.add('mg-hid');
+        });
+        homeBoxes();
+      }
+      function homeBoxes() {
+        var hm = document.getElementById('hm'); if (!hm) return;
+        [].forEach.call(hm.querySelectorAll('.addbox, .forbox'), function (x) { x.remove(); });
+        var anchor = hm.querySelector('.newbox');
+        var L = newList(), h = '';
+        if (L.length) {
+          h = '<div class="addbox"><b class="h">Recently added</b><small class="s">' + L.length + ' new things to try. Tap one to see more.</small>' +
+            L.slice(0, 5).map(function (r) { return row(r); }).join('') + '<a class="seeall" href="#new">See all ' + L.length + ' ›</a></div>';
+        }
+        var p = picks();
+        if (p && (p.mine.length || p.other.length)) {
+          h += '<div class="forbox"><b class="h">Picked for you</b><small class="s">Based on what you liked, plus a few different things to try.</small>' +
+            p.mine.map(function (r) { return row(r, 'Like what you liked'); }).join('') + p.other.map(function (r) { return row(r, 'Something different'); }).join('') + '</div>';
+        }
+        if (!h) return;
+        var w = document.createElement('div'); w.innerHTML = h;
+        while (w.firstChild) { if (anchor) anchor.parentNode.insertBefore(w.firstChild, anchor.nextSibling), anchor = anchor.nextSibling; else hm.insertBefore(w.firstChild, hm.firstChild); }
+      }
+      function renderNew() {
+        var L = newList(), html = '<div class="mh"><a class="back" href="#">‹ Home</a></div><h2 class="dh">Recently added</h2>' +
+          '<p class="tip2" style="margin-top:0">New in the last 3 weeks. Tap 👍 for things you would like, or "Not for me" to hide one. You will still see new kinds of things, so keep trying something different.</p>';
+        var byK = {};
+        L.forEach(function (r) { (byK[r.k] = byK[r.k] || []).push(r); });
+        TABS.forEach(function (t) {
+          var g = byK[t.k]; if (!g) return;
+          html += '<p class="lab">' + esc(t.name) + '</p>' + g.map(function (r) {
+            return '<div class="pe" data-tcid="' + esc(r.id) + '">' + row(r).replace('class="prow"', 'class="prow" style="border:0;padding:0"') + window.__mgFbHtml(r.name).replace('fbnote', 'fbnote x') + '</div>';
+          }).join('');
+        });
+        if (!L.length) html += '<p class="none2">Nothing new right now. Check back after Monday.</p>';
+        var hid = CAT.filter(function (r, i, a) { return fbOf(r.name) === 'n' && a.findIndex(function (x) { return nk(x.name) === nk(r.name); }) === i; });
+        if (hid.length) html += '<p class="lab">Hidden (' + hid.length + ')</p>' + hid.map(function (r) { return '<div class="pe"><b>' + esc(r.name) + '</b><div class="pa"><button type="button" class="unhide" data-n="' + esc(r.name) + '">Show again</button></div></div>'; }).join('');
+        mine.innerHTML = html;
+        [].forEach.call(mine.querySelectorAll('.pe[data-tcid]'), function (pe) { var r = CATBY[pe.getAttribute('data-tcid')]; if (!r) return; var fr = pe.querySelector('.fbrow');
+          fr.querySelector('.y').onclick = function (e) { e.stopPropagation(); setFb(r.name, 'y'); renderNew(); };
+          fr.querySelector('.n').onclick = function (e) { e.stopPropagation(); setFb(r.name, 'n'); renderNew(); }; });
+        [].forEach.call(mine.querySelectorAll('.unhide'), function (b) { b.onclick = function () { setFb(b.getAttribute('data-n'), ''); renderNew(); }; });
+      }
+      document.addEventListener('click', function (e) {
+        var r = e.target.closest && e.target.closest('#home .prow[data-tcid]'); if (!r) return;
+        e.preventDefault(); try { window.__mgOpenCid(r.getAttribute('data-tcid')); } catch (er) {}
+      });
+      var r0 = route;
+      route = function () {
+        var h = location.hash.replace('#', '');
+        if (h === 'new') {
+          document.body.classList.remove('view-tab'); document.body.classList.add('view-my');
+          [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { sh.style.display = 'none'; });
+          bar.style.setProperty('--tcbar', '#2f6b4f'); bar.querySelector('.ttl').textContent = 'Recently added';
+          [].forEach.call(nav.querySelectorAll('a'), function (a) { a.classList.remove('on'); });
+          renderNew(); window.scrollTo(0, 0);
+        } else r0();
+        sweep();
+      };
+      window.__mgPicks = { newList: newList, picks: picks, sweep: sweep, addedOn: addedOn };
+    })();
+    /* PICKS END js */
     refreshBtns();
     var _routeBase = route; route = function () { _routeBase(); try { window.__mgRenderUp(); } catch (er) {} };
     window.addEventListener('hashchange', function () { route(); });

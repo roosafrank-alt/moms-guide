@@ -27,7 +27,7 @@ if errs or n_btn < 100 or not has_box or not has_my:
 rc, out = run(sys.executable, 'render.py')
 m = re.search(r'pages (\d+)', out)
 res = json.load(open('render_result.json'))
-if rc or not m or not (50 <= int(m.group(1)) <= 70) or res['msgs']:
+if rc or not m or not (50 <= int(m.group(1)) <= 95) or res['msgs']:
     sys.exit('render failed or page count out of range:\n' + out[:800])
 pages = int(m.group(1))
 tags = ('<title>Mom\'s Guide</title>\n<link rel="manifest" href="manifest.webmanifest">\n<meta name="theme-color" content="#2f6b4f">\n'

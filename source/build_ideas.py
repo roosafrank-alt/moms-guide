@@ -27,7 +27,7 @@ emit('gardening',L1,D.GARD,0)
 RR=[[x[1],x[0],x[2],x[5],x[3],x[4]] for x in D.RACES]
 IHR_JS = '''  var IHR='<tr><th style=\\"width:19%\\">Event and date</th><th style=\\"width:19%\\">Address and drive</th><th style=\\"width:20%\\">Sign up or contact</th><th style=\\"width:28%\\">Times and details</th><th style=\\"width:14%\\">Cost</th></tr>';\n  function P('''
 js=js.replace("  function P(", IHR_JS, 1)
-js+="  add('walk',P('walks and 5Ks with set dates','<p class=\"lead\">5Ks with a walk option, through November. None found yet for December to March. Costs include sign-up fees. Drive times are estimates.</p>',%s,'Walks and Runs',IHR));\n"%json.dumps(RR)
+js+="  add('walk',P('walks and 5Ks with set dates','<p class=\"lead\">5Ks and easy hikes with a walk option, through December. None found yet for January to March. Costs include sign-up fees. Drive times are estimates.</p>',%s,'Walks and Runs',IHR));\n"%json.dumps(RR)
 emit('walking groups and clubs','<p class=\"lead\">Groups that meet on a regular day. Call to confirm the next meeting and the start place.</p>',D.GROUP,0,'walk')
 emit('places to hike','<p class=\"lead\">Trails to walk any day. Some have guided hikes. Call first for those.</p>',D.HIKE,0,'walk')
 L2='<p class="lead">No coin club in this area turned up in the search. Ask the shops below if one meets nearby. Call to confirm before going.</p>'
