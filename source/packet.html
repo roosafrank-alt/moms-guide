@@ -1920,14 +1920,15 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
     function recKind(r) { var wk = r.weekly && r.weekly.length, dt = r.dates && r.dates.length; return r.cls === 'q' ? 'q' : (r.cls === 'w' || (wk && !dt)) ? 'w' : 'o'; }
     window.__mgKind = recKind;
     var KLAB = { w: 'Every week', o: 'One day or set dates', q: 'Ask how often' };
-    function todayList(t0, w0, scope) {
+    function todayList(t0, w0, scope, daily) {
       var seen = {}, L = [];
       CAT.forEach(function (r) {
         if (scope && r.k !== scope) return;
+        if (!!(r.weekly && r.weekly.length >= 7 && !r.dates.length) !== !!daily) return;
         var on = r.dates.indexOf(t0) >= 0 || (!r.dates.length && wkOn(r, t0, w0)); if (!on) return;
         var key = r.name.toLowerCase().replace(/\W+/g, '') + '|' + (r.timeTxt || ''); if (seen[key]) return; seen[key] = 1; L.push(r);
       });
-      if (!scope) S.plan.forEach(function (p) { if (p.custom && ((p.dates || []).indexOf(t0) >= 0 || wkOn(p, t0, w0))) L.push(p); });
+      if (!scope && !daily) S.plan.forEach(function (p) { if (p.custom && ((p.dates || []).indexOf(t0) >= 0 || wkOn(p, t0, w0))) L.push(p); });
       L.sort(function (a, b) { return a.sortT - b.sortT || (a.name < b.name ? -1 : 1); });
       return L;
     }
@@ -1956,6 +1957,8 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
         }).join('');
       });
       if (!L.length) html += '<p class="none2">Nothing with a set day is listed for this day.</p>';
+      var OD = todayList(t0, w0, scope, true);
+      if (OD.length) html += '<p class="lab" style="margin-top:14px">Open every day (not a daily activity)</p>' + OD.map(function (p) { return '<div class="pe" data-tcid="' + esc(p.id) + '" style="opacity:.85"><div class="pn" style="font-size:11.5pt">' + esc(p.name) + '</div><div class="pt">' + esc(p.timeTxt || '') + '</div></div>'; }).join('');
       if (scope && window.__mgChron) html += '<p class="lab" style="margin-top:18px">All ' + SN[scope].toLowerCase() + ', in date order</p>' + window.__mgChron(scope);
       html += '<p class="tip2">More: <a href="#t-' + DOW[w0] + '" style="text-decoration:underline">All ' + DN[w0] + ' listings</a> · <a href="#t-ev" style="text-decoration:underline">Events</a> · <a href="#t-walk" style="text-decoration:underline">Walks</a> · <a href="#t-ideas" style="text-decoration:underline">Ideas with no set day</a></p>';
       mine.innerHTML = html;
