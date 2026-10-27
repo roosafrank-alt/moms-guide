@@ -988,7 +988,7 @@ var UPDATES = [
   { d: '2026-10-20', t: 'MEEC Fall Festival, Sat Nov 7, $5', k: 'ev' },
   { d: '2026-10-20', t: 'Sunday knitting circle at Taylor + Ace, Roscoe', k: 'sun' }
 ];
-/* ===== RECENTLY ADDED: newest first. The Monday update adds [date, [exact listing names]] at the TOP. Shown as 'New' for 21 days. ===== */
+/* ===== RECENTLY ADDED: newest first. The Monday update adds [date, [exact listing names]] at the TOP. Only the NEWEST entry is shown as 'New'; it resets at the next Monday update. ===== */
 var ADDED = [
   ['2026-10-26', [
     "Crochet Club (Crochet and Chat; bring yarn and hooks)",
@@ -2016,7 +2016,8 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
       function signRow(r) { var d = dlOf[nk(r.name)]; return row(r).replace('<b>', '<span class="dlr">⏰ ' + esc(d.what) + '</span><b>'); }
       function fbOf(name) { return S.fb[nk(name)] || ''; }
       function setFb(name, v) { var k = nk(name); if (!v || S.fb[k] === v) delete S.fb[k]; else S.fb[k] = v; save(); sweep(); }
-      function isNew(name) { var d = addedOn[nk(name)]; return d && (fromIso(t0) - fromIso(d)) / 864e5 <= NEWD; }
+      var LATEST = ''; ADDED.forEach(function (e) { if (e[0] > LATEST) LATEST = e[0]; });
+      function isNew(name) { var d = addedOn[nk(name)]; return !!d && d === LATEST; }
       function nextOn(r) {
         var ds = (r.dates || []).filter(function (x) { return x >= t0; }).sort();
         if (ds.length) return ds[0];
@@ -2122,7 +2123,7 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
       }
       function renderNew() {
         var L = newList(), html = '<div class="mh"><a class="back" href="#">‹ Home</a></div><h2 class="dh">Recently added</h2>' +
-          '<p class="tip2" style="margin-top:0">New in the last 3 weeks. Tap 👍 for things you would like, or "Not for me" to hide one. You will still see new kinds of things, so keep trying something different.</p>';
+          '<p class="tip2" style="margin-top:0">New in the latest weekly update. Tap 👍 for things you would like, or "Not for me" to hide one. You will still see new kinds of things, so keep trying something different.</p>';
         var byK = {};
         L.forEach(function (r) { (byK[r.k] = byK[r.k] || []).push(r); });
         TABS.forEach(function (t) {
