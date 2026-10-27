@@ -385,6 +385,7 @@ body[data-part=m] [data-part=a], body[data-part=m] [data-part=e], body[data-part
 .kt.k-w { background: #2f6b4f; } .kt.k-o { background: #9a2a1c; } .kt.k-q { background: #7b838a; }
 .klegend { margin: 0 0 6px; font-size: 9pt; }
 .bydaybar { display: none; } body.app .bydaybar { display: block; margin: 4px 0 8px; } .bydaybar .lab { margin: 0; }
+.pe > .prow { border-top: 0; padding-top: 0; padding-bottom: 0; } .pe > .prow:not([class*="k-"]) { padding: 0; }
 /* PICKS END css */
 </style>
 <div id="book"></div>
@@ -1955,6 +1956,7 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
         }).join('');
       });
       if (!L.length) html += '<p class="none2">Nothing with a set day is listed for this day.</p>';
+      if (scope && window.__mgChron) html += '<p class="lab" style="margin-top:18px">All ' + SN[scope].toLowerCase() + ', in date order</p>' + window.__mgChron(scope);
       html += '<p class="tip2">More: <a href="#t-' + DOW[w0] + '" style="text-decoration:underline">All ' + DN[w0] + ' listings</a> · <a href="#t-ev" style="text-decoration:underline">Events</a> · <a href="#t-walk" style="text-decoration:underline">Walks</a> · <a href="#t-ideas" style="text-decoration:underline">Ideas with no set day</a></p>';
       mine.innerHTML = html;
       var on = mine.querySelector('.dchip.on'); if (on) on.parentNode.scrollLeft = on.offsetLeft - 60;
@@ -2025,6 +2027,12 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
         return '<div class="prow k-' + (window.__mgKind ? window.__mgKind(r) : 'o') + '" data-tcid="' + esc(r.id) + '">' + (why ? '<em>' + esc(why) + '</em><br>' : '') + '<b>' + esc(r.name) + '</b><i>' + esc(when) + (r.where ? ' · ' + esc(r.where.split(' · ')[0]) : '') + '</i></div>';
       }
       function live(r) { return fbOf(r.name) !== 'n' && nextOn(r) !== ''; }
+      function chron(scope) {
+        var seen = {}, L = CAT.filter(function (r) { var k = nk(r.name); if (r.k !== scope || seen[k] || !live(r)) return false; seen[k] = 1; return true; });
+        L.sort(function (a, b) { var x = nextOn(a), y = nextOn(b); return x < y ? -1 : x > y ? 1 : 0; });
+        return L.map(function (r) { return '<div class="pe" data-tcid="' + esc(r.id) + '">' + row(r) + '</div>'; }).join('');
+      }
+      window.__mgChron = chron;
       function newList() {
         var seen = {}, L = CAT.filter(function (r) { var k = nk(r.name); if (seen[k] || !isNew(r.name) || !live(r)) return false; seen[k] = 1; return true; });
         L.sort(function (a, b) { var x = nextOn(a), y = nextOn(b); return x < y ? -1 : x > y ? 1 : 0; });
