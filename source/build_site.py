@@ -18,7 +18,7 @@ with sync_playwright() as p:
     pg.on('pageerror', lambda e: errs.append(str(e)))
     pg.goto('file://' + os.path.join(HERE, 'packet.html')); pg.wait_for_timeout(600)
     n_btn = pg.evaluate("document.querySelectorAll('.addbtn').length")
-    has_box = pg.evaluate("!!document.querySelector('#home .newbox')")
+    has_box = pg.evaluate("!!document.querySelector('#home .updd') && !document.querySelector('#home .newbox')")
     pg.goto('file://' + os.path.join(HERE, 'packet.html') + '#my'); pg.wait_for_timeout(300)
     has_my = pg.evaluate("!!document.querySelector('#mine .seg')")
     b.close()

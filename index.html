@@ -1258,15 +1258,12 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
       var E = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
       var top = new Date(UPDATES[0].d + 'T00:00:00'), keep = UPDATES.filter(function (u) { return (top - new Date(u.d + 'T00:00:00')) / 864e5 <= 13; }).slice(0, 7);
       var MO = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      return '<div class="newbox"><b>Recently updated</b><small>Last updated ' + UPDATED + '</small>' + keep.map(function (u) {
-        var p = u.d.split('-'), href = u.k === 'my' ? '#my' : (u.k ? '#t-' + u.k : '#');
-        return '<a href="' + href + '"><i>' + MO[+p[1] - 1] + ' ' + (+p[2]) + '</i> ' + E(u.t) + '</a>';
-      }).join('') + '</div>';
+      return '';
     }
     var home = document.createElement('div'); home.id = 'home';
-    home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.</p>' +
+    home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.<br><span class="updd">Last updated ' + UPDATED + '</span></p>' +
       '<a class="today" href="#today">Today: ' + DN[di] + '<small>Everything happening today</small></a><a class="today mypl" href="#my">My Plan<small>Pick events and build your week</small></a>' + newBox() + '<div class="grid">' + tiles + '</div>' +
-      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. Last updated ' + UPDATED + '. <a href="?app=0" style="text-decoration:underline">Show full packet view</a>' + (/github\.io$/.test(location.hostname) ? ' · <a href="Moms_Activity_Packet.pdf" style="text-decoration:underline">Printable PDF</a>' : '') + '</p>';
+      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. <a href="?app=0" style="text-decoration:underline">Show full packet view</a>' + (/github\.io$/.test(location.hostname) ? ' · <a href="Moms_Activity_Packet.pdf" style="text-decoration:underline">Printable PDF</a>' : '') + '</p>';
     var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span><a href="#" id="bsr">Search</a>';
     var nav = document.createElement('div'); nav.id = 'nav';
     nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#today" data-n="today">Today</a><a href="#" data-n="search" id="nsr">Search</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
@@ -2010,7 +2007,7 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
       function homeBoxes() {
         var hm = document.getElementById('hm'); if (!hm) return;
         [].forEach.call(hm.querySelectorAll('.addbox, .forbox, .signbox'), function (x) { x.remove(); });
-        var anchor = hm.querySelector('.newbox');
+        var anchor = hm.querySelector('.mypl');
         [].forEach.call(hm.querySelectorAll('.signbox'), function (x) { x.remove(); });
         var SL = signList();
         if (SL.length) {
