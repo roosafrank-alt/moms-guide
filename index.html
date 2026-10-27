@@ -374,6 +374,12 @@ body.app .mg-hid { display: none !important; }
 .dl { display: inline-block; background: #b23a1e; color: #fff; font-size: 8.5pt; font-weight: 800; border-radius: 6px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
 #home .signban { display: block; background: #b23a1e; color: #fff !important; border-radius: 14px; padding: 10px 14px; margin: 4px 0 12px; }
 #home .signban b { display: block; font-size: 12.5pt; } #home .signban span { display: block; font-size: 10.5pt; opacity: .95; margin-top: 2px; } #home .signban i { font-style: normal; font-weight: 700; font-size: 10.5pt; text-decoration: underline; }
+
+.partbar { display: none; }
+body.app .partbar { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 10px; }
+.partbar button { font: inherit; font-size: 10.5pt; font-weight: 700; padding: 7px 11px; border-radius: 999px; border: 2px solid var(--tc, #2f6b4f); background: #fff; color: #1c2b30; }
+.partbar button.on { background: #1c2b30; color: #fff; border-color: #1c2b30; }
+body[data-part=m] [data-part=a], body[data-part=m] [data-part=e], body[data-part=a] [data-part=m], body[data-part=a] [data-part=e], body[data-part=e] [data-part=m], body[data-part=e] [data-part=a] { display: none !important; }
 /* PICKS END css */
 </style>
 <div id="book"></div>
@@ -1251,9 +1257,35 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
     var di = new Date().getDay();
     var live = {};
     [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { if (!sh.classList.contains('printonly') && sh.dataset.k) live[sh.dataset.k] = 1; });
+    function rowsIn(el) { var n = 0; [].forEach.call(el.querySelectorAll('.item'), function () { n++; }); [].forEach.call(el.querySelectorAll('tr'), function (r) { if (!r.querySelector('th')) n++; }); return n; }
+    var TOT = {}; [].forEach.call(book.querySelectorAll('.sheet:not(.printonly)'), function (sh) { if (sh.dataset.k) TOT[sh.dataset.k] = (TOT[sh.dataset.k] || 0) + rowsIn(sh); });
+    var NOCOUNT = { plan: 1, enc: 1, me: 1 };
     var tiles = TABS.filter(function (t) { return live[t.k]; }).map(function (t) {
-      return '<a class="tile" href="#t-' + t.k + '" style="--tc:' + t.c + '"><b>' + t.name + '</b><span>' + t.d + '</span></a>';
+      return '<a class="tile" href="#t-' + t.k + '" style="--tc:' + t.c + '"><b>' + t.name + (TOT[t.k] && !NOCOUNT[t.k] ? ' (' + TOT[t.k] + ')' : '') + '</b><span>' + t.d + '</span></a>';
     }).join('');
+    var DAYK = { mon: 1, tue: 1, wed: 1, thu: 1, fri: 1, sat: 1, sun: 1 }, PCNT = {};
+    [].forEach.call(book.querySelectorAll('.sheet:not(.printonly)'), function (sh) {
+      var k = sh.dataset.k; if (!k) return;
+      var part = '', h3 = null;
+      [].forEach.call(sh.children, function (el) {
+        if (el.tagName === 'H3') { var t = el.textContent.trim().toLowerCase(); part = /^morning/.test(t) ? 'm' : /^afternoon/.test(t) ? 'a' : /^evening/.test(t) ? 'e' : ''; h3 = el; if (part && DAYK[k]) { el.setAttribute('data-part', part); el.__n = 0; } return; }
+        if (part && DAYK[k] && !el.classList.contains('tabs')) { el.setAttribute('data-part', part); if (el.classList.contains('item') && h3) h3.__n++; if (el.classList.contains('item')) PCNT[k + part] = (PCNT[k + part] || 0) + 1; }
+      });
+      [].forEach.call(sh.querySelectorAll('h3[data-part]'), function (h) { h.insertAdjacentHTML('beforeend', ' (' + h.__n + ')'); });
+      if (DAYK[k] && !sh.querySelector('.partbar') && sh.querySelector('h3[data-part]')) {
+        var pb = document.createElement('div'); pb.className = 'partbar'; pb.dataset.k = k;
+        var anchorEl = sh.querySelector('h3[data-part]'); anchorEl.parentNode.insertBefore(pb, anchorEl);
+      }
+    });
+    function drawParts() {
+      var cur = document.body.getAttribute('data-part') || 'all';
+      [].forEach.call(document.querySelectorAll('.partbar'), function (pb) {
+        var k = pb.dataset.k, tot = (PCNT[k + 'm'] || 0) + (PCNT[k + 'a'] || 0) + (PCNT[k + 'e'] || 0);
+        pb.innerHTML = [['all', 'All (' + tot + ')'], ['m', 'Morning (' + (PCNT[k + 'm'] || 0) + ')'], ['a', 'Afternoon (' + (PCNT[k + 'a'] || 0) + ')'], ['e', 'Evening (' + (PCNT[k + 'e'] || 0) + ')']].map(function (b) { return '<button type="button" data-p="' + b[0] + '" class="' + (cur === b[0] ? 'on' : '') + '">' + b[1] + '</button>'; }).join('');
+      });
+    }
+    document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.partbar button'); if (!b) return; document.body.setAttribute('data-part', b.dataset.p); drawParts(); });
+    drawParts();
     function newBox() {
       var E = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
       var top = new Date(UPDATES[0].d + 'T00:00:00'), keep = UPDATES.filter(function (u) { return (top - new Date(u.d + 'T00:00:00')) / 864e5 <= 13; }).slice(0, 7);
