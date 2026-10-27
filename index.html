@@ -1309,7 +1309,7 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
       '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. <a href="?app=0" style="text-decoration:underline">Show full packet view</a>' + (/github\.io$/.test(location.hostname) ? ' · <a href="Moms_Activity_Packet.pdf" style="text-decoration:underline">Printable PDF</a>' : '') + '</p>';
     var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span><a href="#" id="bsr">Search</a>';
     var nav = document.createElement('div'); nav.id = 'nav';
-    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#today" data-n="today">Today</a><a href="#" data-n="search" id="nsr">Search</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
+    nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#today" data-n="today">Today</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
     document.body.insertBefore(home, book); document.body.insertBefore(bar, home); document.body.appendChild(nav);
 
     /* SEARCH BEGIN js */
@@ -1515,7 +1515,6 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
       window.addEventListener('hashchange', closeD);
       buildIdx();
       function goSearch(e) { e.preventDefault(); if (location.hash && location.hash !== '#') location.hash = ''; setTimeout(function () { window.scrollTo(0, 0); inp.focus(); }, 60); }
-      document.getElementById('nsr').addEventListener('click', goSearch);
       document.getElementById('bsr').addEventListener('click', goSearch);
 
       /* REMIND BEGIN js */
