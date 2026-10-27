@@ -373,6 +373,17 @@ body.app .partbar { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 10px
 .partbar button { font: inherit; font-size: 10.5pt; font-weight: 700; padding: 7px 11px; border-radius: 999px; border: 2px solid var(--tc, #2f6b4f); background: #fff; color: #1c2b30; }
 .partbar button.on { background: #1c2b30; color: #fff; border-color: #1c2b30; }
 body[data-part=m] [data-part=a], body[data-part=m] [data-part=e], body[data-part=a] [data-part=m], body[data-part=a] [data-part=e], body[data-part=e] [data-part=m], body[data-part=e] [data-part=a] { display: none !important; }
+
+.dstrip { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 8px; margin: 0 -2px; -webkit-overflow-scrolling: touch; }
+.dchip { flex: 0 0 auto; min-width: 54px; text-align: center; background: #fff; border: 2px solid #2f6b4f; border-radius: 14px; padding: 4px 6px; color: #1c2b30 !important; text-decoration: none; }
+.dchip small { display: block; font-size: 9pt; font-weight: 700; } .dchip b { display: block; font-size: 15pt; line-height: 1.1; } .dchip em { display: block; font-style: normal; font-size: 9pt; color: var(--soft); }
+.dchip.on { background: #2f6b4f; color: #fff !important; } .dchip.on em { color: #fff; }
+.dnav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 4px 0; } .dnav h2.dh { margin: 0; text-align: center; flex: 1; font-size: 15pt; } .dnav a { font-weight: 800; font-size: 11pt; text-decoration: underline; white-space: nowrap; }
+
+.pe.tdr.k-w, .prow.k-w { border-left: 6px solid #2f6b4f; padding-left: 10px; } .pe.tdr.k-o, .prow.k-o { border-left: 6px solid #9a2a1c; padding-left: 10px; } .pe.tdr.k-q, .prow.k-q { border-left: 6px dashed #8a8f94; padding-left: 10px; }
+.kt { display: inline-block; font-size: 8.5pt; font-weight: 800; border-radius: 6px; padding: 1px 6px; margin-left: 4px; color: #fff; vertical-align: 1px; }
+.kt.k-w { background: #2f6b4f; } .kt.k-o { background: #9a2a1c; } .kt.k-q { background: #7b838a; }
+.klegend { margin: 0 0 6px; font-size: 9pt; }
 /* PICKS END css */
 </style>
 <div id="book"></div>
@@ -1905,25 +1916,46 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
     [].forEach.call(book.querySelectorAll('.sheet:not(.printonly)'), function (sh) {
       var k = sh.querySelector('.kicker'); if (k && !/Last updated/.test(k.textContent) && !sh.classList.contains('cover-sheet')) { var u = document.createElement('p'); u.className = 'upd'; u.textContent = 'Last updated ' + UPDATED; k.parentNode.insertBefore(u, k.nextSibling); }
     });
-    function renderToday() {
-      var t0 = iso(new Date()), nd = new Date(), w0 = nd.getDay(), seen = {}, L = [];
+    function recKind(r) { var wk = r.weekly && r.weekly.length, dt = r.dates && r.dates.length; return r.cls === 'q' ? 'q' : (r.cls === 'w' || (wk && !dt)) ? 'w' : 'o'; }
+    window.__mgKind = recKind;
+    var KLAB = { w: 'Every week', o: 'One day or set dates', q: 'Ask how often' };
+    function todayList(t0, w0) {
+      var seen = {}, L = [];
       CAT.forEach(function (r) {
         var on = r.dates.indexOf(t0) >= 0 || (!r.dates.length && wkOn(r, t0, w0)); if (!on) return;
         var key = r.name.toLowerCase().replace(/\W+/g, '') + '|' + (r.timeTxt || ''); if (seen[key]) return; seen[key] = 1; L.push(r);
       });
       S.plan.forEach(function (p) { if (p.custom && ((p.dates || []).indexOf(t0) >= 0 || wkOn(p, t0, w0))) L.push(p); });
       L.sort(function (a, b) { return a.sortT - b.sortT || (a.name < b.name ? -1 : 1); });
-      var groups = [['Morning', 0, 720], ['Afternoon', 720, 1020], ['Evening', 1020, 9999], ['Any time or all day', 9999, 99999]], html = '<div class="mh"><a class="back" href="#">‹ Home</a></div><h2 class="dh">Today, ' + DN[w0] + ' ' + MN[nd.getMonth()] + ' ' + nd.getDate() + '</h2><p class="tip2" style="margin-top:0">Everything on today: classes, events, walks and your own plans. Tap one for details.</p>';
+      return L;
+    }
+    function renderToday(hh) {
+      var real = new Date(), todayIso = iso(real), m = /^today-(\d{4}-\d{2}-\d{2})$/.exec(hh || ''), t0 = m ? m[1] : todayIso;
+      var nd = fromIso(t0), w0 = nd.getDay(), L = todayList(t0, w0);
+      var diff = Math.round((nd - fromIso(todayIso)) / 864e5), word = diff === 0 ? 'Today' : diff === 1 ? 'Tomorrow' : diff === -1 ? 'Yesterday' : DN[w0];
+      var strip = '';
+      for (var k = 0; k < 21; k++) {
+        var dk = new Date(real.getFullYear(), real.getMonth(), real.getDate() + k), ik = iso(dk), n = todayList(ik, dk.getDay()).length;
+        strip += '<a class="dchip' + (ik === t0 ? ' on' : '') + '" href="#' + (k === 0 ? 'today' : 'today-' + ik) + '"><small>' + (k === 0 ? 'Today' : k === 1 ? 'Tmrw' : DS[dk.getDay()]) + '</small><b>' + dk.getDate() + '</b><em>' + n + '</em></a>';
+      }
+      var prevI = iso(new Date(nd.getFullYear(), nd.getMonth(), nd.getDate() - 1)), nextI = iso(new Date(nd.getFullYear(), nd.getMonth(), nd.getDate() + 1));
+      var groups = [['Morning', 0, 720], ['Afternoon', 720, 1020], ['Evening', 1020, 9999], ['Any time or all day', 9999, 99999]],
+        html = '<div class="mh"><a class="back" href="#">‹ Home</a></div><div class="dstrip">' + strip + '</div>' +
+          '<div class="dnav">' + (t0 > todayIso ? '<a href="#' + (prevI === todayIso ? 'today' : 'today-' + prevI) + '">‹ Back</a>' : '<span></span>') + '<h2 class="dh">' + word + (word === DN[w0] ? '' : ', ' + DS[w0]) + ' ' + MN[nd.getMonth()].slice(0, 3) + ' ' + nd.getDate() + '</h2><a href="#today-' + nextI + '">Next ›</a></div>' +
+          '<p class="tip2" style="margin-top:0">' + L.length + ' ' + (L.length === 1 ? 'thing' : 'things') + ' this day: classes, events, walks and your own plans. Tap one for details.</p>' +
+          '<p class="klegend"><span class="kt k-w">Every week</span> <span class="kt k-o">One day or set dates</span> <span class="kt k-q">Ask how often</span></p>';
       groups.forEach(function (g) {
         var G2 = L.filter(function (r) { return r.sortT >= g[1] && r.sortT < g[2]; }); if (!G2.length) return;
-        html += '<p class="lab">' + g[0] + '</p>' + G2.map(function (p) {
-          return '<div class="pe tdr"' + (p.custom ? '' : ' data-tcid="' + esc(p.id) + '"') + '><div class="pt">' + esc(p.timeTxt || 'Any time') + '</div><div class="pn">' + esc(p.name) + '</div>' + (p.where ? '<div class="pw">' + esc(p.where) + '</div>' : '') +
+        html += '<p class="lab">' + g[0] + ' (' + G2.length + ')</p>' + G2.map(function (p) {
+          var kd = recKind(p);
+          return '<div class="pe tdr k-' + kd + '"' + (p.custom ? '' : ' data-tcid="' + esc(p.id) + '"') + '><div class="pt">' + esc(p.timeTxt || 'Any time') + ' <span class="kt k-' + kd + '">' + KLAB[kd] + '</span></div><div class="pn">' + esc(p.name) + '</div>' + (p.where ? '<div class="pw">' + esc(p.where) + '</div>' : '') +
             '<div class="pa">' + (p.tel ? '<a class="tl" href="' + p.tel + '">' + esc(p.telTxt || 'Call') + '</a>' : '') + (p.map ? '<a class="mp" href="' + p.map + '">Map</a>' : '') + '</div></div>';
         }).join('');
       });
-      if (!L.length) html += '<p class="none2">Nothing with a set day is listed for today.</p>';
+      if (!L.length) html += '<p class="none2">Nothing with a set day is listed for this day.</p>';
       html += '<p class="tip2">More: <a href="#t-' + DOW[w0] + '" style="text-decoration:underline">All ' + DN[w0] + ' listings</a> · <a href="#t-ev" style="text-decoration:underline">Events</a> · <a href="#t-walk" style="text-decoration:underline">Walks</a> · <a href="#t-ideas" style="text-decoration:underline">Ideas with no set day</a></p>';
       mine.innerHTML = html;
+      var on = mine.querySelector('.dchip.on'); if (on) on.parentNode.scrollLeft = on.offsetLeft - 60;
     }
     mine.addEventListener('click', function (e) {
       var r = e.target.closest && e.target.closest('[data-tcid]'); if (!r || e.target.closest('a, button')) return;
@@ -1932,12 +1964,12 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
     var baseRoute = route;
     route = function () {
       var h = location.hash.replace('#', '');
-      if (h === 'today') {
+      if (h === 'today' || /^today-\d{4}-\d{2}-\d{2}$/.test(h)) {
         document.body.classList.remove('view-tab'); document.body.classList.add('view-my');
         [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { sh.style.display = 'none'; });
         bar.style.setProperty('--tcbar', '#2f6b4f'); bar.querySelector('.ttl').textContent = 'Today';
         [].forEach.call(nav.querySelectorAll('a'), function (a) { a.classList.toggle('on', a.getAttribute('data-n') === 'today'); });
-        renderToday(); window.scrollTo(0, 0);
+        renderToday(h); window.scrollTo(0, 0);
       } else if (h === 'my' || /^day-\d{4}-\d{2}-\d{2}$/.test(h)) {
         document.body.classList.remove('view-tab'); document.body.classList.add('view-my');
         [].forEach.call(book.querySelectorAll('.sheet'), function (sh) { sh.style.display = 'none'; });
@@ -1980,7 +2012,7 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
         if (r.dates && r.dates.length && nx) when = fmt(nx) + (r.timeTxt ? ' · ' + r.timeTxt : '');
         else if (r.weekly && r.weekly.length) when = (r.from && r.from > t0 ? DS[r.weekly[0]] + 's from ' + fmt(r.from).slice(4) : (r.rd && /^(Every|Monthly)/.test(r.rd) ? r.rd : 'Every ' + DS[r.weekly[0]])) + (r.timeTxt ? ' · ' + r.timeTxt : '');
         else when = r.when || '';
-        return '<div class="prow" data-tcid="' + esc(r.id) + '">' + (why ? '<em>' + esc(why) + '</em><br>' : '') + '<b>' + esc(r.name) + '</b><i>' + esc(when) + (r.where ? ' · ' + esc(r.where.split(' · ')[0]) : '') + '</i></div>';
+        return '<div class="prow k-' + (window.__mgKind ? window.__mgKind(r) : 'o') + '" data-tcid="' + esc(r.id) + '">' + (why ? '<em>' + esc(why) + '</em><br>' : '') + '<b>' + esc(r.name) + '</b><i>' + esc(when) + (r.where ? ' · ' + esc(r.where.split(' · ')[0]) : '') + '</i></div>';
       }
       function live(r) { return fbOf(r.name) !== 'n' && nextOn(r) !== ''; }
       function newList() {
