@@ -13,6 +13,7 @@ The user's standing order (Oct 24 and Oct 26, 2026): check EVERY possible source
 - `source/ideas_data.py` holds the Ideas and Walks tabs (ARTS, GARD, HIKE, GROUP, RACES). RACES rows are (date, name, address, details, cost, contact); keep RACES in date order. `build_ideas.py` regenerates those tabs inside packet.html. Never edit the block between `// IDEAS BEGIN` and `// IDEAS END` in packet.html by hand.
 - `UPDATES` (search "UPDATE LOG") feeds the "Recently updated" box and the "Last updated" date.
 - `ADDED` (search "RECENTLY ADDED", just below UPDATES) feeds the phone app's "Recently added" section and the orange "New" tags. Each Monday, put one new entry at the TOP: `['YYYY-MM-DD', ['exact listing name', ...]]`. Use the exact name text you gave the listing (the first argument of `I`, the second of `EV`, the first of `V`/`F`, the first column of ideas rows, the name of a RACES row). Items stay "New" for 21 days. Trim entries older than about 2 months.
+- `DEADLINES` (search "SIGN UP SOON", next to ADDED) feeds the red "Sign up soon" box at the top of the phone home screen and the red tags on listings. Add an entry for anything with a sign-up deadline, a sign-up opening date, a price that goes up on a date, limited spots, or a wait list: `['exact listing name', 'act-by YYYY-MM-DD', 'Sign up by Fri Oct 30 · only 12 spots', 'show-until YYYY-MM-DD (optional)']`. The part before ' · ' becomes the tag. Remove entries whose dates have passed. Only use deadlines and spot counts read on the official page.
 - The phone app also has "Interested" / "Not for me" buttons and a "Picked for you" box. Mom's choices are saved only on her phone. Do not change that code; it is not part of the data.
 - `source/build_site.py` builds index.html, the PDF and the service-worker cache. It runs the checks and stops with an error if anything is wrong.
 
@@ -25,10 +26,11 @@ The user's standing order (Oct 24 and Oct 26, 2026): check EVERY possible source
    - list the sources it could not open, so the summary never claims they were checked.
 3. Add only things verified on an official page. Badge `'c'` (dates confirmed) when the page shows the date, `'a'` (call first) when something important is missing or conflicting. Never invent dates, prices, phone numbers or addresses. Leave out or mark "call first" anything you cannot verify. Skip anything branded "senior" (or describe the activity without that word if the activity itself is open to all ages, as with Bone Builders).
 4. Open items to chase: Encore spring 2027 (catalog expected January), First Day Hikes Jan 1 2027 locations (mid-December), Delaware Highlands 2027 eagle bus tour dates, MEEC SnO&W snowshoe walk 2027 date (January), Sullivan SWCD tree sale (January), Liberty Kindred Stitchers end date, Grumpy Goat "Slow Down Sunday" dates, Hidden Charm studio town, HPAC line dancing winter dates, Country Quilters Guild (Pine Bush) current info, Goshen Crochetiers Dec 15 series, Walden library November calendar, Narrowsburg Holiday Market 2026, Wallkill River Center "Handmade for the Holidays" date (Nov 12 or Dec 12), Bethel Woods Peace Love and Lights price ($12 vs $27).
-5. Add entries at the TOP of `UPDATES`: `{ d: 'YYYY-MM-DD', t: 'short plain text', k: 'ev' }` where `k` is a tab key (`mon`..`sun`, `ev`, `walk`, `enc`, `fit`, `vol`, `ideas`, `me`, `host`, `plan`) or `'my'`. Only real additions, changes and removals Mom would care about. Add the new names to `ADDED` (see Files).
-6. Run `python3 source/build_site.py`. If it fails, fix the cause or revert your edits. Do not publish a broken build.
-7. Commit all changes (index.html, sw.js, Moms_Activity_Packet.pdf, source/*) with a clear message and push to `main`.
-8. Message the user a short summary: how many items were added (with the 3 best), removed or changed, what could not be verified, and which sources could not be opened.
+5. Update `DEADLINES` (see Files) for every new or existing listing with a deadline or limited spots.
+6. Add entries at the TOP of `UPDATES`: `{ d: 'YYYY-MM-DD', t: 'short plain text', k: 'ev' }` where `k` is a tab key (`mon`..`sun`, `ev`, `walk`, `enc`, `fit`, `vol`, `ideas`, `me`, `host`, `plan`) or `'my'`. Only real additions, changes and removals Mom would care about. Add the new names to `ADDED` (see Files).
+7. Run `python3 source/build_site.py`. If it fails, fix the cause or revert your edits. Do not publish a broken build.
+8. Commit all changes (index.html, sw.js, Moms_Activity_Packet.pdf, source/*) with a clear message and push to `main`.
+9. Message the user a short summary: how many items were added (with the 3 best), removed or changed, what could not be verified, and which sources could not be opened.
 
 ## The six lanes and their sources (all checked Oct 26, 2026)
 
