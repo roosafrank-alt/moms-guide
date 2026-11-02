@@ -109,3 +109,9 @@ Facebook and Instagram, middletownymca.org through WebFetch (use a browser), uls
 - The PDF must stay between 50 and 95 pages (it is 79 after the Oct 26 update). If a new item pushes it over, trim the least useful older entries.
 - Never put personal secrets or passwords anywhere. Do not add "senior" branding.
 - To undo a bad update: `git revert` the last commit and push.
+
+## Notes from Nov 2, 2026 run
+- WebFetch only opened URLs that WebSearch had returned first (search with allowed_domains to surface the official URL, then fetch). Curl is blocked. Lanes 2, 4 and 6 found little for that reason; a browser-capable run should recheck them.
+- HPAC (Hurleyville Performing Arts Centre) closed Oct 31, 2026; its listings were removed.
+- New readable sources: albertwisnerlibrary.org/events/?category=5&month=YYYY-MM, pikecountypubliclibrary.com/events, chesterpl.libcal.com, monroefreelibrary.org/Events, welcometonarrowsburg.com/events, thompsonny.gov/events, bethelwoodscenter.org/peace-love-lights, pickocny.com event pages, regionalfoodbank.net/thanksgiving.
+- Still open: Warwick Valley Chorale (Jan 2027 start), Delaware Highlands eagle tour dates after Jan 16, Grace Episcopal Middletown holiday fair (call 845-343-6101), Callicoon and Newburgh winter market dates, Western Sullivan open tech support, Chester Fiber Arts Club.

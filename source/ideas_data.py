@@ -6,7 +6,6 @@ ARTS=[
 ("Willow Deep Studio","near Rosendale","Address not posted · ~45 min (est.)","845-658-0370 · willowdeepstudio@gmail.com · willowdeepstudio.com/workshops","Stained glass: suncatcher workshops (beginner), and a leaded window series. Private sessions can be booked.","Not posted"),
 ("The Newburgh Pottery","Newburgh","11 Spring St, Newburgh · ~45 min (est.)","201-741-3552 · thenewburghpottery.com/pottery-workshops","Intro to Wheel: first time on the wheel, pieces glazed and fired for pickup. Buy a voucher online, then call to schedule.","Page shows $10 a piece; confirm. Call first, site is old."),
 ("Mosaic Art Studio USA","Warwick","24 Ronald Reagan Blvd, Warwick · ~45 min (est.)","Phone not posted. Search 'Mosaic Art Studio USA' on Eventbrite","Mosaic lamp workshop (hand-cut glass, materials and tea included). Ceramic painting workshops at the same address.","Lamp about $86 to $129"),
-("Hurleyville Performing Arts Centre","Hurleyville","219 Main St, Hurleyville · ~30 min (est.)","845-985-4722 · info@hpacny.org · hpacny.org","Lists Sip & Paint and craft workshops, none posted now. Call to ask.","Not posted"),
 ("Let's Paint Studio","Liberty","21 Sullivan Ave, Liberty · ~30 min (est.)","845-720-6811","Painting studio. Classes not confirmed; call to ask.","Not posted"),
     ('Grumpy Goat Fine Yarn', 'Port Jervis · yarn shop', '78 Front St, Suite 60, Port Jervis · ~25 min', '845-672-4307 · grumpygoatfineyarn.com', 'Yarn shop with a free "Slow Down Sunday" knit and crochet social (3 to 5pm, call for dates). Beginner knit and crochet classes, 3 students at a time. Open Wed to Sun.', 'Classes $30; private $40'),
     ('Hudson Valley Atelier', 'Florida NY · craft studio', '21 N Main St, Florida NY · ~40 min', 'hudsonvalleyatelier.com', 'Small hands-on workshops: chunky knitting, felting, weaving, wreaths, mosaics. Book each one online; no walk-ins. See the Events tab for dates.', '$40 to $75, materials included'),
@@ -59,7 +58,6 @@ GROUP=[
 ]
 
 RACES=[
-('Sun Nov 1', 'Pine Bush Ambulance Corps 5K Walk (38th annual)', 'Ambulance Corps, 131 Center St, Pine Bush · ~30 min (est.)', '5K Walk 9:15am, run 9am. Honors Helen and George Low.', '$44.30', 'runsignup.com/Race/NY/PineBush/PBAVAC5K'),
 ('Sun Nov 8', 'Beautiful People Fun Run, Walk and Roll 5K', 'Field of Dreams, 253 State School Rd, Warwick · ~45 min (est.)', '5K 9:30am, check-in from 8am. Benefits adaptive sports for children and young adults.', '$40 early, $45 that day', 'beautifulpeoplesports.org/5k'),
 ('Sat Nov 14', 'HV Hawks Reindeer Dash 5K Run/Walk', 'L. Vern Allen Park, 1 Ahern Blvd, Washingtonville · ~45 min (est.)', '5K 10am, sign-in from 9am. Shirt guaranteed if you register by Nov 1.', '$43.40', 'runsignup.com/Race/NY/Washingtonville/HVHawksReindeerDash'),
 ('Sat Nov 14', 'Red, White and Blue 5K Walk and 1-mile walk (for veterans)', 'Veterans Memorial Park, 109 Scenic Dr, Lackawaxen PA · ~45 min', '9am. Sign-up on the day from 8am.', '$25', 'runsignup.com/Race/PA/Lackawaxen/RunWalkVets5K'),
