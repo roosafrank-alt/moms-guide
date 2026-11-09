@@ -1385,7 +1385,7 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
   var qs = new URLSearchParams(location.search);
   var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone;
   var APP = qs.get('app') === '1' || (qs.get('app') !== '0' && (window.innerWidth <= 820 || standalone || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)));
-  if (!APP) { var tg = document.createElement('a'); tg.id = 'togg'; tg.href = '?app=1'; tg.textContent = 'Phone view: plan my week'; document.body.appendChild(tg); }
+  if (!APP) { var tg = document.createElement('a'); tg.id = 'togg'; tg.href = '?app=1'; tg.textContent = '← Back to the app'; document.body.appendChild(tg); }
   if (APP) {
     document.body.classList.add('app');
     var DOW = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'], DN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -1430,7 +1430,7 @@ sheets.forEach(function (sh) { sh.html = sh.html.replace(/Last updated undefined
     var home = document.createElement('div'); home.id = 'home';
     home.innerHTML = '<p class="kicker">Wurtsboro, NY and nearby</p><h1>Mom\'s Guide</h1><p class="sub">Fall 2026 – Winter 2027. Tap a day or a topic.<br><span class="updd">Last updated ' + UPDATED + '</span></p>' +
       '<a class="today" href="#today">Today: ' + DN[di] + '<small>Everything happening today</small></a><a class="today mypl" href="#my">My Plan<small>Pick events and build your week</small></a>' + newBox() + '<div class="grid">' + tiles + '</div>' +
-      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. <a href="?app=0" style="text-decoration:underline">Show full packet view</a>' + (/github\.io$/.test(location.hostname) ? ' · <a href="Moms_Activity_Packet.pdf" style="text-decoration:underline">Printable PDF</a>' : '') + '</p>';
+      '<p class="tip">Tap a phone number to call, an address to see the map, a web address to open it. <a href="?app=0" style="text-decoration:underline">Show full packet view</a>' + (/github\.io$/.test(location.hostname) ? ' · <a href="Moms_Activity_Packet.pdf" target="_blank" rel="noopener" style="text-decoration:underline">Printable PDF (opens a new tab)</a>' : '') + '</p>';
     var bar = document.createElement('div'); bar.id = 'bar'; bar.innerHTML = '<a href="#">‹ Home</a><span class="ttl"></span><a href="#" id="bsr">Search</a>';
     var nav = document.createElement('div'); nav.id = 'nav';
     nav.innerHTML = '<a href="#" data-n="home">Home</a><a href="#today" data-n="today">Today</a><a href="#t-ev" data-n="ev">Events</a><a href="#t-walk" data-n="walk">Walks</a><a href="#my" data-n="my">My Plan</a>';
